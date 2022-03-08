@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "773133128595",
+    "project_id": "unidemy-a5397",
+    "storage_bucket": "unidemy-a5397.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:773133128595:android:246ef3d799bc7ca5c60e66",
+        "android_client_info": {
+          "package_name": "com.example.unidemy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "773133128595-hr3vafniashvirlfp25m1eeoenno4fhl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzKkdOPnz-mgcf56IHSky0bumtj6a_K5M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "773133128595-hr3vafniashvirlfp25m1eeoenno4fhl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
