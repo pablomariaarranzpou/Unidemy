@@ -63,7 +63,7 @@
         android:layout_height="55dp" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_startTest"
         android:layout_width="254dp"
         android:layout_height="70dp"
         android:backgroundTint="#FF9800"

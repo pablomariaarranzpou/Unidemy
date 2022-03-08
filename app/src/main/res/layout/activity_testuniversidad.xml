@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="137dp" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="match_parent"
+        android:layout_height="154dp"
+        app:srcCompat="@drawable/fc1363a1d3ef494a96cc920db03d2a38__1_" />
+
+    <TextView
+        android:id="@+id/texto_test1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="¿En que Unviersidad estudias actualmente?"
+        android:textAlignment="center"
+        android:textSize="16sp" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="57dp"
+        android:entries="@android:array/Unviersidades"
+        android:spinnerMode="dialog" />
+</LinearLayout>
