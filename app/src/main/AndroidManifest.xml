@@ -1,18 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.unidemy">
+    package="com.example.unidemy" >
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/common_google_signin_btn_icon_dark"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/common_google_signin_btn_icon_dark"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Unidemy">
+        android:theme="@style/Theme.Unidemy" >
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.Register"
+            android:exported="false"
+            android:label="@string/app_name" />
+        <activity android:name=".ui.FirstLogin"
+            android:exported="false"
+            android:label="@string/app_name" />
+        <activity
+            android:name=".ui.Login"
             android:exported="true"
-            android:label="@string/app_name">
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

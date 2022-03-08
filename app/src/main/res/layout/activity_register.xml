@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".Model.Register">
+    tools:context=".ui.Register">
 
     <ImageView
         android:id="@+id/imageView"
@@ -24,6 +24,14 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textStyle="bold|italic" />
 
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="373dp"
+        android:layout_height="wrap_content"
+        android:text="¡Regístrate para entrar en la mayor Academia Universitaria Online del mundo!"
+        android:textAlignment="center"
+        android:textSize="14sp" />
+
     <EditText
         android:id="@+id/username"
         android:layout_width="match_parent"
@@ -31,7 +39,8 @@
         android:layout_marginLeft="4pt"
         android:layout_marginTop="10pt"
         android:layout_marginRight="4pt"
-        android:hint="Correo electrónico" />
+        android:hint="Correo electrónico"
+        android:minHeight="48dp" />
 
     <EditText
         android:id="@+id/password1"
@@ -40,7 +49,8 @@
         android:layout_marginLeft="4pt"
         android:layout_marginTop="10pt"
         android:layout_marginRight="4pt"
-        android:hint="Contraseña" />
+        android:hint="Contraseña"
+        android:minHeight="48dp" />
 
     <Button
         android:id="@+id/sign"
