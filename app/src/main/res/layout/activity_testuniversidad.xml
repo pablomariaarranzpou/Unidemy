@@ -24,10 +24,5 @@
         android:textAlignment="center"
         android:textSize="16sp" />
 
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="match_parent"
-        android:layout_height="57dp"
-        android:entries="@android:array/Unviersidades"
-        android:spinnerMode="dialog" />
+
 </LinearLayout>

@@ -3,6 +3,7 @@ package com.example.unidemy.ui;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -64,6 +65,23 @@ public class Register extends AppCompatActivity {
                         if(task.isSuccessful())
                         {
                             Toast.makeText(Register.this,"You are successfully Registered", Toast.LENGTH_SHORT).show();
+
+                            mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener( tarea ->{
+                                if(tarea.isSuccessful())
+                                {
+
+                                    startActivity(new Intent(Register.this, FirstLogin.class));
+
+                                }
+                                else
+                                {
+                                    Toast.makeText(Register.this,
+                                            "Error al logearse",
+                                            Toast.LENGTH_SHORT).show();
+                                }
+
+                            });
+
                         }
                         else
                         {

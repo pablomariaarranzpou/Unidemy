@@ -57,12 +57,9 @@ public class Login extends AppCompatActivity {
                 if(task.isSuccessful())
                 {
 
-                    boolean isNew = task.getResult().getAdditionalUserInfo().isNewUser();
-                    if(isNew){
-                        startActivity(new Intent(Login.this, FirstLogin.class));
-                    }else{
-                        startActivity(new Intent(Login.this, Home.class));
-                    }
+
+                    startActivity(new Intent(Login.this, Home.class));
+
                 }
                 else
                 {

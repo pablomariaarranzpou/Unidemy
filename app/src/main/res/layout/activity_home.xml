@@ -1,6 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.fragment.app.FragmentContainerView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" />
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".ui.Home">
+
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="match_parent"
+        android:layout_height="115dp"
+        app:srcCompat="@drawable/fc1363a1d3ef494a96cc920db03d2a38__1_" />
+
+    <TextView
+        android:id="@+id/bienvenida_asignaturas_txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="¡Aquí tienes tus asignaturas!"
+        android:textAlignment="center" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="595dp" />
+</LinearLayout>
