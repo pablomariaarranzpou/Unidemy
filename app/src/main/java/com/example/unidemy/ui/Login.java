@@ -25,6 +25,7 @@ public class Login extends AppCompatActivity {
         pass_word=findViewById(R.id.password);
         Button btn_login = findViewById(R.id.btn_login);
         Button btn_sign = findViewById(R.id.btn_signup);
+        Button btn_resetpassw = findViewById(R.id.btn_resetpassw);
         mAuth=FirebaseAuth.getInstance();
         btn_login.setOnClickListener(v -> {
             String email= user_name.getText().toString().trim();
@@ -71,6 +72,7 @@ public class Login extends AppCompatActivity {
             });
         });
         btn_sign.setOnClickListener(v -> startActivity(new Intent(Login.this, Register.class )));
+        btn_resetpassw.setOnClickListener(v -> startActivity(new Intent(Login.this, ForgotPassword.class )));
     }
 
 }

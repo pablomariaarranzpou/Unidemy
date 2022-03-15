@@ -58,5 +58,13 @@
         app:iconTint="#00FFFFFF"
         app:rippleColor="#00FFFFFF" />
 
+    <Button
+        android:id="@+id/btn_resetpassw"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="¿Olvidaste tu contraseña?"
+        app:iconTint="#FF9800"
+        app:strokeColor="#FF9800" />
+
 
 </LinearLayout>
