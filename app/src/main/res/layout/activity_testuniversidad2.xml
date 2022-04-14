@@ -20,7 +20,7 @@
         android:id="@+id/texto_test1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="¿En que Unviersidad estudias actualmente?"
+        android:text="¿En que Facultad?"
         android:textAlignment="center"
         android:textSize="16sp" />
 
