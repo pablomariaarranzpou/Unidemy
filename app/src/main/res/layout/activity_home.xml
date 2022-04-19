@@ -9,11 +9,19 @@
     tools:context=".ui.Home">
 
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="149dp" />
+
     <ImageView
         android:id="@+id/imageView5"
         android:layout_width="match_parent"
         android:layout_height="115dp"
         app:srcCompat="@drawable/fc1363a1d3ef494a96cc920db03d2a38__1_" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/bienvenida_asignaturas_txt"
@@ -21,10 +29,6 @@
         android:layout_height="wrap_content"
         android:text="¡Aquí tienes tus asignaturas!"
         android:textAlignment="center" />
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
 
     <Space
         android:layout_width="match_parent"

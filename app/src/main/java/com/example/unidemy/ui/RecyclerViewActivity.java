@@ -1,11 +1,7 @@
 package com.example.unidemy.ui;
 
 import android.content.Context;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.view.Gravity;
-import android.view.View;
-import android.widget.PopupWindow;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,7 +11,6 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.unidemy.R;
-import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.ArrayList;
 
@@ -25,9 +20,6 @@ public class RecyclerViewActivity extends AppCompatActivity {
 
     private Context parentContext;
     private AppCompatActivity mActivity;
-    // Requesting permission to RECORD_AUDIO
-
-
     private RecyclerView mRecyclerView;
     private RecyclerView_ViewModel viewModel;
 
@@ -55,7 +47,7 @@ public class RecyclerViewActivity extends AppCompatActivity {
         final Observer<ArrayList<CursoCard>> observer = new Observer<ArrayList<CursoCard>>() {
             @Override
             public void onChanged(ArrayList<CursoCard> ac) {
-                CustomAdapter newAdapter = new CustomAdapter(parentContext, ac, (CustomAdapter.playerInterface) mActivity);
+                CardCourseAdapter newAdapter = new CardCourseAdapter(parentContext, ac, (CardCourseAdapter.playerInterface) mActivity);
                 mRecyclerView.swapAdapter(newAdapter, false);
                 newAdapter.notifyDataSetChanged();
             }
@@ -68,8 +60,6 @@ public class RecyclerViewActivity extends AppCompatActivity {
             }
         };
 
-        viewModel..observe(this, observer);
-        viewModel.getToast().observe(this, observerToast);
     }
 
 

@@ -1,8 +1,6 @@
 package com.example.unidemy.ui;
 
 
-package com.example.recyclerview_example;
-
         import android.app.Application;
 
         import java.util.ArrayList;
@@ -10,7 +8,7 @@ package com.example.recyclerview_example;
 import androidx.lifecycle.AndroidViewModel;
         import androidx.lifecycle.LiveData;
         import androidx.lifecycle.MutableLiveData;
-import androidx.room.Room;
+
 
 
 public class RecyclerView_ViewModel extends AndroidViewModel implements DatabaseAdapter.vmInterface{
@@ -47,14 +45,11 @@ public class RecyclerView_ViewModel extends AndroidViewModel implements Database
 
     //communicates user inputs and updates the result in the viewModel
     @Override
-    public void setCollection(ArrayList<AudioCard> ac) {
+    public void setCollection(ArrayList<CursoCard> ac) {
         mCursoCards.setValue(ac);
     }
 
-    @Override
-    public void setCollection(ArrayList<CursoCard> ac) {
 
-    }
 
     public void setToast(String t) {
         mToast.setValue(t);
