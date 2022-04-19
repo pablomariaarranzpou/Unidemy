@@ -18,7 +18,7 @@ public class CardCourseAdapter extends RecyclerView.Adapter<CardCourseHolder> {
 
     private final ArrayList<CursoCard> localDataSet;
     private final Context parentContext;
-    private final playerInterface listener;
+
 
     /**
      * Initialize the dataset of the Adapter.
@@ -26,10 +26,9 @@ public class CardCourseAdapter extends RecyclerView.Adapter<CardCourseHolder> {
      * @param dataSet String[] containing the data to populate views to be used
      * by RecyclerView.
      */
-    public CardCourseAdapter(Context current, ArrayList<CursoCard> dataSet, playerInterface listener) {
+    public CardCourseAdapter(Context current, ArrayList<CursoCard> dataSet) {
         parentContext = current;
         localDataSet = dataSet;
-        this.listener = listener;
     }
 
     // Create new views (invoked by the layout manager)
@@ -43,14 +42,8 @@ public class CardCourseAdapter extends RecyclerView.Adapter<CardCourseHolder> {
         return new CardCourseHolder(view);
     }
 
-    private void playAudio(int position) {
-        // Play audio for clicked note
-        listener.startPlaying(position);
-    }
 
-    public interface playerInterface{
-        void startPlaying(int fileName);
-    }
+
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
@@ -63,11 +56,23 @@ public class CardCourseAdapter extends RecyclerView.Adapter<CardCourseHolder> {
         viewHolder.getCourse_description().setText(
                 localDataSet.get(position).getCourse_description());
 
+        viewHolder.getCourse_rating().setText(
+                localDataSet.get(position).getCourse_rating());
+
+        viewHolder.getCourse_title().setText(
+                localDataSet.get(position).getCourse_title());
+
+        viewHolder.getCourse_views().setText(
+                localDataSet.get(position).getCourse_views());
+
+
+
+
         ImageButton playButton = viewHolder.getPlayButton();
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                playAudio(position);
+
             }
         });
     }

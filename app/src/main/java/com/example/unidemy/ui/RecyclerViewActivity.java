@@ -47,7 +47,7 @@ public class RecyclerViewActivity extends AppCompatActivity {
         final Observer<ArrayList<CursoCard>> observer = new Observer<ArrayList<CursoCard>>() {
             @Override
             public void onChanged(ArrayList<CursoCard> ac) {
-                CardCourseAdapter newAdapter = new CardCourseAdapter(parentContext, ac, (CardCourseAdapter.playerInterface) mActivity);
+                CardCourseAdapter newAdapter = new CardCourseAdapter(parentContext, ac);
                 mRecyclerView.swapAdapter(newAdapter, false);
                 newAdapter.notifyDataSetChanged();
             }
