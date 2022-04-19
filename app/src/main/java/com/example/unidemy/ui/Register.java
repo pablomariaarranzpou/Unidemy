@@ -43,7 +43,7 @@ public class Register extends AppCompatActivity {
                 }
                 if(!Patterns.EMAIL_ADDRESS.matcher(email).matches())
                 {
-                    user_name.setError("Enter the valid email address");
+                    user_name.setError("Correo Electrónico Inválido");
                     user_name.requestFocus();
                     return;
                 }
@@ -85,7 +85,7 @@ public class Register extends AppCompatActivity {
                         }
                         else
                         {
-                            Toast.makeText(Register.this,"You are not Registered! Try again",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Register.this,"Error al logearse, Correo electrónico ya registrado",Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

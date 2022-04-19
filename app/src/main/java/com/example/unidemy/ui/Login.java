@@ -30,27 +30,21 @@ public class Login extends AppCompatActivity {
         btn_login.setOnClickListener(v -> {
             String email= user_name.getText().toString().trim();
             String password=pass_word.getText().toString().trim();
-            if(email.isEmpty())
+            if(email.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(email).matches())
             {
                 user_name.setError("Correo no válido");
                 user_name.requestFocus();
                 return;
             }
-            if(!Patterns.EMAIL_ADDRESS.matcher(email).matches())
-            {
-                user_name.setError("Enter the valid email");
-                user_name.requestFocus();
-                return;
-            }
             if(password.isEmpty())
             {
-                pass_word.setError("Password is empty");
+                pass_word.setError("Necesario incluir contraseña");
                 pass_word.requestFocus();
                 return;
             }
             if(password.length()<6)
             {
-                pass_word.setError("Length of password is more than 6");
+                pass_word.setError("Por su seguirdad la contraseña debe ser de 6 o más caracteres");
                 pass_word.requestFocus();
                 return;
             }
@@ -65,7 +59,7 @@ public class Login extends AppCompatActivity {
                 else
                 {
                     Toast.makeText(Login.this,
-                            "Estos datos no són correctos",
+                            "Usuario o/y contraseña incorrectos",
                             Toast.LENGTH_SHORT).show();
                 }
 
