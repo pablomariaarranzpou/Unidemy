@@ -25,7 +25,7 @@ public class RecyclerView_ViewModel extends AndroidViewModel implements Database
         mCursoCards = new MutableLiveData<>();
         mToast = new MutableLiveData<>();
         DatabaseAdapter da = new DatabaseAdapter(this);
-        da.getCollection();
+        da.getCollectionUniversidades();
     }
 
     //public getter. Not mutable , read-only
@@ -37,8 +37,6 @@ public class RecyclerView_ViewModel extends AndroidViewModel implements Database
         return mCursoCards.getValue().get(idx);
     }
 
-
-
     public LiveData<String> getToast(){
         return mToast;
     }
@@ -48,8 +46,6 @@ public class RecyclerView_ViewModel extends AndroidViewModel implements Database
     public void setCollection(ArrayList<CursoCard> ac) {
         mCursoCards.setValue(ac);
     }
-
-
 
     public void setToast(String t) {
         mToast.setValue(t);

@@ -85,9 +85,9 @@ public class DatabaseAdapter extends Activity {
     }
 
 
-    public void getCollection(){
-        Log.d(TAG,"updateaudioCards");
-        DatabaseAdapter.db.collection("audioCards")
+    public void getCollectionUniversidades(){
+        Log.d(TAG,"Ver Universidades");
+        DatabaseAdapter.db.collection("Curso")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -97,7 +97,7 @@ public class DatabaseAdapter extends Activity {
                             ArrayList<CursoCard> retrieved_ac = new ArrayList<CursoCard>() ;
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Log.d(TAG, document.getId() + " => " + document.getData());
-                                retrieved_ac.add(new CursoCard( document.getString("description"), document.getString("url"), document.getString("userid")));
+                                retrieved_ac.add(new CursoCard( document.getString("course_title"), document.getString("course_description"), document.getString("course_owner"),  document.getString("course_views"), document.getString("course_rating")));
                             }
                             listener.setCollection(retrieved_ac);
 

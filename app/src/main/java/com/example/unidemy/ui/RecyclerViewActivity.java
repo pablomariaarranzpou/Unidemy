@@ -15,6 +15,7 @@ import com.example.unidemy.R;
 import java.util.ArrayList;
 
 public class RecyclerViewActivity extends AppCompatActivity {
+
     private final String TAG = "MainActivity";
 
 
@@ -29,8 +30,6 @@ public class RecyclerViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_courses_list);
         parentContext = this.getBaseContext();
         mActivity = this;
-
-
 
         // Define RecyclerView elements: 1) Layout Manager and 2) Adapter
         mRecyclerView = findViewById(R.id.recyclerview);
@@ -60,7 +59,12 @@ public class RecyclerViewActivity extends AppCompatActivity {
             }
         };
 
+        viewModel.getCursoCards().observe(this, observer);
+        viewModel.getToast().observe(this, observerToast);
+
     }
+
+
 
 
 

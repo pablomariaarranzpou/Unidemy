@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
-import androidx.annotation.NonNull;
+
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.unidemy.R;
@@ -32,7 +32,6 @@ public class CardCourseAdapter extends RecyclerView.Adapter<CardCourseHolder> {
     }
 
     // Create new views (invoked by the layout manager)
-    @NonNull
     @Override
     public CardCourseHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         // Create a new view, which defines the UI of the list item
@@ -64,7 +63,6 @@ public class CardCourseAdapter extends RecyclerView.Adapter<CardCourseHolder> {
 
         viewHolder.getCourse_views().setText(
                 localDataSet.get(position).getCourse_views());
-
 
 
 

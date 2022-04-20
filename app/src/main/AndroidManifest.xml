@@ -4,9 +4,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/common_google_signin_btn_icon_dark"
+        android:icon="@drawable/fc1363a1d3ef494a96cc920db03d2a38__1_"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/common_google_signin_btn_icon_dark"
+        android:roundIcon="@drawable/fc1363a1d3ef494a96cc920db03d2a38__1_"
         android:supportsRtl="true"
         android:theme="@style/Theme.Unidemy" >
         <activity
@@ -21,6 +21,10 @@
             android:name=".ui.FirstLogin"
             android:exported="false"
             android:label="@string/app_name" />
+        <activity
+            android:name=".ui.RecyclerViewActivity"
+            android:exported="false"
+            android:label="esto donde sale?" />
         <activity
             android:name=".ui.Login"
             android:exported="true"
