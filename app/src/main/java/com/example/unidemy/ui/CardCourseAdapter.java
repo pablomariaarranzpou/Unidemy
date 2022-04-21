@@ -44,6 +44,7 @@ public class CardCourseAdapter extends RecyclerView.Adapter<CardCourseHolder> {
 
 
 
+
     // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(CardCourseHolder viewHolder, int position) {

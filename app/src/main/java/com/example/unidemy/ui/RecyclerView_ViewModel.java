@@ -15,7 +15,6 @@ public class RecyclerView_ViewModel extends AndroidViewModel implements Database
 
     private final MutableLiveData<ArrayList<CursoCard>> mCursoCards;
     private final MutableLiveData<String> mToast;
-
     public static final String TAG = "ViewModel";
 
     //Constructor
@@ -32,6 +31,8 @@ public class RecyclerView_ViewModel extends AndroidViewModel implements Database
     public LiveData<ArrayList<CursoCard>> getCursoCards(){
         return mCursoCards;
     }
+
+
 
     public CursoCard getCursoCard(int idx){
         return mCursoCards.getValue().get(idx);

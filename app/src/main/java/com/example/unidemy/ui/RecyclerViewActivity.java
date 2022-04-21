@@ -32,8 +32,9 @@ public class RecyclerViewActivity extends AppCompatActivity {
         mActivity = this;
 
         // Define RecyclerView elements: 1) Layout Manager and 2) Adapter
-        mRecyclerView = findViewById(R.id.recyclerview);
+        mRecyclerView = findViewById(R.id.recyclerview_cursos);
         mRecyclerView.setLayoutManager(new GridLayoutManager(this, 3));
+
         setLiveDataObservers();
 
 
@@ -42,7 +43,7 @@ public class RecyclerViewActivity extends AppCompatActivity {
     public void setLiveDataObservers() {
         //Subscribe the activity to the observable
         viewModel = new ViewModelProvider(this).get(RecyclerView_ViewModel.class);
-
+        CardCourseAdapter newAdapter = new CardCourseAdapter(parentContext,new ArrayList<CursoCard>());
         final Observer<ArrayList<CursoCard>> observer = new Observer<ArrayList<CursoCard>>() {
             @Override
             public void onChanged(ArrayList<CursoCard> ac) {
@@ -63,12 +64,5 @@ public class RecyclerViewActivity extends AppCompatActivity {
         viewModel.getToast().observe(this, observerToast);
 
     }
-
-
-
-
-
-
-
 
 }

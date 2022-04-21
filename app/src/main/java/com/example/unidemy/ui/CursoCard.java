@@ -3,6 +3,8 @@ package com.example.unidemy.ui;
 
 
 
+import android.util.Log;
+
 import java.util.HashMap;
 import java.util.UUID;
 
@@ -61,6 +63,8 @@ public class CursoCard {
     public DatabaseAdapter getAdapter() {
         return adapter;
     }
+
+
 
     public CursoCard getCard() {
         // ask database and if true, return CursoCard

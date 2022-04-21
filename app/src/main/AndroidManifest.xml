@@ -25,6 +25,7 @@
             android:name=".ui.RecyclerViewActivity"
             android:exported="false"
             android:label="esto donde sale?" />
+
         <activity
             android:name=".ui.Login"
             android:exported="true"

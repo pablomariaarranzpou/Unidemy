@@ -26,27 +26,23 @@
             android:layout_width="match_parent"
             android:layout_height="33dp"
             android:gravity="center_vertical"
-            android:text="COURSE_TITLE"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
         <TextView
             android:id="@+id/course_description"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:text="course_description"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
         <TextView
             android:id="@+id/course_views"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="course_views" />
+            android:layout_height="wrap_content" />
 
         <TextView
             android:id="@+id/course_rating"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="course_rating" />
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 
