@@ -3,14 +3,17 @@ package com.example.unidemy.ui;
 
 
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.util.Log;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.UUID;
 
 // From https://developer.android.com/training/data-storage/room/
 
-public class CursoCard {
+public class CursoCard implements Parcelable {
 
     private String nameID;
     private final String course_title;
@@ -31,6 +34,27 @@ public class CursoCard {
         UUID uuid = UUID.randomUUID();
         this.nameID = uuid.toString();
     }
+
+    protected CursoCard(Parcel in) {
+        nameID = in.readString();
+        course_title = in.readString();
+        course_views = in.readString();
+        course_rating = in.readString();
+        course_description = in.readString();
+        owner = in.readString();
+    }
+
+    public static final Creator<CursoCard> CREATOR = new Creator<CursoCard>() {
+        @Override
+        public CursoCard createFromParcel(Parcel in) {
+            return new CursoCard(in);
+        }
+
+        @Override
+        public CursoCard[] newArray(int size) {
+            return new CursoCard[size];
+        }
+    };
 
     public String getNameID() {
         return nameID;
@@ -75,5 +99,20 @@ public class CursoCard {
         } else {
             return null;
         }
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(nameID);
+        parcel.writeString(course_title);
+        parcel.writeString(course_views);
+        parcel.writeString(course_rating);
+        parcel.writeString(course_description);
+        parcel.writeString(owner);
     }
 }

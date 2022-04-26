@@ -45,21 +45,11 @@ public class RecyclerViewActivity extends AppCompatActivity implements CardCours
     public void setLiveDataObservers() {
         //Subscribe the activity to the observable
         viewModel = new ViewModelProvider(this).get(RecyclerView_ViewModel.class);
-        CardCourseAdapter newAdapter = new CardCourseAdapter(parentContext, new ArrayList<CursoCard>(), new CardCourseAdapter.OnCourseListener() {
-            @Override
-            public void onCourseClick(int position) {
-                viewModel.getCursoCard(position);
-            }
-        });
+        CardCourseAdapter newAdapter = new CardCourseAdapter(parentContext, new ArrayList<CursoCard>(), (CardCourseAdapter.OnCourseListener) mActivity);
         final Observer<ArrayList<CursoCard>> observer = new Observer<ArrayList<CursoCard>>() {
             @Override
             public void onChanged(ArrayList<CursoCard> ac) {
-                CardCourseAdapter newAdapter = new CardCourseAdapter(parentContext, ac, new CardCourseAdapter.OnCourseListener() {
-                    @Override
-                    public void onCourseClick(int position) {
-                        viewModel.getCursoCard(position);
-                    }
-                });
+                CardCourseAdapter newAdapter = new CardCourseAdapter(parentContext, ac, (CardCourseAdapter.OnCourseListener) mActivity);
                 mRecyclerView.swapAdapter(newAdapter, false);
                 newAdapter.notifyDataSetChanged();
             }
@@ -79,9 +69,8 @@ public class RecyclerViewActivity extends AppCompatActivity implements CardCours
 
     @Override
     public void onCourseClick(int position) {
-        CursoCard element = viewModel.getCursoCard(position);
-        Intent intent = new Intent(getApplicationContext(), ViewCourse.class);
-        intent.putExtra("ELEMENT", (Parcelable) element);
+        Intent intent = new Intent(this, ViewCourse.class);
+        intent.putExtra("selectedCourse", viewModel.getCursoCard(position));
         startActivity(intent);
 
     }
