@@ -32,6 +32,11 @@
             android:label="Cursos Disponibles" />
 
         <activity
+            android:name=".ui.ViewCourse"
+            android:exported="false"
+            android:label="@id/course_title" />
+
+        <activity
             android:name=".ui.Login"
             android:exported="true"
             android:label="¡Hola!" >

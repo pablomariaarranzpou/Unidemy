@@ -18,6 +18,7 @@ public class CardCourseAdapter extends RecyclerView.Adapter<CardCourseHolder> {
 
     private final ArrayList<CursoCard> localDataSet;
     private final Context parentContext;
+    private OnCourseListener onCourseListener;
 
 
     /**
@@ -26,9 +27,10 @@ public class CardCourseAdapter extends RecyclerView.Adapter<CardCourseHolder> {
      * @param dataSet String[] containing the data to populate views to be used
      * by RecyclerView.
      */
-    public CardCourseAdapter(Context current, ArrayList<CursoCard> dataSet) {
+    public CardCourseAdapter(Context current, ArrayList<CursoCard> dataSet, OnCourseListener onCourseListener ) {
         parentContext = current;
         localDataSet = dataSet;
+        this.onCourseListener = onCourseListener;
     }
 
     // Create new views (invoked by the layout manager)
@@ -38,7 +40,7 @@ public class CardCourseAdapter extends RecyclerView.Adapter<CardCourseHolder> {
         View view = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.course_item, viewGroup, false);
 
-        return new CardCourseHolder(view);
+        return new CardCourseHolder(view, onCourseListener);
     }
 
 
@@ -83,6 +85,10 @@ public class CardCourseAdapter extends RecyclerView.Adapter<CardCourseHolder> {
             return localDataSet.size();
         }
         return 0;
+    }
+
+    public interface OnCourseListener{
+        void onCourseClick(int position);
     }
 
 }

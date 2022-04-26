@@ -1,7 +1,9 @@
 package com.example.unidemy.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,7 +16,7 @@ import com.example.unidemy.R;
 
 import java.util.ArrayList;
 
-public class RecyclerViewActivity extends AppCompatActivity {
+public class RecyclerViewActivity extends AppCompatActivity implements CardCourseAdapter.OnCourseListener{
 
     private final String TAG = "MainActivity";
 
@@ -43,11 +45,21 @@ public class RecyclerViewActivity extends AppCompatActivity {
     public void setLiveDataObservers() {
         //Subscribe the activity to the observable
         viewModel = new ViewModelProvider(this).get(RecyclerView_ViewModel.class);
-        CardCourseAdapter newAdapter = new CardCourseAdapter(parentContext,new ArrayList<CursoCard>());
+        CardCourseAdapter newAdapter = new CardCourseAdapter(parentContext, new ArrayList<CursoCard>(), new CardCourseAdapter.OnCourseListener() {
+            @Override
+            public void onCourseClick(int position) {
+                viewModel.getCursoCard(position);
+            }
+        });
         final Observer<ArrayList<CursoCard>> observer = new Observer<ArrayList<CursoCard>>() {
             @Override
             public void onChanged(ArrayList<CursoCard> ac) {
-                CardCourseAdapter newAdapter = new CardCourseAdapter(parentContext, ac);
+                CardCourseAdapter newAdapter = new CardCourseAdapter(parentContext, ac, new CardCourseAdapter.OnCourseListener() {
+                    @Override
+                    public void onCourseClick(int position) {
+                        viewModel.getCursoCard(position);
+                    }
+                });
                 mRecyclerView.swapAdapter(newAdapter, false);
                 newAdapter.notifyDataSetChanged();
             }
@@ -65,4 +77,12 @@ public class RecyclerViewActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onCourseClick(int position) {
+        CursoCard element = viewModel.getCursoCard(position);
+        Intent intent = new Intent(getApplicationContext(), ViewCourse.class);
+        intent.putExtra("ELEMENT", (Parcelable) element);
+        startActivity(intent);
+
+    }
 }
