@@ -33,7 +33,7 @@ public class RecyclerViewActivity extends AppCompatActivity {
 
         // Define RecyclerView elements: 1) Layout Manager and 2) Adapter
         mRecyclerView = findViewById(R.id.recyclerview_cursos);
-        mRecyclerView.setLayoutManager(new GridLayoutManager(this, 3));
+        mRecyclerView.setLayoutManager(new GridLayoutManager(this, 1));
 
         setLiveDataObservers();
 
