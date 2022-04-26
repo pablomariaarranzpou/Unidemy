@@ -75,14 +75,13 @@ public class DatabaseAdapter extends Activity {
 
 
     public void getCollectionUniversidades(){
-        Log.d(TAG,"Ver Universidades");
+        Log.d(TAG,"Ver cursos");
         DatabaseAdapter.db.collection("Curso")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-
                             ArrayList<CursoCard> retrieved_ac = new ArrayList<CursoCard>() ;
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Log.d(TAG, document.getId() + " => " + document.getData());
@@ -101,7 +100,7 @@ public class DatabaseAdapter extends Activity {
 
 
     public HashMap<String, String> getDocuments () {
-        db.collection("Universidad")
+        db.collection("Curso")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override

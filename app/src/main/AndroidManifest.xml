@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.unidemy" >
-
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
         android:icon="@drawable/fc1363a1d3ef494a96cc920db03d2a38__1_"
@@ -9,27 +11,30 @@
         android:roundIcon="@drawable/fc1363a1d3ef494a96cc920db03d2a38__1_"
         android:supportsRtl="true"
         android:theme="@style/Theme.Unidemy" >
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="YOUR_API_KEY" />
         <activity
             android:name=".ui.ForgotPassword"
             android:exported="false"
-            android:label="@string/app_name" />/>
+            android:label="Recuperar Contraseña" />/>
         <activity
             android:name=".ui.Register"
             android:exported="false"
-            android:label="@string/app_name" />
+            android:label="Registro" />
         <activity
             android:name=".ui.FirstLogin"
             android:exported="false"
-            android:label="@string/app_name" />
+            android:label="¡Bienvenid@!" />
         <activity
             android:name=".ui.RecyclerViewActivity"
             android:exported="false"
-            android:label="esto donde sale?" />
+            android:label="Cursos Disponibles" />
 
         <activity
             android:name=".ui.Login"
             android:exported="true"
-            android:label="@string/app_name" >
+            android:label="¡Hola!" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

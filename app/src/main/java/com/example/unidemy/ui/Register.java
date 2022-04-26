@@ -37,13 +37,13 @@ public class Register extends AppCompatActivity {
                 String password= pass_word.getText().toString().trim();
                 if(email.isEmpty())
                 {
-                    user_name.setError("Email is empty");
+                    user_name.setError("Escriba una dirección de correo");
                     user_name.requestFocus();
                     return;
                 }
                 if(!Patterns.EMAIL_ADDRESS.matcher(email).matches())
                 {
-                    user_name.setError("Correo Electrónico Inválido");
+                    user_name.setError("Correo Electrónico inválido");
                     user_name.requestFocus();
                     return;
                 }
@@ -64,7 +64,7 @@ public class Register extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful())
                         {
-                            Toast.makeText(Register.this,"You are successfully Registered", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Register.this,"Registrado correctamente!", Toast.LENGTH_SHORT).show();
 
                             mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener( tarea ->{
                                 if(tarea.isSuccessful())

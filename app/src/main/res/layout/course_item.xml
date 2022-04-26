@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/list_item_height"
-    android:layout_margin="@dimen/margin_medium"
+    android:layout_height="120dp"
+    android:layout_margin="8dp"
     android:gravity="center_vertical"
     android:orientation="horizontal"
     android:id="@+id/course_layout">
@@ -11,10 +12,11 @@
         android:id="@+id/play_button"
         android:layout_width="140dp"
         android:layout_height="73dp"
-        android:layout_gravity="center"
+        android:layout_gravity="center|center_horizontal|left"
         android:layout_marginStart="@dimen/margin_medium"
         android:layout_marginEnd="@dimen/margin_big"
-        android:src="@android:drawable/ic_media_play"></ImageButton>
+        android:src="@android:drawable/ic_media_play"
+        tools:ignore="SpeakableTextPresentCheck"></ImageButton>
 
     <LinearLayout
         android:layout_width="match_parent"
