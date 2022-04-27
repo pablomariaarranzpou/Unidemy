@@ -74,7 +74,7 @@ public class DatabaseAdapter extends Activity {
     }
 
 
-    public void getCollectionUniversidades(){
+    public void getCollectionCursos(){
         Log.d(TAG,"Ver cursos");
         DatabaseAdapter.db.collection("Curso")
                 .get()
@@ -95,6 +95,8 @@ public class DatabaseAdapter extends Activity {
                     }
                 });
     }
+
+
 
 
 

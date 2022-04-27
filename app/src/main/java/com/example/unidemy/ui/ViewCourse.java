@@ -1,6 +1,7 @@
 package com.example.unidemy.ui;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -16,7 +17,7 @@ public class ViewCourse extends AppCompatActivity {
 
     private TextView ind_course_views_txt, ind_course_title_txt, ind_owner_txt, ind_course_rating_txt, ind_course_description;
     private ImageButton play_button;
-    private Button ind_btn_pagar;
+    private Button ind_btn_pagar, ind_btn_opinar;
     FirebaseAuth mAuth;
     CursoCard cc;
 
@@ -31,6 +32,7 @@ public class ViewCourse extends AppCompatActivity {
         ind_course_rating_txt = (TextView) findViewById(R.id.ind_course_rating);
         ind_course_description = (TextView) findViewById(R.id.ind_course_description);
         ind_btn_pagar = (Button) findViewById(R.id.ind_btn_pagar);
+        ind_btn_opinar = (Button) findViewById((R.id.ind_btn_pagar));
         if(getIntent().hasExtra("selectedCourse")){
             cc = (CursoCard) getIntent().getParcelableExtra("selectedCourse");
             ind_course_views_txt.setText(cc.getCourse_views());
@@ -38,10 +40,21 @@ public class ViewCourse extends AppCompatActivity {
             ind_owner_txt.setText(cc.getOwner());
             ind_course_rating_txt.setText(cc.getCourse_rating());
             ind_course_description.setText(cc.getCourse_description());
-
         }
 
+        ind_btn_opinar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+
+
+
+
     }
+
 
 
 

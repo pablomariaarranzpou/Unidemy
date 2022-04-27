@@ -31,7 +31,6 @@ public class StartTestUniversidad extends AppCompatActivity {
     {
         super.onCreate(savedInstanceState);
 
-        CollectionReference universidades = db.collection("Universidad");
 
         db.collection("Universidad")
                 .get()

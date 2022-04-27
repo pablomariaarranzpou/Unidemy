@@ -34,7 +34,7 @@
         <activity
             android:name=".ui.ViewCourse"
             android:exported="false"
-            android:label="@id/course_title" />
+            android:label="Curso" />
 
         <activity
             android:name=".ui.Login"

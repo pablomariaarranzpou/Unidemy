@@ -115,7 +115,7 @@
                 app:rippleColor="#FF9800" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/ind_btn_opinar"
                 android:layout_width="199dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

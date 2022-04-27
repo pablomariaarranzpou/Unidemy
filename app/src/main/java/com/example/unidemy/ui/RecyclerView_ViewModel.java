@@ -24,7 +24,7 @@ public class RecyclerView_ViewModel extends AndroidViewModel implements Database
         mCursoCards = new MutableLiveData<>();
         mToast = new MutableLiveData<>();
         DatabaseAdapter da = new DatabaseAdapter(this);
-        da.getCollectionUniversidades();
+        da.getCollectionCursos();
     }
 
     //public getter. Not mutable , read-only
