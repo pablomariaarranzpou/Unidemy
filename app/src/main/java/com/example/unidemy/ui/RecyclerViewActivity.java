@@ -9,10 +9,12 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.unidemy.R;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 
@@ -25,6 +27,8 @@ public class RecyclerViewActivity extends AppCompatActivity implements CardCours
     private AppCompatActivity mActivity;
     private RecyclerView mRecyclerView;
     private RecyclerView_ViewModel viewModel;
+    private BottomNavigationView navigationView;
+    private NavController navController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +36,7 @@ public class RecyclerViewActivity extends AppCompatActivity implements CardCours
         setContentView(R.layout.activity_view_courses_list);
         parentContext = this.getBaseContext();
         mActivity = this;
-
+        navigationView = findViewById(R.id.btm_navigator);
         // Define RecyclerView elements: 1) Layout Manager and 2) Adapter
         mRecyclerView = findViewById(R.id.recyclerview_cursos);
         mRecyclerView.setLayoutManager(new GridLayoutManager(this, 1));
