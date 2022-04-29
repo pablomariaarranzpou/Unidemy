@@ -4,8 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.view.MenuItem;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -40,6 +42,33 @@ public class RecyclerViewActivity extends AppCompatActivity implements CardCours
         // Define RecyclerView elements: 1) Layout Manager and 2) Adapter
         mRecyclerView = findViewById(R.id.recyclerview_cursos);
         mRecyclerView.setLayoutManager(new GridLayoutManager(this, 1));
+        BottomNavigationView navView = (BottomNavigationView)findViewById(R.id.bottomNavigationView);
+        // Passing each menu ID as a set of Ids because each
+        // menu should be considered as top level destinations.
+        navView.setSelectedItemId(R.id.navigation_recyclerview);
+        navView.setOnItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener(){
+
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch (item.getItemId()) {
+                    case R.id.navigation_searcher:
+                        startActivity(new Intent(getApplicationContext(), Searcher.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.navigation_mycourses:
+                        startActivity(new Intent(getApplicationContext(), MyCourses.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.navigation_recyclerview:
+                        return true;
+
+                }
+
+
+                return false;
+            }
+        });
 
         setLiveDataObservers();
 

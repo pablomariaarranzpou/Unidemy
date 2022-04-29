@@ -3,19 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/recyclerVewActivity">
+    app:startDestination="@+id/navigation_recyclerview">
 
     <activity
-        android:id="@+id/recyclerVewActivity"
+        android:id="@+id/navigation_recyclerview"
         android:name="com.example.unidemy.ui.RecyclerViewActivity"
-        android:label="activity_view_courses_list"
+        android:label="navigation_recyclerview"
         tools:layout="@layout/activity_view_courses_list" />
     <activity
-        android:id="@+id/myCourses"
+        android:id="@+id/navigation_mycourses"
         android:name="com.example.unidemy.ui.MyCourses"
-        android:label="MyCourses" />
+        android:label="activity_mycourses"
+        tools:layout="@layout/fragment_mycourses"/>
     <activity
-        android:id="@+id/searcher"
+        android:id="@+id/navigation_searcher"
         android:name="com.example.unidemy.ui.Searcher"
-        android:label="Searcher" />
+        android:label="navigation_searcher"
+        tools:layout="@layout/fragment_searcher"/>
 </navigation>

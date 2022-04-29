@@ -2,11 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:title="Mis Cursos" android:icon="@drawable/ic_baseline_card_membership_24"
-        android:id="@+id/activity_mycourses"/>
+        android:id="@+id/navigation_mycourses"/>
 
     <item android:title="Cursos" android:icon="@drawable/ic_baseline_explore_24"
-        android:id="@+id/activity_view_courses_list"/>
+        android:id="@+id/navigation_recyclerview"/>
 
     <item android:title="Buscador" android:icon="@drawable/ic_baseline_search_24"
-        android:id="@+id/activity_searcher"/>
+        android:id="@+id/navigation_searcher"/>
 </menu>
