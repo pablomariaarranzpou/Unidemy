@@ -29,7 +29,7 @@ public class CardCourseHolder extends RecyclerView.ViewHolder implements View.On
         course_title = (TextView) view.findViewById(R.id.course_title);
         course_description = (TextView) view.findViewById(R.id.course_description);
         course_rating = (TextView)view.findViewById(R.id.course_rating);
-        course_views = (TextView)view.findViewById(R.id.course_description);
+        course_views = (TextView)view.findViewById(R.id.course_views);
         itemView.setOnClickListener((this));
 
     }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="120dp"
@@ -10,44 +11,102 @@
 
     <ImageButton
         android:id="@+id/play_button"
-        android:layout_width="140dp"
-        android:layout_height="73dp"
+        android:layout_width="150dp"
+        android:layout_height="81dp"
         android:layout_gravity="center|center_horizontal|left"
         android:layout_marginStart="@dimen/margin_medium"
         android:layout_marginEnd="@dimen/margin_big"
         android:src="@android:drawable/ic_media_play"
         tools:ignore="SpeakableTextPresentCheck" />
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/course_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="168dp"
+            android:layout_height="23dp"
+            android:layout_marginStart="8dp"
             android:gravity="center_vertical"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            app:layout_constraintBottom_toTopOf="@+id/course_description"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.024"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.727" />
 
         <TextView
             android:id="@+id/course_description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-
-        <TextView
-            android:id="@+id/course_views"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_width="169dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="34dp"
+            android:layout_marginBottom="48dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/course_rating"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_width="30dp"
+            android:layout_height="17dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginBottom="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView9"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.368"
+            tools:ignore="MissingConstraints" />
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/course_views"
+            android:layout_width="38dp"
+            android:layout_height="17dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginBottom="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/imageView9"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.333"
+            tools:ignore="MissingConstraints" />
 
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="19dp"
+            android:layout_height="18dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginEnd="68dp"
+            android:layout_marginBottom="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/course_rating"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.333"
+            app:srcCompat="@android:drawable/btn_star_big_on"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="20dp"
+            android:layout_height="18dp"
+            android:layout_marginStart="44dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginBottom="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.388"
+            app:srcCompat="@drawable/ic_baseline_remove_red_eye_24"
+            tools:ignore="MissingConstraints" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </LinearLayout>
