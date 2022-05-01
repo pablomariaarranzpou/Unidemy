@@ -91,7 +91,7 @@ public class RecyclerViewActivity extends AppCompatActivity implements CardCours
         final Observer<String> observerToast = new Observer<String>() {
             @Override
             public void onChanged(String t) {
-                Toast.makeText(parentContext, t, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(parentContext, t, Toast.LENGTH_SHORT).show();
             }
         };
 
