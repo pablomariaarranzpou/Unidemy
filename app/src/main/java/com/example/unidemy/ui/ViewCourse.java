@@ -28,7 +28,7 @@ public class ViewCourse extends AppCompatActivity {
         setContentView(R.layout.activity_view_course);
         ind_course_views_txt= (TextView) findViewById(R.id.ind_course_views);
         ind_course_title_txt = (TextView) findViewById(R.id.ind_course_title);
-        ind_owner_txt = (TextView) findViewById(R.id.ind_owner);
+        ind_owner_txt = (TextView) findViewById(R.id.ind_owner_txt);
         ind_course_rating_txt = (TextView) findViewById(R.id.ind_course_rating);
         ind_course_description = (TextView) findViewById(R.id.ind_course_description);
         ind_btn_pagar = (Button) findViewById(R.id.ind_btn_pagar);

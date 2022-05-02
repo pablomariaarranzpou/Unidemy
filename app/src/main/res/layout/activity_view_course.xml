@@ -12,116 +12,166 @@
     android:id="@+id/course_layout">
 
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
+
 
         <ImageButton
             android:id="@+id/course_image"
             android:layout_width="match_parent"
             android:layout_height="190dp"
-            app:srcCompat="@android:drawable/ic_media_play" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/ind_course_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="¡Aquí aparece el título del curso!"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            app:layout_constraintTop_toBottomOf="@+id/course_image"
+            tools:layout_editor_absoluteX="3dp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/ind_course_rating"
+            android:layout_width="27dp"
+            android:layout_height="18dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="125dp"
+            android:text="4.7"
+            app:layout_constraintEnd_toStartOf="@+id/ind_btn_pagar"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/imageView10"
+            app:layout_constraintTop_toBottomOf="@+id/ind_owner_txt" />
+
+        <TextView
+            android:id="@+id/ind_owner_txt"
+            android:layout_width="209dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginStart="6dp"
+            android:text="Nombre Creador"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.145"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ind_course_title" />
 
-            <TextView
-                android:id="@+id/ind_owner"
-                android:layout_width="209dp"
-                android:layout_height="wrap_content"
-                android:text="Nombre Creador" />
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="60dp"
+            android:layout_height="18dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:scaleX="1"
+            android:scaleY="1"
+            app:layout_constraintStart_toEndOf="@+id/imageView10"
+            app:layout_constraintTop_toBottomOf="@+id/ind_owner_txt"
+            app:srcCompat="@android:drawable/btn_star_big_on" />
 
-            <ImageView
-                android:id="@+id/imageView7"
-                android:layout_width="63dp"
-                android:layout_height="19dp"
-                android:layout_weight="1"
-                android:scaleX="1"
-                android:scaleY="1"
-                app:srcCompat="@android:drawable/btn_star_big_on" />
-
-            <TextView
-                android:id="@+id/ind_course_rating"
-                android:layout_width="113dp"
-                android:layout_height="wrap_content"
-                android:text="Rating: 5/5" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/ind_course_views"
-                android:layout_width="263dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="1 Views"
-                tools:ignore="DuplicateIds" />
-        </LinearLayout>
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="12dp" />
+        <TextView
+            android:id="@+id/ind_course_views"
+            android:layout_width="45dp"
+            android:layout_height="18dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="4dp"
+            android:layout_weight="1"
+            android:text="9999"
+            app:layout_constraintEnd_toStartOf="@+id/imageView10"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView7"
+            tools:ignore="DuplicateIds" />
 
         <TextView
             android:id="@+id/textView2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Descripción:" />
+            android:layout_width="84dp"
+            android:layout_height="16dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="136dp"
+            android:text="Descripción:"
+            app:layout_constraintEnd_toStartOf="@+id/ind_btn_pagar"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView10" />
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/ind_course_description"
+            android:layout_width="380dp"
+            android:layout_height="58dp"
+            android:layout_marginTop="8dp"
+            android:text="TEXTO TEXTO TEXTO TEXTO TEXTO TEXTOTEXTO TEXTO TEXTO TEXTO TEXTO TEXTOTEXTO TEXTO TEXTO TEXTO TEXTO TEXTOTEXTO TEXTO TEXTO TEXTO TEXTO TEXTO"
+            app:layout_constraintBottom_toTopOf="@+id/ind_btn_opinar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2"
+            app:layout_constraintVertical_bias="1.0" />
 
-        <LinearLayout
+        <Button
+            android:id="@+id/ind_btn_opinar"
+            android:layout_width="144dp"
+            android:layout_height="37dp"
+            android:layout_marginBottom="4dp"
+            android:layout_weight="1"
+            android:text="Opiniones"
+            app:layout_constraintBottom_toTopOf="@+id/textView8"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.011"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/ind_btn_pagar"
+            android:layout_width="158dp"
+            android:layout_height="39dp"
+            android:layout_marginTop="16dp"
+            android:layout_weight="1"
+            android:backgroundTint="#FF9800"
+            android:text="15.99€"
+            app:iconTint="#FFC107"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.936"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ind_course_title"
+            app:rippleColor="#FF9800" />
+
+        <TextView
+            android:id="@+id/textView7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0"
-            android:orientation="horizontal">
+            android:layout_marginEnd="3dp"
+            android:text="De:"
+            app:layout_constraintEnd_toStartOf="@+id/ind_owner_txt"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ind_course_title" />
 
-            <TextView
-                android:id="@+id/ind_course_description"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="TEXTO TEXTO TEXTO TEXTO TEXTO TEXTOTEXTO TEXTO TEXTO TEXTO TEXTO TEXTOTEXTO TEXTO TEXTO TEXTO TEXTO TEXTOTEXTO TEXTO TEXTO TEXTO TEXTO TEXTO" />
-        </LinearLayout>
+        <ImageView
+            android:id="@+id/imageView10"
+            android:layout_width="22dp"
+            android:layout_height="19dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="148dp"
+            app:layout_constraintEnd_toStartOf="@+id/ind_btn_pagar"
+            app:layout_constraintTop_toBottomOf="@+id/ind_owner_txt"
+            app:srcCompat="@drawable/ic_baseline_remove_red_eye_24" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="354dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="172dp"
+            android:text="Todos Los Videos"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.073"
+            app:layout_constraintStart_toStartOf="parent" />
 
-            <Button
-                android:id="@+id/ind_btn_pagar"
-                android:layout_width="204dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="#FF9800"
-                android:text="15.99€"
-                app:iconTint="#FFC107"
-                app:rippleColor="#FF9800" />
 
-            <Button
-                android:id="@+id/ind_btn_opinar"
-                android:layout_width="199dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Opiniones" />
-        </LinearLayout>
-
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>

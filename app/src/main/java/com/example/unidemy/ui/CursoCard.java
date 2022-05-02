@@ -20,17 +20,17 @@ public class CursoCard implements Parcelable {
     private final String course_views;
     private final String course_rating;
     private final String course_description;
-    private final String owner;
+    private final String course_owner;
     private final DatabaseAdapter adapter = DatabaseAdapter.databaseAdapter;
     //private final AppDatabase db;
 
 
-    public CursoCard(String course_title, String course_description, String owner, String course_views, String course_rating) {
+    public CursoCard(String course_title, String course_description, String course_owner, String course_views, String course_rating) {
         this.course_title = course_title;
         this.course_views = course_views;
         this.course_rating = course_rating;
         this.course_description = course_description;
-        this.owner = owner;
+        this.course_owner = course_owner;
         UUID uuid = UUID.randomUUID();
         this.nameID = uuid.toString();
     }
@@ -41,7 +41,7 @@ public class CursoCard implements Parcelable {
         course_views = in.readString();
         course_rating = in.readString();
         course_description = in.readString();
-        owner = in.readString();
+        course_owner = in.readString();
     }
 
     public static final Creator<CursoCard> CREATOR = new Creator<CursoCard>() {
@@ -80,9 +80,7 @@ public class CursoCard implements Parcelable {
         return course_description;
     }
 
-    public String getOwner() {
-        return owner;
-    }
+    public String getOwner() { return course_owner; }
 
     public DatabaseAdapter getAdapter() {
         return adapter;
@@ -94,7 +92,7 @@ public class CursoCard implements Parcelable {
         // ask database and if true, return CursoCard
         HashMap<String, String> hm = adapter.getDocuments();
         if (hm != null) {
-            CursoCard ac = new CursoCard(hm.get("course_title"), hm.get("course_description"), hm.get("course_description"), hm.get("course_views"), hm.get("course_rating"));
+            CursoCard ac = new CursoCard(hm.get("course_title"), hm.get("course_description"), hm.get("course_owner"), hm.get("course_views"), hm.get("course_rating"));
             return ac;
         } else {
             return null;
@@ -113,6 +111,6 @@ public class CursoCard implements Parcelable {
         parcel.writeString(course_views);
         parcel.writeString(course_rating);
         parcel.writeString(course_description);
-        parcel.writeString(owner);
+        parcel.writeString(course_owner);
     }
 }
