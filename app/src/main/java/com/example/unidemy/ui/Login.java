@@ -12,25 +12,26 @@ import android.widget.Toast;
 import com.example.unidemy.R;
 
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Login extends AppCompatActivity {
-    private TextInputEditText user_name, pass_word;
+    private TextInputLayout user_name, pass_word;
     FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        user_name=(TextInputEditText)findViewById(R.id.textEditEmail);
-        pass_word=(TextInputEditText)findViewById(R.id.textEditPassword);
+        user_name=findViewById(R.id.email);
+        pass_word=findViewById(R.id.password);
         Button btn_login = findViewById(R.id.btn_login);
         Button btn_sign = findViewById(R.id.btn_signup);
         Button btn_resetpassw = findViewById(R.id.btn_resetpassw);
         mAuth=FirebaseAuth.getInstance();
         btn_login.setOnClickListener(v -> {
-            String email= user_name.getText().toString().trim();
-            String password=pass_word.getText().toString().trim();
+            String email= user_name.getEditText().toString().trim();
+            String password=pass_word.getEditText().toString().trim();
             if(email.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(email).matches())
             {
                 user_name.setError("Correo no válido");
@@ -53,8 +54,7 @@ public class Login extends AppCompatActivity {
                 if(task.isSuccessful())
                 {
 
-
-                    startActivity(new Intent(Login.this, RecyclerViewActivity.class));
+                    startActivity(new Intent(Login.this, Home.class));
 
                 }
                 else

@@ -5,30 +5,41 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.unidemy.R;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Register extends AppCompatActivity {
     Button btn2_signup;
-    TextInputEditText user_name, pass_word;
+    TextInputEditText user_name, pass_word, name;
     FirebaseAuth mAuth;
+    FirebaseFirestore firstore;
+    String userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        user_name=(TextInputEditText)findViewById(R.id.textEditEmailRegister);
-        pass_word=(TextInputEditText)findViewById(R.id.textEditPasswordRegister);
+        firstore = FirebaseFirestore.getInstance();
+        name = findViewById(R.id.textEditFullNameRegister);
+        user_name=findViewById(R.id.textEditNameRegister);
+        pass_word=findViewById(R.id.textEditPasswordRegister);
         btn2_signup=findViewById(R.id.sign);
         mAuth=FirebaseAuth.getInstance();
         btn2_signup.setOnClickListener(new View.OnClickListener() {
@@ -71,7 +82,18 @@ public class Register extends AppCompatActivity {
                                 if(tarea.isSuccessful())
                                 {
 
-                                    startActivity(new Intent(Register.this, FirstLogin.class));
+                                    userID = mAuth.getCurrentUser().getUid();
+                                    DocumentReference documentReference = firstore.collection("Users").document(userID);
+                                    Map<String, Object> user = new HashMap<>();
+                                            user.put("mail", email);
+                                            user.put("FullName", name.getText().toString().trim());
+                                            documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                @Override
+                                                public void onSuccess(Void unused) {
+                                                    startActivity(new Intent(Register.this, FirstLogin.class));
+                                                }
+                                            });
+
 
                                 }
                                 else

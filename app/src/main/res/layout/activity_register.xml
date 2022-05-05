@@ -8,12 +8,12 @@
     android:orientation="vertical"
     tools:context=".ui.Register">
 
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="353dp"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/fc1363a1d3ef494a96cc920db03d2a38__1_" />
-
 
     <TextView
         android:id="@+id/textView"
@@ -34,6 +34,23 @@
         android:textSize="14sp" />
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4pt"
+        android:layout_marginTop="10pt"
+        android:layout_marginRight="4pt"
+        android:hint="Nombre"
+        app:boxBackgroundColor="#FAD7A0"
+        app:boxStrokeColor="@color/black">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textEditFullNameRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -41,11 +58,11 @@
         android:layout_marginTop="10pt"
         android:layout_marginRight="4pt"
         app:boxBackgroundColor="#FAD7A0"
-        android:hint="@string/email"
+        android:hint="E-mail"
         app:boxStrokeColor="@color/black">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textEditEmailRegister"
+            android:id="@+id/textEditNameRegister"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />
@@ -61,7 +78,7 @@
         android:layout_marginRight="4pt"
         app:endIconMode="password_toggle"
         app:boxBackgroundColor="#FAD7A0"
-        android:hint="@string/contrase_a"
+        android:hint="Contraseña"
         app:boxStrokeColor="@color/black"
         android:inputType="textPassword">
 

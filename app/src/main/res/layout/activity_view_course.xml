@@ -118,10 +118,13 @@
             android:layout_marginBottom="4dp"
             android:layout_weight="1"
             android:text="Opiniones"
+            app:iconTint="#FF9800"
+            android:backgroundTint="#FF9800"
             app:layout_constraintBottom_toTopOf="@+id/textView8"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.011"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:rippleColor="#FF9800"  />
 
         <Button
             android:id="@+id/ind_btn_pagar"
