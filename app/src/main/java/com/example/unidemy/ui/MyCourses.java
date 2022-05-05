@@ -12,6 +12,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.unidemy.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MyCourses extends AppCompatActivity {
     private Context parentContext;
@@ -20,12 +23,19 @@ public class MyCourses extends AppCompatActivity {
     private RecyclerView_ViewModel viewModel;
     private BottomNavigationView navigationView;
     private NavController navController;
+    private FirebaseFirestore firstore;
+    private String userID;
+    private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_mycourses);
+        mAuth = FirebaseAuth.getInstance();
         parentContext = this.getBaseContext();
+        firstore = FirebaseFirestore.getInstance();
         mActivity = this;
+        userID = mAuth.getCurrentUser().getUid();
+        DocumentReference documentReference = firstore.collection("Users").document(userID);
 
         BottomNavigationView navView = (BottomNavigationView)findViewById(R.id.bottomNavigationView);
         // Passing each menu ID as a set of Ids because each
