@@ -11,18 +11,19 @@ import android.widget.Toast;
 
 import com.example.unidemy.R;
 
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Login extends AppCompatActivity {
-    private EditText user_name, pass_word;
+    private TextInputEditText user_name, pass_word;
     FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        user_name=findViewById(R.id.email);
-        pass_word=findViewById(R.id.password);
+        user_name=(TextInputEditText)findViewById(R.id.textEditEmail);
+        pass_word=(TextInputEditText)findViewById(R.id.textEditPassword);
         Button btn_login = findViewById(R.id.btn_login);
         Button btn_sign = findViewById(R.id.btn_signup);
         Button btn_resetpassw = findViewById(R.id.btn_resetpassw);

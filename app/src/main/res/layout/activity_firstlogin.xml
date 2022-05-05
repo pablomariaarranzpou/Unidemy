@@ -68,12 +68,9 @@
         android:layout_height="70dp"
         android:backgroundTint="#FF9800"
         android:text="Realizar Test"
+        android:textColor="@color/black"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="109dp"
         tools:layout_editor_absoluteY="522dp" />
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="55dp" />
 
 </LinearLayout>

@@ -39,7 +39,7 @@
         <activity
             android:name=".ui.Login"
             android:exported="true"
-            android:label="¡Hola!" >
+            android:label="Unidemy" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

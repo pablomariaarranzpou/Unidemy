@@ -61,7 +61,9 @@
         android:layout_marginRight="4pt"
         android:backgroundTint="#FF9800"
         android:text="Registrarse"
+        android:textColor="@color/black"
         app:iconTint="#FF9800" />
+
 
 
 </LinearLayout>
