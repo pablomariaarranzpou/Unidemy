@@ -14,20 +14,21 @@ import android.widget.Toast;
 import com.example.unidemy.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Register extends AppCompatActivity {
     Button btn2_signup;
-    EditText user_name, pass_word;
+    TextInputEditText user_name, pass_word;
     FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        user_name=findViewById(R.id.username);
-        pass_word=findViewById(R.id.password1);
+        user_name=(TextInputEditText)findViewById(R.id.textEditEmailRegister);
+        pass_word=(TextInputEditText)findViewById(R.id.textEditPasswordRegister);
         btn2_signup=findViewById(R.id.sign);
         mAuth=FirebaseAuth.getInstance();
         btn2_signup.setOnClickListener(new View.OnClickListener() {

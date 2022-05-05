@@ -14,6 +14,7 @@
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/fc1363a1d3ef494a96cc920db03d2a38__1_" />
 
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
@@ -32,25 +33,46 @@
         android:textAlignment="center"
         android:textSize="14sp" />
 
-    <EditText
-        android:id="@+id/username"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="4pt"
         android:layout_marginTop="10pt"
         android:layout_marginRight="4pt"
-        android:hint="Correo electrónico"
-        android:minHeight="48dp" />
+        app:boxBackgroundColor="#FAD7A0"
+        android:hint="@string/email"
+        app:boxStrokeColor="@color/black">
 
-    <EditText
-        android:id="@+id/password1"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textEditEmailRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="4pt"
         android:layout_marginTop="10pt"
         android:layout_marginRight="4pt"
-        android:hint="Contraseña"
-        android:minHeight="48dp" />
+        app:endIconMode="password_toggle"
+        app:boxBackgroundColor="#FAD7A0"
+        android:hint="@string/contrase_a"
+        app:boxStrokeColor="@color/black"
+        android:inputType="textPassword">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textEditPasswordRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/sign"
