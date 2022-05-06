@@ -69,8 +69,9 @@ public class Searcher extends AppCompatActivity implements SearchView.OnQueryTex
                 return false;
             }
         });
-        setLiveDataObservers();
         txtBuscar.setOnQueryTextListener(this);
+        setLiveDataObservers();
+
     }
 
     public void setLiveDataObservers() {
@@ -80,7 +81,7 @@ public class Searcher extends AppCompatActivity implements SearchView.OnQueryTex
         final Observer<ArrayList<CursoCard>> observer = new Observer<ArrayList<CursoCard>>() {
             @Override
             public void onChanged(ArrayList<CursoCard> ac) {
-                CardCourseAdapter newAdapter = new CardCourseAdapter(parentContext, ac, (CardCourseAdapter.OnCourseListener) mActivity);
+                newAdapter = new CardCourseAdapter(parentContext, ac, (CardCourseAdapter.OnCourseListener) mActivity);
                 mRecyclerView.swapAdapter(newAdapter, false);
                 newAdapter.notifyDataSetChanged();
             }
