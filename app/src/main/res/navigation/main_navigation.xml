@@ -19,5 +19,5 @@
         android:id="@+id/navigation_searcher"
         android:name="com.example.unidemy.ui.Searcher"
         android:label="navigation_searcher"
-        tools:layout="@layout/fragment_searcher"/>
+        tools:layout="@layout/activity_searcher"/>
 </navigation>

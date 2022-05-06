@@ -24,17 +24,17 @@ public class Searcher extends AppCompatActivity implements SearchView.OnQueryTex
     private Context parentContext;
     private AppCompatActivity mActivity;
     private RecyclerView mRecyclerView;
-    private Searcher_ViewModel viewModel;
+    private RecyclerView_ViewModel viewModel;
     private BottomNavigationView navigationView;
     private NavController navController;
-    CardCourseAdapter mAdapter;
+    CardCourseAdapter newAdapter;
     SearchView txtBuscar;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
 
-        setContentView(R.layout.fragment_searcher);
+        setContentView(R.layout.activity_searcher);
         parentContext = this.getBaseContext();
         mActivity = this;
         txtBuscar = findViewById(R.id.txtBuscar);
@@ -42,8 +42,6 @@ public class Searcher extends AppCompatActivity implements SearchView.OnQueryTex
         txtBuscar.setOnQueryTextListener(this);
         mRecyclerView = findViewById(R.id.recyclerView_results);
         mRecyclerView.setLayoutManager(new GridLayoutManager(this, 1));
-        mAdapter = new CardCourseAdapter(parentContext, new ArrayList<CursoCard>(), (CardCourseAdapter.OnCourseListener) mActivity);
-        mAdapter.notifyDataSetChanged();
         BottomNavigationView navView = (BottomNavigationView)findViewById(R.id.bottomNavigationView);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -71,21 +69,20 @@ public class Searcher extends AppCompatActivity implements SearchView.OnQueryTex
                 return false;
             }
         });
-
+        setLiveDataObservers();
         txtBuscar.setOnQueryTextListener(this);
     }
 
     public void setLiveDataObservers() {
         //Subscribe the activity to the observable
-        viewModel = new ViewModelProvider(this).get(Searcher_ViewModel.class);
-        CardCourseAdapter newAdapter = new CardCourseAdapter(parentContext, new ArrayList<CursoCard>(), (CardCourseAdapter.OnCourseListener) mActivity);
+        viewModel = new ViewModelProvider(this).get(RecyclerView_ViewModel.class);
+        newAdapter = new CardCourseAdapter(parentContext, new ArrayList<CursoCard>(), (CardCourseAdapter.OnCourseListener) mActivity);
         final Observer<ArrayList<CursoCard>> observer = new Observer<ArrayList<CursoCard>>() {
             @Override
             public void onChanged(ArrayList<CursoCard> ac) {
                 CardCourseAdapter newAdapter = new CardCourseAdapter(parentContext, ac, (CardCourseAdapter.OnCourseListener) mActivity);
                 mRecyclerView.swapAdapter(newAdapter, false);
-                mAdapter = newAdapter;
-                mAdapter.notifyDataSetChanged();
+                newAdapter.notifyDataSetChanged();
             }
         };
 
@@ -116,7 +113,7 @@ public class Searcher extends AppCompatActivity implements SearchView.OnQueryTex
 
     @Override
     public boolean onQueryTextChange(String s) {
-        mAdapter.filtrado(s);
+        newAdapter.filtrado(s);
         return false;
     }
 }
