@@ -1,6 +1,7 @@
 package com.example.unidemy.ui;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -10,7 +11,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.unidemy.R;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class ViewCourse extends AppCompatActivity {
 
@@ -20,11 +25,16 @@ public class ViewCourse extends AppCompatActivity {
     private Button ind_btn_pagar, ind_btn_opinar;
     FirebaseAuth mAuth;
     CursoCard cc;
+    String userId;
+    FirebaseFirestore firestore;
 
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mAuth = FirebaseAuth.getInstance();
+        firestore = FirebaseFirestore.getInstance();
+        userId = mAuth.getCurrentUser().getUid();
+
         setContentView(R.layout.activity_view_course);
         ind_course_views_txt= (TextView) findViewById(R.id.ind_course_views);
         ind_course_title_txt = (TextView) findViewById(R.id.ind_course_title);
@@ -46,6 +56,19 @@ public class ViewCourse extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+            }
+        });
+
+        ind_btn_pagar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DocumentReference documentReference = firestore.collection("User").document(userId);
+                documentReference.update("userCourses", FieldValue.arrayUnion("aa")).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d("ns", "DocumentSnapshot successfully updated!");
+                    }
+                });
             }
         });
 

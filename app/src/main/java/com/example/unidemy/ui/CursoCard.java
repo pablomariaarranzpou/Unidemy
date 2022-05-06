@@ -15,13 +15,13 @@ import java.util.UUID;
 
 public class CursoCard implements Parcelable {
 
-    private String nameID;
+
     private final String course_title;
     private final String course_views;
     private final String course_rating;
     private final String course_description;
     private final String course_owner;
-    private final DatabaseAdapter adapter = DatabaseAdapter.databaseAdapter;
+
     //private final AppDatabase db;
 
 
@@ -31,12 +31,10 @@ public class CursoCard implements Parcelable {
         this.course_rating = course_rating;
         this.course_description = course_description;
         this.course_owner = course_owner;
-        UUID uuid = UUID.randomUUID();
-        this.nameID = uuid.toString();
+
     }
 
     protected CursoCard(Parcel in) {
-        nameID = in.readString();
         course_title = in.readString();
         course_views = in.readString();
         course_rating = in.readString();
@@ -56,14 +54,6 @@ public class CursoCard implements Parcelable {
         }
     };
 
-    public String getNameID() {
-        return nameID;
-    }
-
-    public void setNameID(String nameID) {
-        this.nameID = nameID;
-    }
-
     public String getCourse_title() {
         return course_title;
     }
@@ -82,22 +72,7 @@ public class CursoCard implements Parcelable {
 
     public String getOwner() { return course_owner; }
 
-    public DatabaseAdapter getAdapter() {
-        return adapter;
-    }
 
-
-
-    public CursoCard getCard() {
-        // ask database and if true, return CursoCard
-        HashMap<String, String> hm = adapter.getDocuments();
-        if (hm != null) {
-            CursoCard ac = new CursoCard(hm.get("course_title"), hm.get("course_description"), hm.get("course_owner"), hm.get("course_views"), hm.get("course_rating"));
-            return ac;
-        } else {
-            return null;
-        }
-    }
 
     @Override
     public int describeContents() {
@@ -106,7 +81,6 @@ public class CursoCard implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(nameID);
         parcel.writeString(course_title);
         parcel.writeString(course_views);
         parcel.writeString(course_rating);

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CursorAdapter;
 import android.widget.ImageButton;
 
 
@@ -13,12 +14,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.unidemy.R;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class CardCourseAdapter extends RecyclerView.Adapter<CardCourseHolder> {
 
     private final ArrayList<CursoCard> localDataSet;
     private final Context parentContext;
     private OnCourseListener onCourseListener;
+    private final ArrayList<CursoCard> filtrado;
 
 
     /**
@@ -30,6 +34,7 @@ public class CardCourseAdapter extends RecyclerView.Adapter<CardCourseHolder> {
     public CardCourseAdapter(Context current, ArrayList<CursoCard> dataSet, OnCourseListener onCourseListener ) {
         parentContext = current;
         localDataSet = dataSet;
+        filtrado = dataSet;
         this.onCourseListener = onCourseListener;
     }
 
@@ -44,7 +49,28 @@ public class CardCourseAdapter extends RecyclerView.Adapter<CardCourseHolder> {
     }
 
 
-
+    public void filtrado(final String txtBuscar) {
+        int longitud = txtBuscar.length();
+        if (longitud == 0) {
+            filtrado.clear();
+            filtrado.addAll(localDataSet);
+        } else {
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+                List<CursoCard> collecion = filtrado.stream()
+                        .filter(i -> i.getCourse_title().toLowerCase().contains(txtBuscar.toLowerCase()))
+                        .collect(Collectors.toList());
+                filtrado.clear();
+                filtrado.addAll(collecion);
+            } else {
+                for (CursoCard c : localDataSet) {
+                    if (c.getCourse_title().toLowerCase().contains(txtBuscar.toLowerCase())) {
+                        filtrado.add(c);
+                    }
+                }
+            }
+        }
+        notifyDataSetChanged();
+    }
 
 
     // Replace the contents of a view (invoked by the layout manager)
@@ -77,6 +103,7 @@ public class CardCourseAdapter extends RecyclerView.Adapter<CardCourseHolder> {
             }
         });
     }
+
 
     // Return the size of your dataset (invoked by the layout manager)
     @Override

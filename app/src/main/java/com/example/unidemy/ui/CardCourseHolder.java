@@ -15,6 +15,7 @@ import com.example.unidemy.R;
  */
 public class CardCourseHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
+
     private final TextView course_title;
     private final TextView course_description;
     private final TextView course_rating;

@@ -8,32 +8,42 @@ import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.unidemy.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class Searcher extends AppCompatActivity implements SearchView.OnQueryTextListener{
+import java.util.ArrayList;
+
+public class Searcher extends AppCompatActivity implements SearchView.OnQueryTextListener, CardCourseAdapter.OnCourseListener{
 
     private Context parentContext;
     private AppCompatActivity mActivity;
     private RecyclerView mRecyclerView;
-    private RecyclerView_ViewModel viewModel;
+    private Searcher_ViewModel viewModel;
     private BottomNavigationView navigationView;
     private NavController navController;
+    CardCourseAdapter mAdapter;
+    SearchView txtBuscar;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SearchView txtBuscar;
 
-        setContentView(R.layout.activity_view_courses_list);
+
+        setContentView(R.layout.fragment_searcher);
         parentContext = this.getBaseContext();
         mActivity = this;
         txtBuscar = findViewById(R.id.txtBuscar);
         navigationView = findViewById(R.id.btm_navigator);
         txtBuscar.setOnQueryTextListener(this);
-        setContentView(R.layout.fragment_searcher);
+        mRecyclerView = findViewById(R.id.recyclerView_results);
+        mRecyclerView.setLayoutManager(new GridLayoutManager(this, 1));
+        mAdapter = new CardCourseAdapter(parentContext, new ArrayList<CursoCard>(), (CardCourseAdapter.OnCourseListener) mActivity);
+        mAdapter.notifyDataSetChanged();
         BottomNavigationView navView = (BottomNavigationView)findViewById(R.id.bottomNavigationView);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -61,6 +71,42 @@ public class Searcher extends AppCompatActivity implements SearchView.OnQueryTex
                 return false;
             }
         });
+
+        txtBuscar.setOnQueryTextListener(this);
+    }
+
+    public void setLiveDataObservers() {
+        //Subscribe the activity to the observable
+        viewModel = new ViewModelProvider(this).get(Searcher_ViewModel.class);
+        CardCourseAdapter newAdapter = new CardCourseAdapter(parentContext, new ArrayList<CursoCard>(), (CardCourseAdapter.OnCourseListener) mActivity);
+        final Observer<ArrayList<CursoCard>> observer = new Observer<ArrayList<CursoCard>>() {
+            @Override
+            public void onChanged(ArrayList<CursoCard> ac) {
+                CardCourseAdapter newAdapter = new CardCourseAdapter(parentContext, ac, (CardCourseAdapter.OnCourseListener) mActivity);
+                mRecyclerView.swapAdapter(newAdapter, false);
+                mAdapter = newAdapter;
+                mAdapter.notifyDataSetChanged();
+            }
+        };
+
+        final Observer<String> observerToast = new Observer<String>() {
+            @Override
+            public void onChanged(String t) {
+                //Toast.makeText(parentContext, t, Toast.LENGTH_SHORT).show();
+            }
+        };
+
+        viewModel.getCursoCards().observe(this, observer);
+        viewModel.getToast().observe(this, observerToast);
+
+    }
+
+    @Override
+    public void onCourseClick(int position) {
+        Intent intent = new Intent(this, ViewCourse.class);
+        intent.putExtra("selectedCourse", viewModel.getCursoCard(position));
+        startActivity(intent);
+
     }
 
     @Override
@@ -70,6 +116,7 @@ public class Searcher extends AppCompatActivity implements SearchView.OnQueryTex
 
     @Override
     public boolean onQueryTextChange(String s) {
+        mAdapter.filtrado(s);
         return false;
     }
 }

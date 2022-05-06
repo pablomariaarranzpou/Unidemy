@@ -1,24 +1,21 @@
 package com.example.unidemy.ui;
 
+import android.app.Application;
 
-        import android.app.Application;
-
-        import java.util.ArrayList;
-
+import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
-        import androidx.lifecycle.LiveData;
-        import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
+import java.util.ArrayList;
 
-
-public class RecyclerView_ViewModel extends AndroidViewModel implements DatabaseAdapter.vmInterface{
+public class Searcher_ViewModel extends AndroidViewModel implements DatabaseAdapter.vmInterface{
 
     private final MutableLiveData<ArrayList<CursoCard>> mCursoCards;
     private final MutableLiveData<String> mToast;
-
-
+;
     //Constructor
-    public RecyclerView_ViewModel(Application application){
+    public Searcher_ViewModel(Application application){
         super(application);
 
         mCursoCards = new MutableLiveData<>();

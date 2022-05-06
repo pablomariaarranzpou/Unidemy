@@ -88,7 +88,7 @@ public class Register extends AppCompatActivity {
                                     Map<String, Object> user = new HashMap<>();
                                             user.put("mail", email);
                                             user.put("FullName", name.getText().toString().trim());
-                                            user.put("userCourses", new ArrayList<CursoCard>());
+                                            user.put("userCourses", new ArrayList<String>());
                                             documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                                 @Override
                                                 public void onSuccess(Void unused) {
