@@ -10,10 +10,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,16 +23,22 @@ public class DatabaseAdapter extends Activity {
     public static final String TAG = "DatabaseAdapter";
 
     public static FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private final FirebaseStorage storage = FirebaseStorage.getInstance();
     private final FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private FirebaseUser user;
 
 
     public static vmInterface listener;
+    public static usInterface listener_2;
     public static DatabaseAdapter databaseAdapter;
 
     public DatabaseAdapter(vmInterface listener){
         this.listener = listener;
+        databaseAdapter = this;
+        FirebaseFirestore.setLoggingEnabled(true);
+        initFirebase();
+    }
+    public DatabaseAdapter(usInterface listener){
+        this.listener_2 = listener;
         databaseAdapter = this;
         FirebaseFirestore.setLoggingEnabled(true);
         initFirebase();
@@ -42,6 +48,11 @@ public class DatabaseAdapter extends Activity {
     public interface vmInterface{
         void setCollection(ArrayList<CursoCard> ac);
         void setToast(String s);
+    }
+
+    public interface usInterface{
+        void getUserCourses(ArrayList<String> ac);
+
     }
 
 
@@ -85,7 +96,7 @@ public class DatabaseAdapter extends Activity {
                             ArrayList<CursoCard> retrieved_ac = new ArrayList<CursoCard>() ;
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Log.d(TAG, document.getId() + " => " + document.getData());
-                                retrieved_ac.add(new CursoCard( document.getString("course_title"), document.getString("course_description"), document.getString("owner"),  document.getString("course_views"), document.getString("course_rating")));
+                                retrieved_ac.add(new CursoCard( document.getString("course_title"), document.getString("course_description"), document.getString("owner"),  document.getString("course_views"), document.getString("course_rating"), document.getId()));
                             }
                             listener.setCollection(retrieved_ac);
 
@@ -96,9 +107,28 @@ public class DatabaseAdapter extends Activity {
                 });
     }
 
+    public void getUserCourses(String userID){
+        Log.d(TAG,"Ver cursos de Usuario");
 
+        DatabaseAdapter.db.collection("Users").document(userID).get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
 
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        Log.d(TAG, document.getId() + " => " + document.get("userCourses"));
+                        ArrayList<String> arrayList = (ArrayList<String>) document.get("userCourses");
+                        listener_2.getUserCourses(arrayList);
+                    }
+                }
 
+            }
+
+        });
+
+    }
 
 
     public HashMap<String, String> getDocuments () {

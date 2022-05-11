@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -62,11 +63,14 @@ public class ViewCourse extends AppCompatActivity {
         ind_btn_pagar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DocumentReference documentReference = firestore.collection("User").document(userId);
-                documentReference.update("userCourses", FieldValue.arrayUnion("aa")).addOnSuccessListener(new OnSuccessListener<Void>() {
+                DocumentReference documentReference = firestore.collection("Users").document(userId);
+                documentReference.update("userCourses", FieldValue.arrayUnion(cc.getCourse_id())).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
                         Log.d("ns", "DocumentSnapshot successfully updated!");
+                        Toast.makeText(ViewCourse.this,
+                                "Curso "+ cc.getCourse_title() +" pagado con éxito!",
+                                Toast.LENGTH_SHORT).show();
                     }
                 });
             }

@@ -115,6 +115,7 @@ public class Searcher extends AppCompatActivity implements SearchView.OnQueryTex
     @Override
     public boolean onQueryTextChange(String s) {
         newAdapter.filtrado(s);
+        newAdapter.notifyDataSetChanged();
         return false;
     }
 }

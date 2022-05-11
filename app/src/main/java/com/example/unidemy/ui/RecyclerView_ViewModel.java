@@ -32,6 +32,9 @@ public class RecyclerView_ViewModel extends AndroidViewModel implements Database
         return mCursoCards;
     }
 
+
+
+
     public CursoCard getCursoCard(int idx){
         return mCursoCards.getValue().get(idx);
     }

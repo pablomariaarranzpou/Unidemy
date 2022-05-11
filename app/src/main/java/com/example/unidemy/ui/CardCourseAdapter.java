@@ -22,7 +22,7 @@ public class CardCourseAdapter extends RecyclerView.Adapter<CardCourseHolder> {
     private final ArrayList<CursoCard> localDataSet;
     private final Context parentContext;
     private OnCourseListener onCourseListener;
-    private final ArrayList<CursoCard> filtrado;
+    private ArrayList<CursoCard> filtrado;
 
 
     /**
@@ -49,11 +49,13 @@ public class CardCourseAdapter extends RecyclerView.Adapter<CardCourseHolder> {
     }
 
 
+
+
     public void filtrado(final String txtBuscar) {
         int longitud = txtBuscar.length();
         if (longitud == 0) {
             filtrado.clear();
-            filtrado.addAll(localDataSet);
+            filtrado = localDataSet;
         } else {
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
                 List<CursoCard> collecion = filtrado.stream()
