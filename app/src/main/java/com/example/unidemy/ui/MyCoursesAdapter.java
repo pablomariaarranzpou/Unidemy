@@ -11,34 +11,15 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.unidemy.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
-
 import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
+
 
 public class MyCoursesAdapter extends RecyclerView.Adapter<CardCourseHolder>{
     private final ArrayList<CursoCard> localDataSet;
-    private ArrayList<String> userPropertyID;
     private Context parentContext;
     private OnCourseListener onCourseListener;
-    private final FirebaseFirestore firestore;
     FirebaseAuth mAuth;
-    String userId;
-    int size;
-
-
-
-
-
 
     /**
      * Initialize the dataset of the Adapter.
@@ -48,12 +29,9 @@ public class MyCoursesAdapter extends RecyclerView.Adapter<CardCourseHolder>{
      */
     public MyCoursesAdapter(Context current, ArrayList<CursoCard> dataSet, OnCourseListener onCourseListener ) {
         parentContext = current;
-        size = 0;
         localDataSet = dataSet;
         this.onCourseListener = onCourseListener;
-        this.firestore = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
-        userId = mAuth.getCurrentUser().getUid();;
    }
 
     // Create new views (invoked by the layout manager)
@@ -73,7 +51,6 @@ public class MyCoursesAdapter extends RecyclerView.Adapter<CardCourseHolder>{
 
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
-
 
             //position = viewHolder.getAdapterPosition();
             viewHolder.getCourse_description().setText(

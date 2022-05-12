@@ -42,7 +42,6 @@ public class MyCourses extends AppCompatActivity implements MyCoursesAdapter.OnC
         mRecyclerView = findViewById(R.id.recyclerview_mycourses);
         mActivity = this;
         mRecyclerView.setLayoutManager(new GridLayoutManager(this, 1));
-        DocumentReference documentReference = firstore.collection("Users").document(userID);
         BottomNavigationView navView = (BottomNavigationView)findViewById(R.id.bottomNavigationView);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.

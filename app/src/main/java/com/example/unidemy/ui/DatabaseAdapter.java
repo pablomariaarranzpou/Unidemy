@@ -51,7 +51,7 @@ public class DatabaseAdapter extends Activity {
     }
 
     public interface usInterface{
-        void getUserCourses(ArrayList<String> ac);
+        void setUserCourses(ArrayList<CursoCard> cc);
 
     }
 
@@ -107,27 +107,52 @@ public class DatabaseAdapter extends Activity {
                 });
     }
 
-    public void getUserCourses(String userID){
-        Log.d(TAG,"Ver cursos de Usuario");
 
-        DatabaseAdapter.db.collection("Users").document(userID).get()
+
+    void getUserCourses(String userId){
+
+        DatabaseAdapter.db.collection("Users").document(userId).get()
                 .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
 
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    if (document.exists()) {
-                        Log.d(TAG, document.getId() + " => " + document.get("userCourses"));
-                        ArrayList<String> arrayList = (ArrayList<String>) document.get("userCourses");
-                        listener_2.getUserCourses(arrayList);
+                        if (task.isSuccessful()) {
+                            DocumentSnapshot document = task.getResult();
+                            if (document.exists()) {
+                                Log.d(TAG, document.getId() + " => " + document.get("userCourses"));
+                                ArrayList<String> acc = (ArrayList<String>) document.get("userCourses");
+                                getUserObjectCourses(acc);
+                            }
+                        }
+
                     }
-                }
 
-            }
+                });
 
-        });
 
+    }
+
+    void getUserObjectCourses(ArrayList<String> uc){
+        DatabaseAdapter.db.collection("Curso")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            ArrayList<CursoCard> retrieved_ac = new ArrayList<CursoCard>() ;
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d("llega",document.getId()+"  ->  "+ uc);
+                                if(uc.contains(document.getId())){
+                                    Log.d(" c a rv usuario", document.getId() + " => " + document.getData());
+                                    retrieved_ac.add(new CursoCard( document.getString("course_title"), document.getString("course_description"), document.getString("owner"),  document.getString("course_views"), document.getString("course_rating"), document.getString("course_id")));
+                            }}
+                            listener_2.setUserCourses(retrieved_ac);
+
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
     }
 
 

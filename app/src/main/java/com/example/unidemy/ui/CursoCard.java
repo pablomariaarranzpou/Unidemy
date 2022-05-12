@@ -74,6 +74,7 @@ public class CursoCard implements Parcelable {
 
     public String getOwner() { return course_owner; }
 
+
     public String getCourse_id() {return course_id; }
 
 

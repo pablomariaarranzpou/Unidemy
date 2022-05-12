@@ -1,12 +1,17 @@
 package com.example.unidemy.ui;
 
 import android.app.Application;
+import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
 
 import java.util.ArrayList;
 
@@ -25,8 +30,10 @@ public class MyCoursesViewModel extends AndroidViewModel implements DatabaseAdap
         mToast = new MutableLiveData<>();
         mauth = FirebaseAuth.getInstance();
         DatabaseAdapter da = new DatabaseAdapter(this);
-        alstring = new ArrayList<String>();
+
         da.getUserCourses(mauth.getCurrentUser().getUid());
+
+
     }
 
     //public getter. Not mutable , read-only
@@ -35,21 +42,15 @@ public class MyCoursesViewModel extends AndroidViewModel implements DatabaseAdap
     }
 
     public CursoCard getCursoCard(int idx){
-        if(alstring.contains(mCursoCards.getValue().get(idx)) ){
-            return mCursoCards.getValue().get(idx);
-    }
-        return null;
+        return mCursoCards.getValue().get(idx);
     }
 
     public LiveData<String> getToast(){
         return mToast;
     }
 
-
-
-
     @Override
-    public void getUserCourses(ArrayList<String> ac) {
-        alstring = ac;
+    public void setUserCourses(ArrayList<CursoCard> cc) {
+        this.mCursoCards.setValue(cc);
     }
 }
