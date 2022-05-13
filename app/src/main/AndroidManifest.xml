@@ -37,6 +37,13 @@
             android:label="Curso" />
 
         <activity
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:name=".ui.ViewVideo"
+            android:exported="false"
+            android:label=""
+            android:screenOrientation="landscape"/>
+
+        <activity
             android:name=".ui.Login"
             android:exported="true"
             android:label="Unidemy" >

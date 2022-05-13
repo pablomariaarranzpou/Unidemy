@@ -1,5 +1,6 @@
 package com.example.unidemy.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -18,6 +19,8 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
+
 public class ViewCourse extends AppCompatActivity {
 
 
@@ -28,6 +31,7 @@ public class ViewCourse extends AppCompatActivity {
     CursoCard cc;
     String userId;
     FirebaseFirestore firestore;
+    ArrayList<Integer> videos;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +48,7 @@ public class ViewCourse extends AppCompatActivity {
         ind_course_description = (TextView) findViewById(R.id.ind_course_description);
         ind_btn_pagar = (Button) findViewById(R.id.ind_btn_pagar);
         ind_btn_opinar = (Button) findViewById((R.id.ind_btn_pagar));
+        play_button = (ImageButton) findViewById(R.id.course_image);
         if(getIntent().hasExtra("selectedCourse")){
             cc = (CursoCard) getIntent().getParcelableExtra("selectedCourse");
             ind_course_views_txt.setText(cc.getCourse_views());
@@ -52,7 +57,12 @@ public class ViewCourse extends AppCompatActivity {
             ind_course_rating_txt.setText(cc.getCourse_rating());
             ind_course_description.setText(cc.getCourse_description());
         }
-
+        play_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ViewCourse.this, ViewVideo.class));
+            }
+        });
         ind_btn_opinar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
