@@ -27,6 +27,7 @@ public class CursoCard implements Parcelable {
     private final String course_id;
     private ArrayList<String> course_videos;
 
+
     //private final AppDatabase db;
 
 

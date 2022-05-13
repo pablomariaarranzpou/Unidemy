@@ -132,6 +132,7 @@ public class DatabaseAdapter extends Activity {
 
     }
 
+
     void getUserObjectCourses(ArrayList<String> uc){
         DatabaseAdapter.db.collection("Curso")
                 .get()

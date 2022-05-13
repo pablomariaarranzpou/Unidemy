@@ -11,6 +11,9 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.unidemy.R;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -31,7 +34,7 @@ public class ViewCourse extends AppCompatActivity {
     CursoCard cc;
     String userId;
     FirebaseFirestore firestore;
-    ArrayList<Integer> videos;
+    RecyclerView mRecyclerView;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +42,9 @@ public class ViewCourse extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
         userId = mAuth.getCurrentUser().getUid();
-
+        mRecyclerView = findViewById(R.id.recyclerview_videos);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(ViewCourse.this,
+                LinearLayoutManager.HORIZONTAL, false));
         setContentView(R.layout.activity_view_course);
         ind_course_views_txt= (TextView) findViewById(R.id.ind_course_views);
         ind_course_title_txt = (TextView) findViewById(R.id.ind_course_title);
@@ -47,6 +52,7 @@ public class ViewCourse extends AppCompatActivity {
         ind_course_rating_txt = (TextView) findViewById(R.id.ind_course_rating);
         ind_course_description = (TextView) findViewById(R.id.ind_course_description);
         ind_btn_pagar = (Button) findViewById(R.id.ind_btn_pagar);
+
         ind_btn_opinar = (Button) findViewById((R.id.ind_btn_pagar));
         play_button = (ImageButton) findViewById(R.id.course_image);
         if(getIntent().hasExtra("selectedCourse")){
