@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class VideoRecyclerView_ViewModel extends AndroidViewModel{
 
-        private final MutableLiveData<ArrayList<VideoCard>> mCursoCards;
+        private final MutableLiveData<ArrayList<VideoCard>> mVideoCards;
         private final MutableLiveData<String> mToast;
 
 
@@ -18,18 +18,18 @@ public class VideoRecyclerView_ViewModel extends AndroidViewModel{
         public VideoRecyclerView_ViewModel(Application application){
             super(application);
 
-            mCursoCards = new MutableLiveData<>();
+            mVideoCards = new MutableLiveData<>();
             mToast = new MutableLiveData<>();
 
         }
 
         //public getter. Not mutable , read-only
         public LiveData<ArrayList<VideoCard>> getCursoCards(){
-            return mCursoCards;
+            return mVideoCards;
         }
 
         public VideoCard getVideoCard(int idx){
-            return mCursoCards.getValue().get(idx);
+            return mVideoCards.getValue().get(idx);
         }
 
         public LiveData<String> getToast(){

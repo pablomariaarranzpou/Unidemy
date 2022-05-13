@@ -1,5 +1,6 @@
 package com.example.unidemy.ui;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,6 +12,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -30,38 +33,45 @@ public class ViewCourse extends AppCompatActivity {
     private TextView ind_course_views_txt, ind_course_title_txt, ind_owner_txt, ind_course_rating_txt, ind_course_description;
     private ImageButton play_button;
     private Button ind_btn_pagar, ind_btn_opinar;
+    private Context parentContext;
     FirebaseAuth mAuth;
     CursoCard cc;
     String userId;
     FirebaseFirestore firestore;
-    RecyclerView mRecyclerView;
+    VideoRecyclerView_ViewModel viewmodel;
+    RecyclerView mmRecyclerView;
+    ArrayList<String> videos;
 
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mAuth = FirebaseAuth.getInstance();
+        parentContext = getBaseContext();
         firestore = FirebaseFirestore.getInstance();
         userId = mAuth.getCurrentUser().getUid();
-        mRecyclerView = findViewById(R.id.recyclerview_videos);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(ViewCourse.this,
-                LinearLayoutManager.HORIZONTAL, false));
         setContentView(R.layout.activity_view_course);
-        ind_course_views_txt= (TextView) findViewById(R.id.ind_course_views);
+        mmRecyclerView = (RecyclerView) findViewById(R.id.recyclerview_videos);
+        mmRecyclerView.setLayoutManager(new LinearLayoutManager(ViewCourse.this,
+                LinearLayoutManager.HORIZONTAL, false));
+        ind_course_views_txt = (TextView) findViewById(R.id.ind_course_views);
         ind_course_title_txt = (TextView) findViewById(R.id.ind_course_title);
         ind_owner_txt = (TextView) findViewById(R.id.ind_owner_txt);
         ind_course_rating_txt = (TextView) findViewById(R.id.ind_course_rating);
         ind_course_description = (TextView) findViewById(R.id.ind_course_description);
         ind_btn_pagar = (Button) findViewById(R.id.ind_btn_pagar);
-
         ind_btn_opinar = (Button) findViewById((R.id.ind_btn_pagar));
         play_button = (ImageButton) findViewById(R.id.course_image);
-        if(getIntent().hasExtra("selectedCourse")){
+
+
+        if (getIntent().hasExtra("selectedCourse")) {
             cc = (CursoCard) getIntent().getParcelableExtra("selectedCourse");
             ind_course_views_txt.setText(cc.getCourse_views());
             ind_course_title_txt.setText(cc.getCourse_title());
             ind_owner_txt.setText(cc.getOwner());
             ind_course_rating_txt.setText(cc.getCourse_rating());
             ind_course_description.setText(cc.getCourse_description());
+            videos = cc.getCourse_videos();
+
         }
         play_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,12 +95,39 @@ public class ViewCourse extends AppCompatActivity {
                     public void onSuccess(Void aVoid) {
                         Log.d("ns", "DocumentSnapshot successfully updated!");
                         Toast.makeText(ViewCourse.this,
-                                "Curso "+ cc.getCourse_title() +" pagado con éxito!",
+                                "Curso " + cc.getCourse_title() + " pagado con éxito!",
                                 Toast.LENGTH_SHORT).show();
                     }
                 });
             }
         });
+        setLiveDataObservers();
+    }
+
+        public void setLiveDataObservers() {
+            //Subscribe the activity to the observable
+            viewmodel = new ViewModelProvider(this).get(VideoRecyclerView_ViewModel.class);
+            CardVideoAdapter newAdapter = new CardVideoAdapter(parentContext, new ArrayList<VideoCard>());
+            final Observer<ArrayList<VideoCard>> observer = new Observer<ArrayList<VideoCard>>() {
+                @Override
+                public void onChanged(ArrayList<VideoCard> ac) {
+                    CardVideoAdapter newAdapter = new CardVideoAdapter(parentContext, ac);
+                    mmRecyclerView.swapAdapter(newAdapter, false);
+                    newAdapter.notifyDataSetChanged();
+                }
+            };
+
+            final Observer<String> observerToast = new Observer<String>() {
+                @Override
+                public void onChanged(String t) {
+                    //Toast.makeText(parentContext, t, Toast.LENGTH_SHORT).show();
+                }
+            };
+
+            viewmodel.getCursoCards().observe(this, observer);
+            viewmodel.getToast().observe(this, observerToast);
+
+        }
 
 
 
@@ -101,4 +138,4 @@ public class ViewCourse extends AppCompatActivity {
 
 
 
-}
+
