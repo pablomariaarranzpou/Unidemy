@@ -29,6 +29,7 @@ public class DatabaseAdapter extends Activity {
 
     public static vmInterface listener;
     public static usInterface listener_2;
+    public static vrInterface listener_3;
     public static DatabaseAdapter databaseAdapter;
 
     public DatabaseAdapter(vmInterface listener){
@@ -44,6 +45,13 @@ public class DatabaseAdapter extends Activity {
         initFirebase();
     }
 
+    public DatabaseAdapter(vrInterface listener){
+        this.listener_3 = listener;
+        databaseAdapter = this;
+        FirebaseFirestore.setLoggingEnabled(true);
+        initFirebase();
+    }
+
 
     public interface vmInterface{
         void setCollection(ArrayList<CursoCard> ac);
@@ -52,6 +60,11 @@ public class DatabaseAdapter extends Activity {
 
     public interface usInterface{
         void setUserCourses(ArrayList<CursoCard> cc);
+
+    }
+
+    public interface vrInterface{
+        void setVideoonCourse(ArrayList<VideoCard> cc);
 
     }
 
@@ -108,7 +121,50 @@ public class DatabaseAdapter extends Activity {
     }
 
 
+    void getCourseVideos(String CourseID){
 
+        DatabaseAdapter.db.collection("Curso").document(CourseID).get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+
+                        if (task.isSuccessful()) {
+                            DocumentSnapshot document = task.getResult();
+                            if (document.exists()) {
+                                Log.d("Videos del Curso", document.getId() + " => " + document.get("video"));
+                                ArrayList<String> acc = (ArrayList<String>) document.get("course_videos");
+                                getUserObjectVideos(acc);
+                            }
+                        }
+
+                    }
+
+                });
+    }
+
+    void getUserObjectVideos(ArrayList<String> uc){
+        DatabaseAdapter.db.collection("Video")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            ArrayList<VideoCard> retrieved_ac = new ArrayList<VideoCard>() ;
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d("llega",document.getId()+"  ->  "+ uc);
+                                if(uc.contains(document.getId())){
+                                    Log.d(" c a rv videos", document.getId() + " => " + document.getData());
+                                    retrieved_ac.add(new VideoCard(document.getString("video_title"), document.getString("video_url"), document.getString("video_views")));
+                                    listener_3.setVideoonCourse(retrieved_ac);
+                                }}
+
+
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+    }
     void getUserCourses(String userId){
 
         DatabaseAdapter.db.collection("Users").document(userId).get()

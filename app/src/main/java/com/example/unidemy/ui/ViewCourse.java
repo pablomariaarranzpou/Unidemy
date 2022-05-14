@@ -34,13 +34,14 @@ public class ViewCourse extends AppCompatActivity {
     private ImageButton play_button;
     private Button ind_btn_pagar, ind_btn_opinar;
     private Context parentContext;
-    FirebaseAuth mAuth;
-    CursoCard cc;
-    String userId;
-    FirebaseFirestore firestore;
-    VideoRecyclerView_ViewModel viewmodel;
-    RecyclerView mmRecyclerView;
-    ArrayList<String> videos;
+    private FirebaseAuth mAuth;
+    private CursoCard cc;
+    private String userId;
+    private FirebaseFirestore firestore;
+    private VideoRecyclerView_ViewModel viewmodelm;
+    private RecyclerView mmRecyclerView;
+    private ArrayList<String> videos;
+    private String id;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,8 +72,9 @@ public class ViewCourse extends AppCompatActivity {
             ind_course_rating_txt.setText(cc.getCourse_rating());
             ind_course_description.setText(cc.getCourse_description());
             videos = cc.getCourse_videos();
-
+            id = cc.getCourse_id();
         }
+
         play_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -106,7 +108,7 @@ public class ViewCourse extends AppCompatActivity {
 
         public void setLiveDataObservers() {
             //Subscribe the activity to the observable
-            viewmodel = new ViewModelProvider(this).get(VideoRecyclerView_ViewModel.class);
+            viewmodelm = new ViewModelProvider(this, new VideoRecyclerView_ViewModelFactory(this.getApplication(), this.getCourseId())).get(VideoRecyclerView_ViewModel.class);
             CardVideoAdapter newAdapter = new CardVideoAdapter(parentContext, new ArrayList<VideoCard>());
             final Observer<ArrayList<VideoCard>> observer = new Observer<ArrayList<VideoCard>>() {
                 @Override
@@ -124,12 +126,14 @@ public class ViewCourse extends AppCompatActivity {
                 }
             };
 
-            viewmodel.getCursoCards().observe(this, observer);
-            viewmodel.getToast().observe(this, observerToast);
+            viewmodelm.getCursoCards().observe(this, observer);
+            viewmodelm.getToast().observe(this, observerToast);
 
         }
 
-
+    public String getCourseId(){
+        return this.id;
+    }
 
 
 

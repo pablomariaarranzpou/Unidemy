@@ -47,6 +47,9 @@ public class CardVideoAdapter extends RecyclerView.Adapter<CardVideoHolder>{
 
     @Override
     public int getItemCount() {
+        if (localDataSet != null) {
+            return localDataSet.size();
+        }
         return 0;
     }
 }

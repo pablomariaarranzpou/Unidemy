@@ -11,7 +11,7 @@
 
     <ImageButton
         android:id="@+id/play_button_video"
-        android:layout_width="wrap_content"
+        android:layout_width="48dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center|center_horizontal|left"
         android:layout_marginStart="@dimen/margin_medium"
@@ -20,8 +20,8 @@
         tools:ignore="SpeakableTextPresentCheck" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="94dp"
-        android:layout_height="match_parent">
+        android:layout_width="93dp"
+        android:layout_height="wrap_content">
 
 
         <TextView
