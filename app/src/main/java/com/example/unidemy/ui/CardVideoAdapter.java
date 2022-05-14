@@ -52,4 +52,8 @@ public class CardVideoAdapter extends RecyclerView.Adapter<CardVideoHolder>{
         }
         return 0;
     }
+
+    public interface OnVideoListener{
+        void onCourseClick(int position);
+    }
 }

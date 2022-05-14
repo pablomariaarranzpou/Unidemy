@@ -27,7 +27,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 
-public class ViewCourse extends AppCompatActivity {
+public class ViewCourse extends AppCompatActivity implements CardVideoAdapter.OnVideoListener {
 
 
     private TextView ind_course_views_txt, ind_course_title_txt, ind_owner_txt, ind_course_rating_txt, ind_course_description;
@@ -136,8 +136,13 @@ public class ViewCourse extends AppCompatActivity {
     }
 
 
-
+    @Override
+    public void onCourseClick(int position) {
+        Intent intent = new Intent(this, ViewVideo.class);
+        intent.putExtra("selectedVideo", viewmodelm.getVideoCard(position));
+        startActivity(intent);
     }
+}
 
 
 

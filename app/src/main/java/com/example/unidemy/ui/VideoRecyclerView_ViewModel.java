@@ -2,13 +2,9 @@ package com.example.unidemy.ui;
 
 import android.app.Application;
 
-import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
-import androidx.lifecycle.ViewModelProvider;
-
 import java.util.ArrayList;
 
 public class VideoRecyclerView_ViewModel extends AndroidViewModel implements DatabaseAdapter.vrInterface{
@@ -17,8 +13,6 @@ public class VideoRecyclerView_ViewModel extends AndroidViewModel implements Dat
         private final MutableLiveData<String> mToast;
         private String courseId;
         private final Application mAplicattion;
-
-
 
         //Constructor
         public VideoRecyclerView_ViewModel(Application application, String courseId){

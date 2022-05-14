@@ -19,16 +19,21 @@ public class ViewVideo extends AppCompatActivity implements MediaPlayer.OnComple
 
 
     VideoView vw;
-
-
+    VideoCard vc;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
         setContentView(R.layout.activity_videoview);
         vw = (VideoView) findViewById(R.id.videoView);
         vw.setMediaController(new MediaController(this));
         vw.setOnCompletionListener(this);
-        vw.setVideoPath("https://firebasestorage.googleapis.com/v0/b/unidemy-a5397.appspot.com/o/videos%2FPENAL%20DE%20MIGUELITO%20%5BHD%5D.mp4?alt=media&token=ff55ae0c-4659-43be-89c8-a4058dc43778");
+
+        if (getIntent().hasExtra("selectedVideo")) {
+            vc = (VideoCard) getIntent().getParcelableExtra("selectedVideo");
+            vw.setVideoPath(vc.getUrl());
+        }
         vw.start();
     }
 
