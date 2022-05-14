@@ -8,8 +8,7 @@
     android:layout_margin="8dp"
     tools:context=".ui.ViewCourse"
     android:gravity="center_vertical"
-    android:orientation="horizontal"
-    android:id="@+id/course_layout">
+    android:orientation="horizontal">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
