@@ -27,7 +27,7 @@ public class VideoRecyclerView_ViewModel extends AndroidViewModel implements Dat
             mVideoCards = new MutableLiveData<>();
             mToast = new MutableLiveData<>();
             DatabaseAdapter da = new DatabaseAdapter(this);
-            da.getCourseVideos("courseId");
+            da.getCourseVideos(courseId);
         }
 
         //public getter. Not mutable , read-only
