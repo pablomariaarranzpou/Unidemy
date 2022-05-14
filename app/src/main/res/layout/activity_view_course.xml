@@ -176,8 +176,8 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview_videos"
-            android:layout_width="338dp"
-            android:layout_height="100dp"
+            android:layout_width="393dp"
+            android:layout_height="112dp"
             android:layout_marginTop="2dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

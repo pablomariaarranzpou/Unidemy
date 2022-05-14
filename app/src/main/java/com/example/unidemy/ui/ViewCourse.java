@@ -36,6 +36,7 @@ public class ViewCourse extends AppCompatActivity implements CardVideoAdapter.On
     private Context parentContext;
     private FirebaseAuth mAuth;
     private CursoCard cc;
+    private AppCompatActivity mActivity;
     private String userId;
     private FirebaseFirestore firestore;
     private VideoRecyclerView_ViewModel viewmodelm;
@@ -46,6 +47,7 @@ public class ViewCourse extends AppCompatActivity implements CardVideoAdapter.On
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mActivity = this;
         mAuth = FirebaseAuth.getInstance();
         parentContext = getBaseContext();
         firestore = FirebaseFirestore.getInstance();
@@ -109,11 +111,11 @@ public class ViewCourse extends AppCompatActivity implements CardVideoAdapter.On
         public void setLiveDataObservers() {
             //Subscribe the activity to the observable
             viewmodelm = new ViewModelProvider(this, new VideoRecyclerView_ViewModelFactory(this.getApplication(), this.getCourseId())).get(VideoRecyclerView_ViewModel.class);
-            CardVideoAdapter newAdapter = new CardVideoAdapter(parentContext, new ArrayList<VideoCard>());
+            CardVideoAdapter newAdapter = new CardVideoAdapter(parentContext, new ArrayList<VideoCard>(), (CardVideoAdapter.OnVideoListener) mActivity);
             final Observer<ArrayList<VideoCard>> observer = new Observer<ArrayList<VideoCard>>() {
                 @Override
                 public void onChanged(ArrayList<VideoCard> ac) {
-                    CardVideoAdapter newAdapter = new CardVideoAdapter(parentContext, ac);
+                    CardVideoAdapter newAdapter = new CardVideoAdapter(parentContext, ac, (CardVideoAdapter.OnVideoListener) mActivity);
                     mmRecyclerView.swapAdapter(newAdapter, false);
                     newAdapter.notifyDataSetChanged();
                 }
@@ -137,11 +139,13 @@ public class ViewCourse extends AppCompatActivity implements CardVideoAdapter.On
 
 
     @Override
-    public void onCourseClick(int position) {
+    public void onVideoClick (int position) {
         Intent intent = new Intent(this, ViewVideo.class);
         intent.putExtra("selectedVideo", viewmodelm.getVideoCard(position));
         startActivity(intent);
     }
+
+
 }
 
 

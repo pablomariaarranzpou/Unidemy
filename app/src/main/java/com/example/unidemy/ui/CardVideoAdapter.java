@@ -17,11 +17,13 @@ public class CardVideoAdapter extends RecyclerView.Adapter<CardVideoHolder>{
 
     private final ArrayList<VideoCard> localDataSet;
     private final Context parentContext;
+    private CardVideoAdapter.OnVideoListener onVideoListener;
 
 
-    public CardVideoAdapter(Context current, ArrayList<VideoCard> dataSet) {
+    public CardVideoAdapter(Context current, ArrayList<VideoCard> dataSet, CardVideoAdapter.OnVideoListener onVideoListener) {
         parentContext = current;
         localDataSet = dataSet;
+        this.onVideoListener = onVideoListener;
     }
 
     @NonNull
@@ -30,7 +32,7 @@ public class CardVideoAdapter extends RecyclerView.Adapter<CardVideoHolder>{
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.video_item, parent, false);
 
-        return new CardVideoHolder(view);
+        return new CardVideoHolder(view, onVideoListener);
     }
 
     @Override
@@ -54,6 +56,6 @@ public class CardVideoAdapter extends RecyclerView.Adapter<CardVideoHolder>{
     }
 
     public interface OnVideoListener{
-        void onCourseClick(int position);
+        void onVideoClick(int position);
     }
 }
