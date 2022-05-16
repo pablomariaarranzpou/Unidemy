@@ -56,7 +56,7 @@ public class ViewVideo extends AppCompatActivity implements MediaPlayer.OnComple
                 vw.start();
             }
             else {
-                startActivity(new Intent(ViewVideo.this, MyCourses.class));
+                finish();
             }
         }
     }
