@@ -35,6 +35,8 @@ public class RecyclerViewActivity extends AppCompatActivity implements CardCours
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
         setContentView(R.layout.activity_view_courses_list);
         parentContext = this.getBaseContext();
         mActivity = this;

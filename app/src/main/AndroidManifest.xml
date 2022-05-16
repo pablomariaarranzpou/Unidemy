@@ -17,7 +17,8 @@
         <activity
             android:name=".ui.ForgotPassword"
             android:exported="false"
-            android:label="Recuperar Contraseña" />/>
+            android:label="Recuperar Contraseña"/>
+
         <activity
             android:name=".ui.Register"
             android:exported="false"
@@ -28,8 +29,9 @@
             android:label="¡Bienvenid@!" />
         <activity
             android:name=".ui.RecyclerViewActivity"
-            android:exported="false"
+            android:exported="true"
             android:label="Cursos Disponibles" />
+
 
         <activity
             android:name=".ui.ViewCourse"

@@ -2,7 +2,9 @@ package com.example.unidemy.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.widget.Button;
@@ -18,10 +20,22 @@ import com.google.firebase.auth.FirebaseAuth;
 public class Login extends AppCompatActivity {
     private TextInputLayout user_name, pass_word;
     FirebaseAuth mAuth;
+    int autoSave;
+
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        SharedPreferences sharedpreferences = getSharedPreferences("autoLogin", Context.MODE_PRIVATE);
+        int j = sharedpreferences.getInt("key", 0);
+
+        //Default is 0 so autologin is disabled
+        if(j > 0){
+            Intent activity = new Intent(getApplicationContext(), RecyclerViewActivity.class);
+            startActivity(activity);
+        }
         setContentView(R.layout.activity_login);
         user_name=findViewById(R.id.email);
         pass_word=findViewById(R.id.password);
@@ -50,10 +64,14 @@ public class Login extends AppCompatActivity {
                 pass_word.requestFocus();
                 return;
             }
+
             mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(task -> {
                 if(task.isSuccessful())
                 {
-
+                    autoSave = 1;
+                    SharedPreferences.Editor editor = sharedpreferences.edit();
+                    editor.putInt("key", autoSave);
+                    editor.apply();
                     startActivity(new Intent(Login.this, Home.class));
 
                 }

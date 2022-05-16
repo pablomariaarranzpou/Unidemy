@@ -3,7 +3,9 @@ package com.example.unidemy.ui;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
@@ -30,13 +32,17 @@ public class Register extends AppCompatActivity {
     Button btn2_signup;
     TextInputEditText user_name, pass_word, name;
     FirebaseAuth mAuth;
+    AppCompatActivity mActivity = this;
     FirebaseFirestore firstore;
     String userID;
+    SharedPreferences sharedpreferences;
+    int autoSave;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        Context mActivty = this;
         firstore = FirebaseFirestore.getInstance();
         name = findViewById(R.id.textEditFullNameRegister);
         user_name=findViewById(R.id.textEditNameRegister);
@@ -72,13 +78,15 @@ public class Register extends AppCompatActivity {
                     pass_word.requestFocus();
                     return;
                 }
+
                 mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+
+
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful())
                         {
                             Toast.makeText(Register.this,"Registrado correctamente!", Toast.LENGTH_SHORT).show();
-
                             mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener( tarea ->{
                                 if(tarea.isSuccessful())
                                 {
