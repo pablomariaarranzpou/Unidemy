@@ -131,7 +131,7 @@ public class DatabaseAdapter extends Activity {
                         if (task.isSuccessful()) {
                             DocumentSnapshot document = task.getResult();
                             if (document.exists()) {
-                                Log.d("Videos del Curso", document.getId() + " => " + document.get("video"));
+                                Log.d("Videos del Curso", document.getId() + " => " + document.get("course_videos"));
                                 ArrayList<String> acc = (ArrayList<String>) document.get("course_videos");
                                 getUserObjectVideos(acc);
                             }
@@ -149,14 +149,16 @@ public class DatabaseAdapter extends Activity {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            ArrayList<VideoCard> retrieved_ac = new ArrayList<VideoCard>() ;
+                            ArrayList<VideoCard> retrieved_uc = new ArrayList<VideoCard>() ;
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d("llega",document.getId()+"  ->  "+ uc);
+                                Log.d("VIDEOS_Codes",document.getId()+"  ->  "+ uc);
+                                Log.d("Prueba", document.getId()+"  in  "+ uc + " = " + uc.contains(document.getId()));
                                 if(uc.contains(document.getId())){
-                                    Log.d(" c a rv videos", document.getId() + " => " + document.getData());
-                                    retrieved_ac.add(new VideoCard(document.getString("video_title"), document.getString("video_url"), document.getString("video_views")));
-                                    listener_3.setVideoonCourse(retrieved_ac);
+                                    Log.d("RV VIDEO_DATA", document.getId() + " => " + document.getData());
+                                    retrieved_uc.add(new VideoCard(document.getString("video_title"), document.getString("video_views"), document.getString("video_url")));
+
                                 }}
+                            listener_3.setVideoonCourse(retrieved_uc);
 
 
                         } else {
@@ -171,7 +173,6 @@ public class DatabaseAdapter extends Activity {
                 .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-
                         if (task.isSuccessful()) {
                             DocumentSnapshot document = task.getResult();
                             if (document.exists()) {

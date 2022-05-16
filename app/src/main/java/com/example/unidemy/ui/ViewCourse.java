@@ -80,7 +80,9 @@ public class ViewCourse extends AppCompatActivity implements CardVideoAdapter.On
         play_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(ViewCourse.this, ViewVideo.class));
+                Intent intent = new Intent(mActivity, ViewVideo.class);
+                intent.putExtra("selectedVideo", new VideoCard("TUTORIAL", "50", "https://firebasestorage.googleapis.com/v0/b/unidemy-a5397.appspot.com/o/videos%2FAT-cm_ZJWYEoBtI5KH30lAPvugNQ.mp4?alt=media&token=4f67229d-c2ec-44f2-8a1d-69e5f30b8c00"));
+                startActivity(intent);
             }
         });
         ind_btn_opinar.setOnClickListener(new View.OnClickListener() {
