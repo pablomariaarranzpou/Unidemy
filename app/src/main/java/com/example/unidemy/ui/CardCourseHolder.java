@@ -22,6 +22,8 @@ public class CardCourseHolder extends RecyclerView.ViewHolder implements View.On
     private final TextView course_views;
     private final ImageButton playButton;
     CardCourseAdapter.OnCourseListener onCourseListener;
+
+
     public CardCourseHolder(View view, CardCourseAdapter.OnCourseListener onCourseListener) {
         super(view);
         this.onCourseListener = onCourseListener;
