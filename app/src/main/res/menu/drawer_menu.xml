@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Principal">
+
+        <menu>
+
+            <item android:id="@+id/changeInfo"
+                android:icon="@drawable/ic_user"
+                android:title="Información Usuario"></item>
+
+            <item android:id="@+id/Logout"
+                android:icon="@drawable/log_out"
+                android:title="Cerrar Sesión"></item>
+
+
+        </menu>
+    </item>
+
+    <item android:title="Legal">
+
+        <menu>
+
+            <item android:id="@+id/help_section"
+                android:icon="@drawable/help_icon"
+                android:title="Ayuda"></item>
+
+            <item android:id="@+id/politics"
+                android:icon="@drawable/icon_privacidad"
+                android:title="Política de Privacidad"></item>
+
+
+        </menu>
+    </item>
+</menu>

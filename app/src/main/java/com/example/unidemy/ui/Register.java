@@ -35,8 +35,7 @@ public class Register extends AppCompatActivity {
     AppCompatActivity mActivity = this;
     FirebaseFirestore firstore;
     String userID;
-    SharedPreferences sharedpreferences;
-    int autoSave;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +90,7 @@ public class Register extends AppCompatActivity {
                                 if(tarea.isSuccessful())
                                 {
 
+                                    SaveSharedPreference.setUserName(Register.this, email);
                                     userID = mAuth.getCurrentUser().getUid();
                                     DocumentReference documentReference = firstore.collection("Users").document(userID);
                                     Map<String, Object> user = new HashMap<>();

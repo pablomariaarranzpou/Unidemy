@@ -30,7 +30,13 @@
         <activity
             android:name=".ui.RecyclerViewActivity"
             android:exported="true"
-            android:label="Cursos Disponibles" />
+            android:label="Cursos Disponibles" >
+            <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
 
 
         <activity
@@ -48,13 +54,8 @@
         <activity
             android:name=".ui.Login"
             android:exported="true"
-            android:label="Unidemy" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:label="Unidemy" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity android:name=".ui.Searcher"
             android:label="Buscador"
             android:exported="false"/>

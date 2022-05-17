@@ -22,7 +22,7 @@ public class CardVideoHolder extends RecyclerView.ViewHolder implements View.OnC
         video_views = (TextView) itemView.findViewById(R.id.video_title);
         video_playButton = (ImageButton)  itemView.findViewById(R.id.play_button_video);
         itemView.setOnClickListener((this));
-
+        this.onVideoListener = onVideoListener;
     }
     public TextView getVideo_title() {
         return video_title;

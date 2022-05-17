@@ -142,7 +142,7 @@ public class DatabaseAdapter extends Activity {
                 });
     }
 
-    void getUserObjectVideos(ArrayList<String> uc){
+    void getUserObjectVideos(ArrayList<String> vc){
         DatabaseAdapter.db.collection("Video")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -151,9 +151,9 @@ public class DatabaseAdapter extends Activity {
                         if (task.isSuccessful()) {
                             ArrayList<VideoCard> retrieved_uc = new ArrayList<VideoCard>() ;
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d("VIDEOS_Codes",document.getId()+"  ->  "+ uc);
-                                Log.d("Prueba", document.getId()+"  in  "+ uc + " = " + uc.contains(document.getId()));
-                                if(uc.contains(document.getId())){
+                                Log.d("VIDEOS_Codes",document.getId()+"  ->  "+ vc);
+                                Log.d("Prueba", "|"+document.getId()+"|  in  " + "|" + vc.get(0) + "|" + " = " + vc.contains(document.getId()));
+                                if(vc.contains(document.getId())){
                                     Log.d("RV VIDEO_DATA", document.getId() + " => " + document.getData());
                                     retrieved_uc.add(new VideoCard(document.getString("video_title"), document.getString("video_views"), document.getString("video_url")));
 

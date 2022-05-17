@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.MenuItem;
+import android.view.Window;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -32,12 +33,19 @@ public class RecyclerViewActivity extends AppCompatActivity implements CardCours
     private BottomNavigationView navigationView;
     private NavController navController;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        if(SaveSharedPreference.getUserName(RecyclerViewActivity.this).length() == 0)
+        {
+            startActivity(new Intent(RecyclerViewActivity.this, Login.class));
+        }
 
         setContentView(R.layout.activity_view_courses_list);
+
+
         parentContext = this.getBaseContext();
         mActivity = this;
         navigationView = findViewById(R.id.btm_navigator);
