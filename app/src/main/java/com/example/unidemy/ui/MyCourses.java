@@ -25,7 +25,7 @@ public class MyCourses extends AppCompatActivity implements MyCoursesAdapter.OnC
     private Context parentContext;
     private AppCompatActivity mActivity;
     private RecyclerView mRecyclerView;
-    private MyCoursesViewModel viewModel;
+    private MyCoursesViewModel lviewModel;
     private BottomNavigationView navigationView;
     private NavController navController;
     private FirebaseFirestore firstore;
@@ -73,9 +73,10 @@ public class MyCourses extends AppCompatActivity implements MyCoursesAdapter.OnC
         setLiveDataObservers();
     }
 
+
     public void setLiveDataObservers() {
         //Subscribe the activity to the observable
-        viewModel = new ViewModelProvider(this).get(MyCoursesViewModel.class);
+        lviewModel = new ViewModelProvider(this).get(MyCoursesViewModel.class);
         MyCoursesAdapter newAdapter = new MyCoursesAdapter(parentContext, new ArrayList<CursoCard>(), (MyCoursesAdapter.OnCourseListener) mActivity);
         final Observer<ArrayList<CursoCard>> observer = new Observer<ArrayList<CursoCard>>() {
             @Override
@@ -93,15 +94,15 @@ public class MyCourses extends AppCompatActivity implements MyCoursesAdapter.OnC
             }
         };
 
-        viewModel.getCursoCards().observe(this, observer);
-        viewModel.getToast().observe(this, observerToast);
+        lviewModel.getCursoCards().observe(this, observer);
+        lviewModel.getToast().observe(this, observerToast);
 
     }
 
     @Override
     public void onCourseClick(int position) {
         Intent intent = new Intent(this, ViewCourse.class);
-        intent.putExtra("selectedCourse", viewModel.getCursoCard(position));
+        intent.putExtra("selectedCourse", lviewModel.getCursoCard(position));
         startActivity(intent);
 
     }

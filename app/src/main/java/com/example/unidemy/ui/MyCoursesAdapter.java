@@ -65,6 +65,7 @@ public class MyCoursesAdapter extends RecyclerView.Adapter<CardCourseHolder>{
             viewHolder.getCourse_views().setText(
                     localDataSet.get(position).getCourse_views());
 
+
             ImageButton playButton = viewHolder.getPlayButton();
             playButton.setOnClickListener(new View.OnClickListener() {
                 @Override

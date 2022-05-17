@@ -8,11 +8,14 @@ import android.view.MenuItem;
 import android.view.Window;
 import android.widget.Toast;
 
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
+import androidx.navigation.ui.AppBarConfiguration;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -33,6 +36,7 @@ public class RecyclerViewActivity extends AppCompatActivity implements CardCours
     private BottomNavigationView navigationView;
     private NavController navController;
 
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,12 +46,11 @@ public class RecyclerViewActivity extends AppCompatActivity implements CardCours
         {
             startActivity(new Intent(RecyclerViewActivity.this, Login.class));
         }
-
+        mActivity = this;
         setContentView(R.layout.activity_view_courses_list);
-
-
         parentContext = this.getBaseContext();
         mActivity = this;
+
         navigationView = findViewById(R.id.btm_navigator);
         // Define RecyclerView elements: 1) Layout Manager and 2) Adapter
         mRecyclerView = findViewById(R.id.recyclerview_cursos);

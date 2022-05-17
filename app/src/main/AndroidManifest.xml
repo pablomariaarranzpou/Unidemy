@@ -30,7 +30,7 @@
         <activity
             android:name=".ui.RecyclerViewActivity"
             android:exported="true"
-            android:label="Cursos Disponibles" >
+            >
             <intent-filter>
             <action android:name="android.intent.action.MAIN" />
 
@@ -64,6 +64,10 @@
             android:exported="false"/>
         <activity android:name=".ui.MainActivity"
             android:exported="false"/>
+
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+
     </application>
+
 
 </manifest>
