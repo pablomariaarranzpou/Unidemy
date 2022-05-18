@@ -23,6 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.unidemy.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 
@@ -37,16 +38,20 @@ public class RecyclerViewActivity extends AppCompatActivity implements CardCours
     private RecyclerView_ViewModel viewModel;
     private BottomNavigationView navigationView;
     private NavController navController;
+    private FirebaseAuth mAuth;
+
 
     private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mAuth = FirebaseAuth.getInstance();
 
-        if(SaveSharedPreference.getUserName(RecyclerViewActivity.this).length() == 0)
+        if(SaveSharedPreference.getUserName(RecyclerViewActivity.this).length() == 0 || this.mAuth.getCurrentUser().getUid().length() == 0)
         {
             startActivity(new Intent(RecyclerViewActivity.this, Login.class));
+            finish();
         }
         mActivity = this;
         setContentView(R.layout.activity_view_courses_list);
@@ -100,6 +105,7 @@ public class RecyclerViewActivity extends AppCompatActivity implements CardCours
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.settings) {
             startActivity(new Intent(RecyclerViewActivity.this, MenuLateral.class));
+            finish();
             return true;
         }
         return super.onOptionsItemSelected(item);
