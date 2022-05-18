@@ -10,7 +10,7 @@
                 android:icon="@drawable/ic_user"
                 android:title="Información Usuario"/>
 
-            <item android:id="@+id/Logout"
+            <item android:id="@+id/logout"
                 android:icon="@drawable/log_out"
                 android:title="Cerrar Sesión"/>
 
