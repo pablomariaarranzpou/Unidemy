@@ -1,36 +1,93 @@
 package com.example.unidemy.ui;
 
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.firebase.*;
 import com.google.firestore.v1.DocumentTransform;
 
 import java.time.Instant;
 import java.util.Date;
 
-public class ComentCard {
+public class ComentCard implements Parcelable {
 
-    private String content, uid, uimg, uname;
-    private Object timestamp;
+    private String coment_content, coment_name, coment_id;
+    private float coment_rating, coment_notafinal;
+    private Timestamp timestamp;
 
 
-
-    public ComentCard(String content, String uid, String uimg, String uname) {
-        this.content = content;
-     
+    public ComentCard(String coment_content, String coment_name,
+                      float coment_rating, Timestamp timestamp, String coment_id, float coment_notafinal) {
+        this.coment_content = coment_content;
+        this.coment_name = coment_name;
+        this.coment_notafinal = coment_notafinal;
+        this.coment_rating = coment_rating;
+        this.timestamp = timestamp;
+        this.coment_id = coment_id;
     }
 
-    public ComentCard(String content, String uid, String uimg, String uname, Object timestamp) {
-        this.content = content;
-
+    protected ComentCard(Parcel in) {
+        coment_content = in.readString();
+        coment_name = in.readString();
+        coment_rating = in.readFloat();
+        timestamp = in.readParcelable(Timestamp.class.getClassLoader());
+        coment_id = in.readString();
+        coment_notafinal = in.readFloat();
     }
 
-    public String getContent() {
-        return content;
+    public static final Creator<ComentCard> CREATOR = new Creator<ComentCard>() {
+        @Override
+        public ComentCard createFromParcel(Parcel in) {
+            return new ComentCard(in);
+        }
+
+        @Override
+        public ComentCard[] newArray(int size) {
+            return new ComentCard[size];
+        }
+    };
+
+    public String getComent_content() {
+        return coment_content;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public String getComent_name() {
+        return coment_name;
     }
 
+    public float getComent_rating() {
+        return coment_rating;
+    }
 
+    public Timestamp getTimestamp() {
+        return timestamp;
+    }
+
+    public String getComent_id() {
+        return coment_id;
+    }
+
+    public static Creator<ComentCard> getCREATOR() {
+        return CREATOR;
+    }
+
+    public float getComent_notafinal() {
+        return coment_notafinal;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(coment_content);
+        parcel.writeString(coment_name);
+        parcel.writeFloat(coment_rating);
+        parcel.writeParcelable(timestamp, i);
+        parcel.writeString(coment_id);
+        parcel.writeFloat(coment_notafinal);
+    }
 }

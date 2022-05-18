@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.Window;
 import android.widget.Toast;
@@ -86,6 +88,21 @@ public class RecyclerViewActivity extends AppCompatActivity implements CardCours
         setLiveDataObservers();
 
 
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_settings, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.settings) {
+            startActivity(new Intent(RecyclerViewActivity.this, MenuLateral.class));
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public void setLiveDataObservers() {

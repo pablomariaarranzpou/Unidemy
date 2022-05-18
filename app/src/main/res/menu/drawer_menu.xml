@@ -2,14 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-   <item
-       android:title="Item title"
-       android:contentDescription="Item 1"
-       app:showAsAction="never"
-       />
-
-
-    <!--
     <item android:title="Principal">
 
         <menu>
@@ -41,5 +33,4 @@
 
         </menu>
     </item>
-    -->
 </menu>
