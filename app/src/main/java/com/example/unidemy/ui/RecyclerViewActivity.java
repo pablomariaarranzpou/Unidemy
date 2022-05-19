@@ -53,6 +53,7 @@ public class RecyclerViewActivity extends AppCompatActivity implements CardCours
             startActivity(new Intent(RecyclerViewActivity.this, Login.class));
             finish();
         }
+
         mActivity = this;
         setContentView(R.layout.activity_view_courses_list);
         parentContext = this.getBaseContext();
