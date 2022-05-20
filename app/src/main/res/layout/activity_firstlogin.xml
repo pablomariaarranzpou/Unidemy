@@ -11,12 +11,12 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="240dp"
+        android:layout_width="match_parent"
         android:layout_height="184dp"
         android:layout_marginTop="24dp"
         app:layout_constraintBottom_toTopOf="@+id/textoBienvenida"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/fc1363a1d3ef494a96cc920db03d2a38__1_"
+        app:srcCompat="@drawable/logo_unidemy_v3"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="105dp" />
 
