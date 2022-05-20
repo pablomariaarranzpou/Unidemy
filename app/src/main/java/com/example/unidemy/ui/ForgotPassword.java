@@ -30,7 +30,7 @@ public class ForgotPassword extends AppCompatActivity {
         }
 
         void viewInitializations() {
-            etEmail = findViewById(R.id.et_email);
+            etEmail = findViewById(R.id.user_reset_email);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 

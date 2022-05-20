@@ -68,6 +68,7 @@
         android:layout_height="70dp"
         android:backgroundTint="#FF9800"
         android:text="Realizar Test"
+        style="@style/Widget.MaterialComponents.Button.Icon"
         android:textColor="@color/black"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="109dp"

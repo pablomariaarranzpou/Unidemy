@@ -10,7 +10,7 @@
     android:id="@+id/course_layout"
     tools:context=".ui.CursoCard">
 
-    <ImageButton
+    <ImageView
         android:id="@+id/play_button"
         android:layout_width="150dp"
         android:layout_height="81dp"

@@ -65,6 +65,7 @@
         <activity android:name=".ui.MainActivity"
             android:exported="false"/>
         <activity android:name=".ui.MenuLateral" />
+        <activity android:name=".ui.UserInfoActivity" />
 
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
 

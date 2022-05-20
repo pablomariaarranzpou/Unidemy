@@ -35,6 +35,10 @@ public class MenuLateral extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.changeInfo:
+                        Intent i = new Intent(MenuLateral.this, UserInfoActivity.class);
+                        overridePendingTransition(0,0);
+                        startActivity(i);
+                        return true;
                     case R.id.help_section:
                     case R.id.politics:
                         overridePendingTransition(0,0);

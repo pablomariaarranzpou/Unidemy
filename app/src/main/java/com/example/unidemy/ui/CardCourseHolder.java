@@ -3,6 +3,7 @@ package com.example.unidemy.ui;
 import android.content.Intent;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,7 +21,7 @@ public class CardCourseHolder extends RecyclerView.ViewHolder implements View.On
     private final TextView course_description;
     private final TextView course_rating;
     private final TextView course_views;
-    private final ImageButton playButton;
+    private final ImageView playButton;
     CardCourseAdapter.OnCourseListener onCourseListener;
 
 
@@ -28,7 +29,7 @@ public class CardCourseHolder extends RecyclerView.ViewHolder implements View.On
         super(view);
         this.onCourseListener = onCourseListener;
         // Define click listener for the ViewHolder's View
-        playButton = (ImageButton) view.findViewById(R.id.play_button);
+        playButton = (ImageView) view.findViewById(R.id.play_button);
         course_title = (TextView) view.findViewById(R.id.course_title);
         course_description = (TextView) view.findViewById(R.id.course_description);
         course_rating = (TextView)view.findViewById(R.id.course_rating);
@@ -53,7 +54,7 @@ public class CardCourseHolder extends RecyclerView.ViewHolder implements View.On
         return course_views;
     }
 
-    public ImageButton getPlayButton() {
+    public ImageView getPlayButton() {
         return playButton;
     }
 

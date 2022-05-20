@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -66,13 +67,8 @@ public class MyCoursesAdapter extends RecyclerView.Adapter<CardCourseHolder>{
                     localDataSet.get(position).getCourse_views());
 
 
-            ImageButton playButton = viewHolder.getPlayButton();
-            playButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
+            ImageView playButton = viewHolder.getPlayButton();
 
-                }
-            });
         }
 
     @Override

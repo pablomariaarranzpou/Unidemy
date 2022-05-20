@@ -214,6 +214,8 @@ public class DatabaseAdapter extends Activity {
     }
 
 
+
+
     public HashMap<String, String> getDocuments () {
         db.collection("Curso")
                 .get()
