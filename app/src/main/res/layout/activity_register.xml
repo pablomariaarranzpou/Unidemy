@@ -11,9 +11,9 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="353dp"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/fc1363a1d3ef494a96cc920db03d2a38__1_" />
+        android:layout_width="match_parent"
+        android:layout_height="196dp"
+        app:srcCompat="@drawable/logo_unidemy_v3" />
 
     <TextView
         android:id="@+id/textView"
@@ -41,6 +41,8 @@
         android:layout_marginTop="10pt"
         android:layout_marginRight="4pt"
         android:hint="Nombre"
+        app:startIconDrawable="@drawable/ic_user"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         app:boxBackgroundColor="#FAD7A0"
         app:boxStrokeColor="@color/black">
 
@@ -55,6 +57,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="4pt"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:startIconDrawable="@drawable/ic_baseline_email_24"
         android:layout_marginTop="10pt"
         android:layout_marginRight="4pt"
         app:boxBackgroundColor="#FAD7A0"
@@ -76,8 +80,10 @@
         android:layout_marginLeft="4pt"
         android:layout_marginTop="10pt"
         android:layout_marginRight="4pt"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         app:endIconMode="password_toggle"
         app:boxBackgroundColor="#FAD7A0"
+        app:startIconDrawable="@drawable/ic_password_blocked"
         android:hint="Contraseña"
         app:boxStrokeColor="@color/black"
         android:inputType="textPassword">

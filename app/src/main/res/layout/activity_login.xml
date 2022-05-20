@@ -10,7 +10,7 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="474dp"
+        android:layout_width="match_parent"
         android:layout_height="209dp"
         android:rotationX="-360"
         app:srcCompat="@drawable/logo_unidemy_v3" />
