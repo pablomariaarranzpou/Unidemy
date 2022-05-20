@@ -10,22 +10,26 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="474dp"
+        android:layout_height="209dp"
         android:rotationX="-360"
-        app:srcCompat="@drawable/fc1363a1d3ef494a96cc920db03d2a38__1_" />
+        app:srcCompat="@drawable/logo_unidemy_v3" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_marginLeft="4pt"
         android:layout_marginTop="10pt"
         android:layout_marginRight="4pt"
         app:boxBackgroundColor="#FAD7A0"
+        app:endIconMode="clear_text"
         android:hint="@string/email"
-        app:boxStrokeColor="@color/black">
-
+        app:boxStrokeColor="@color/black"
+        app:startIconDrawable="@drawable/ic_user"
+        app:startIconContentDescription="">
+        >
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/textEditEmail"
             android:layout_width="match_parent"
@@ -44,7 +48,9 @@
         android:layout_marginRight="4pt"
         app:endIconMode="password_toggle"
         app:boxBackgroundColor="#FAD7A0"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:hint="@string/contrase_a"
+        app:startIconDrawable="@drawable/ic_password_blocked"
         app:boxStrokeColor="@color/black"
         android:inputType="textPassword">
 
@@ -58,42 +64,71 @@
     </com.google.android.material.textfield.TextInputLayout>
 
 
-    <Button
-        android:id="@+id/btn_login"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="69dp"
-        android:layout_marginLeft="4pt"
-        android:layout_marginTop="10pt"
-        android:layout_marginRight="4pt"
-        android:backgroundTint="#FF9800"
-        android:textColor="@color/black"
-        android:text="INICIAR SESIÓN"
-        app:iconTint="#FF9800"
-        app:rippleColor="#FF9800" />
+        android:layout_height="227dp">
 
-    <Button
-        android:id="@+id/btn_signup"
-        android:layout_width="match_parent"
-        android:layout_height="63dp"
-        android:layout_marginLeft="4pt"
-        android:layout_marginTop="10pt"
-        android:layout_marginRight="4pt"
-        android:backgroundTint="#00FF9800"
-        android:text="Si no tienes cuenta, registrate AQUÍ"
-        android:textColor="@color/black"
-        app:iconTint="#00FFFFFF"
-        app:rippleColor="#00FFFFFF" />
 
-    <Button
-        android:id="@+id/btn_resetpassw"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="4pt"
-        android:layout_marginLeft="4pt"
-        android:text="¿Olvidaste tu contraseña?"
-        android:textColor="@color/black"
-        app:iconTint="#FF9800"
-        app:strokeColor="#FF9800" />
+        <Button
+            android:id="@+id/btn_login"
+            style="@style/Widget.MaterialComponents.Button.Icon"
+            android:layout_width="271dp"
+            android:layout_height="57dp"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="#FF9800"
+            android:text="INICIAR SESIÓN"
+            android:textColor="@color/black"
+            app:iconTint="#FF9800"
+            app:layout_constraintBottom_toTopOf="@+id/btn_signup"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:rippleColor="#FF9800" />
+
+        <Button
+            android:id="@+id/btn_signup"
+            style="@style/Widget.MaterialComponents.Button.Icon"
+            android:layout_width="197dp"
+            android:layout_height="64dp"
+            android:layout_marginBottom="7dp"
+            android:backgroundTint="#00FF9800"
+            android:text="Registrate aquí"
+            android:textColor="@color/black"
+            app:iconTint="#00FFFFFF"
+            app:layout_constraintBottom_toTopOf="@+id/textView6"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:rippleColor="#00FFFFFF" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="205dp"
+            android:layout_height="19dp"
+            android:layout_marginStart="52dp"
+            android:layout_marginBottom="72dp"
+            android:text="¿Olvidaste tu contraseña? "
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/btn_resetpassw"
+            style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+            android:layout_width="161dp"
+            android:layout_height="39dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginBottom="65dp"
+            android:text="Recuperala AQUÍ"
+            android:textAlignment="textStart"
+            android:textColor="@color/unidemy_base"
+            android:textSize="14sp"
+            app:iconTint="#FF9800"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:strokeColor="#FF9800" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </LinearLayout>
