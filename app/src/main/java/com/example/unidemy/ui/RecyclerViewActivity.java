@@ -58,7 +58,9 @@ public class RecyclerViewActivity extends AppCompatActivity implements CardCours
         setContentView(R.layout.activity_view_courses_list);
         parentContext = this.getBaseContext();
         mActivity = this;
-
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.drawable.banner_final);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
         navigationView = findViewById(R.id.btm_navigator);
         // Define RecyclerView elements: 1) Layout Manager and 2) Adapter
         mRecyclerView = findViewById(R.id.recyclerview_cursos);
