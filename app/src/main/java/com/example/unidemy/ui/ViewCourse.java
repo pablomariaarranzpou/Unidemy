@@ -74,7 +74,7 @@ public class ViewCourse extends AppCompatActivity implements CardVideoAdapter.On
             ind_course_rating_txt.setText(cc.getCourse_rating());
             ind_course_description.setText(cc.getCourse_description());
             videos = cc.getCourse_videos();
-            play_button.setBackgroundResource(R.drawable.messi_chiquito);
+            play_button.setBackgroundResource(R.drawable.portada_curso_1);
             id = cc.getCourse_id();
         }
 

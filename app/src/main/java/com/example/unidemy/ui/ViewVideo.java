@@ -60,4 +60,6 @@ public class ViewVideo extends AppCompatActivity implements MediaPlayer.OnComple
             }
         }
     }
+
+
 }
