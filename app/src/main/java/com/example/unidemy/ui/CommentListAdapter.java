@@ -37,12 +37,20 @@ public class CommentListAdapter extends RecyclerView.Adapter<ComentViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ComentViewHolder holder, int position) {
-        holder.coment_content.setText(commentList.get(position).getComent_content());
+        holder.getComent_content().setText(commentList.get(position).getComent_content());
+        holder.getComent_date().setText(commentList.get(position).getTimestamp().toString());
+        holder.getComent_name().setText(
+                commentList.get(position).getComent_name());
+        holder.getComent_notafinal().setText(commentList.get(position).getComent_notafinalString());
+        holder.getComent_rating().setText(commentList.get(position).getComent_ratingString());
     }
 
     @Override
     public int getItemCount() {
-        return commentList.size();
+        if (commentList != null) {
+            return commentList.size();
+        }
+        return 0;
     }
 
 }

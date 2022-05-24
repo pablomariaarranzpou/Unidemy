@@ -61,6 +61,9 @@ public class ComentCard implements Parcelable {
     public float getComent_rating() {
         return coment_rating;
     }
+    public String getComent_ratingString() {
+        return Float.toString(coment_rating);
+    }
 
     public Timestamp getTimestamp() {
         return timestamp;
@@ -76,6 +79,10 @@ public class ComentCard implements Parcelable {
 
     public float getComent_notafinal() {
         return coment_notafinal;
+    }
+
+    public String getComent_notafinalString(){
+        return Float.toString(coment_notafinal);
     }
 
     @Override

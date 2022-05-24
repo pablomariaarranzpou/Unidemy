@@ -14,11 +14,11 @@ public class ComentViewHolder extends RecyclerView.ViewHolder{
 
     public ComentViewHolder(@NonNull View itemView) {
         super(itemView);
-        coment_content =itemView.findViewById(R.id.comment_content);
-        coment_name = itemView.findViewById(R.id.coment_name);
-        coment_notafinal = itemView.findViewById(R.id.coment_nota);
-        coment_rating = itemView.findViewById(R.id.coment_rating);
-        coment_date = itemView.findViewById(R.id.coment_date);
+        coment_content = (TextView)itemView.findViewById(R.id.comment_content);
+        coment_name = (TextView)itemView.findViewById(R.id.coment_name);
+        coment_notafinal =(TextView) itemView.findViewById(R.id.coment_nota);
+        coment_rating = (TextView)itemView.findViewById(R.id.coment_rating);
+        coment_date = (TextView)itemView.findViewById(R.id.coment_date);
     }
 
     public TextView getComent_content() {
