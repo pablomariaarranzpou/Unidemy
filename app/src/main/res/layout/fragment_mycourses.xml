@@ -27,4 +27,21 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
+    <TextView
+        android:id="@+id/text_courses_empty"
+        android:layout_width="312dp"
+        android:layout_height="87dp"
+        android:fontFamily="sans-serif-black"
+        android:text="¡Vaya! Aún no tienes ningún curso... ¡Encuentra el tuyo en la sección de cursos!"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.457" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

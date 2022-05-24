@@ -41,7 +41,9 @@ public class MenuLateral extends AppCompatActivity {
                         return true;
                     case R.id.help_section:
                     case R.id.politics:
+                        Intent inter = new Intent(MenuLateral.this, Privacity.class);
                         overridePendingTransition(0,0);
+                        startActivity(inter);
                         return true;
                 }
 

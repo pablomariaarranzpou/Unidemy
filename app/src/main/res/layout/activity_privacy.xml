@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".ui.Privacity">
 
+    <TextView
+        android:id="@+id/privacidad_text"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="POLÍTICA DE PRIVACIDAD  Fecha última actualización: 24/05/2022 De conformidad con el Reglamento (UE) 2016/679, del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protección de las personas físicas en lo que respecta al tratamiento de datos personales y a la libre circulación de estos datos (Reglamento General de Protección de Datos - RGPD), Unidemy S.L., informa a los usuarios de la aplicación Unidemy (en adelante, la Aplicación), acerca del tratamiento de los datos personales, que ellos voluntariamente hayan facilitado durante el proceso de registro, acceso y utilización del servicio. 1. IDENTIFICACIÓN DEL RESPONSABLE DEL TRATAMIENTO. Unidemy S.L, con CIF/NIF nº: 92849556945B y domicilio a efectos de notificaciones en: Gran Via de les Corts Catalanes, 585, 08007 Barcelona e inscrita en el Registro Mercantil de Barcelona  Tomo 231/231, Folio 123, Sección ª, Hoja 1, inscripción ª (en adelante, el Responsable del Tratamiento), es la entidad responsable del tratamiento de los datos facilitados por los clientes de la Aplicación (en adelante, el/los Usuario/s). 2. FINALIDAD DEL TRATAMIENTO DE DATOS. Para proceder al registro, acceso y posterior uso de la Aplicación, el Usuario deberá facilitar -de forma voluntaria-, datos de carácter personal (esencialmente, identificativos y de contacto), los cuales serán incorporados a soportes automatizados titularidad de Unidemy S.L.. La recogida, almacenamiento, modificación, estructuración y en su caso, eliminación, de los datos proporcionados por los Usuarios, constituirán operaciones de tratamiento llevadas a cabo por el Responsable, con la finalidad de garantizar el correcto funcionamiento de la Aplicación, mantener la relación de prestación de servicios y/o comercial con el Usuario, y para la gestión, administración, información, prestación y mejora del servicio."
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

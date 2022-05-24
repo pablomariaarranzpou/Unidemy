@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,6 +29,7 @@ public class MyCourses extends AppCompatActivity implements MyCoursesAdapter.OnC
     private AppCompatActivity mActivity;
     private RecyclerView mRecyclerView;
     private MyCoursesViewModel lviewModel;
+    private TextView texto_empty;
     private BottomNavigationView navigationView;
     private NavController navController;
     private FirebaseFirestore firstore;
@@ -36,12 +39,19 @@ public class MyCourses extends AppCompatActivity implements MyCoursesAdapter.OnC
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+
         setContentView(R.layout.fragment_mycourses);
+        texto_empty = findViewById(R.id.text_courses_empty);
+        texto_empty.setVisibility(View.GONE);
+
         mAuth = FirebaseAuth.getInstance();
         parentContext = this.getBaseContext();
         firstore = FirebaseFirestore.getInstance();
         mRecyclerView = findViewById(R.id.recyclerview_mycourses);
         mActivity = this;
+
         mRecyclerView.setLayoutManager(new GridLayoutManager(this, 1));
         BottomNavigationView navView = (BottomNavigationView)findViewById(R.id.bottomNavigationView);
         // Passing each menu ID as a set of Ids because each
@@ -85,6 +95,7 @@ public class MyCourses extends AppCompatActivity implements MyCoursesAdapter.OnC
                 MyCoursesAdapter newAdapter = new MyCoursesAdapter(parentContext, ac, (MyCoursesAdapter.OnCourseListener) mActivity);
                 mRecyclerView.swapAdapter(newAdapter, false);
                 newAdapter.notifyDataSetChanged();
+                checkIfEmpty(newAdapter);
             }
         };
 
@@ -95,9 +106,15 @@ public class MyCourses extends AppCompatActivity implements MyCoursesAdapter.OnC
             }
         };
 
+
         lviewModel.getCursoCards().observe(this, observer);
         lviewModel.getToast().observe(this, observerToast);
 
+    }
+
+    private void checkIfEmpty(@NonNull MyCoursesAdapter newAdapter){
+        if(newAdapter.getItemCount() != 0) texto_empty.setVisibility(View.GONE);
+        else texto_empty.setVisibility(View.VISIBLE);
     }
 
     @Override
