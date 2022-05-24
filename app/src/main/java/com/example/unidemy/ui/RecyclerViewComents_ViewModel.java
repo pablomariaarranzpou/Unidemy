@@ -13,13 +13,16 @@ public class RecyclerViewComents_ViewModel extends AndroidViewModel implements D
 
     private final MutableLiveData<ArrayList<ComentCard>> mComentCards;
     private final MutableLiveData<String> mToast;
+    private final Application mAplicattion;
 
     public RecyclerViewComents_ViewModel(@NonNull Application application, String courseID) {
         super(application);
         mComentCards = new MutableLiveData<>();
         mToast = new MutableLiveData<>();
+        mAplicattion = application;
         DatabaseAdapter da = new DatabaseAdapter(this);
         da.getCourseComents(courseID);
+
     }
 
     public LiveData<ArrayList<ComentCard>> getComentCards(){

@@ -246,7 +246,7 @@ public class DatabaseAdapter extends Activity {
     }
 
     void getCourseObjectComents(ArrayList<String> uc){
-        DatabaseAdapter.db.collection("Comment")
+        DatabaseAdapter.db.collection("Coment")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override

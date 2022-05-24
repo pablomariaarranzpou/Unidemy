@@ -22,13 +22,14 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/commentList"
-        android:layout_width="405dp"
-        android:layout_height="535dp"
+        android:layout_width="match_parent"
+        android:layout_height="526dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_addComment" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_addComment"
+        app:layout_constraintVertical_bias="0.281" />
 </androidx.constraintlayout.widget.ConstraintLayout>

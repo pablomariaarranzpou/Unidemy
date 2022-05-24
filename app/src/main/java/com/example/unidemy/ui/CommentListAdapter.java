@@ -11,20 +11,25 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.unidemy.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 
 public class CommentListAdapter extends RecyclerView.Adapter<ComentViewHolder> {
 
-    public CommentListAdapter(List<ComentCard> commentList, Context context) {
+    private final ArrayList<ComentCard> commentList;
+    private final Context context;
+
+
+
+    public CommentListAdapter(ArrayList<ComentCard> commentList, Context context) {
         this.commentList = commentList;
         this.context = context;
     }
 
 
-    List<ComentCard> commentList;
-    Context context;
+
 
     @NonNull
     @Override
@@ -38,9 +43,8 @@ public class CommentListAdapter extends RecyclerView.Adapter<ComentViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ComentViewHolder holder, int position) {
         holder.getComent_content().setText(commentList.get(position).getComent_content());
-        holder.getComent_date().setText(commentList.get(position).getTimestamp().toString());
-        holder.getComent_name().setText(
-                commentList.get(position).getComent_name());
+        holder.getComent_date().setText(commentList.get(position).getTimestamp().toDate().toString());
+        holder.getComent_name().setText(commentList.get(position).getComent_name());
         holder.getComent_notafinal().setText(commentList.get(position).getComent_notafinalString());
         holder.getComent_rating().setText(commentList.get(position).getComent_ratingString());
     }
