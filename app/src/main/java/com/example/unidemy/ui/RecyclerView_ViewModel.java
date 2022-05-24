@@ -2,6 +2,7 @@ package com.example.unidemy.ui;
 
 
         import android.app.Application;
+        import android.util.Log;
 
         import java.util.ArrayList;
 
@@ -33,7 +34,9 @@ public class RecyclerView_ViewModel extends AndroidViewModel implements Database
     }
 
     public CursoCard getCursoCard(int idx){
+        Log.d("ADAPT", mCursoCards.getValue().get(idx).getCourse_porta());
         return mCursoCards.getValue().get(idx);
+
     }
 
     public LiveData<String> getToast(){

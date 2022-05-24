@@ -98,7 +98,6 @@ public class CardCourseAdapter extends RecyclerView.Adapter<CardCourseHolder> {
 
 
 
-        ImageView playButton = viewHolder.getPlayButton();
 
     }
 

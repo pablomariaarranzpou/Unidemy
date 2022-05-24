@@ -109,7 +109,7 @@ public class DatabaseAdapter extends Activity {
                             ArrayList<CursoCard> retrieved_ac = new ArrayList<CursoCard>() ;
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Log.d(TAG, document.getId() + " => " + document.getData());
-                                retrieved_ac.add(new CursoCard( document.getString("course_title"), document.getString("course_description"), document.getString("owner"),  document.getString("course_views"), document.getString("course_rating"), document.getId(), (ArrayList<String>) document.get("course_videos")));
+                                retrieved_ac.add(new CursoCard( document.getString("course_title"), document.getString("course_description"), document.getString("owner"),  document.getString("course_views"), document.getString("course_rating"), document.getId(), (ArrayList<String>) document.get("course_videos"), document.getString("course_portada")));
                             }
                             listener.setCollection(retrieved_ac);
 
@@ -202,7 +202,7 @@ public class DatabaseAdapter extends Activity {
                                 Log.d("llega",document.getId()+"  ->  "+ uc);
                                 if(uc.contains(document.getId())){
                                     Log.d(" c a rv usuario", document.getId() + " => " + document.getData());
-                                    retrieved_ac.add(new CursoCard( document.getString("course_title"), document.getString("course_description"), document.getString("owner"),  document.getString("course_views"), document.getString("course_rating"), document.getString("course_id"), (ArrayList<String>) document.get("course_videos")));
+                                    retrieved_ac.add(new CursoCard( document.getString("course_title"), document.getString("course_description"), document.getString("owner"),  document.getString("course_views"), document.getString("course_rating"), document.getString("course_id"), (ArrayList<String>) document.get("course_videos"), document.getString("course_portada")));
                             }}
                             listener_2.setUserCourses(retrieved_ac);
 

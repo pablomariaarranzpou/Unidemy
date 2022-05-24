@@ -3,6 +3,7 @@ package com.example.unidemy.ui;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
@@ -101,10 +102,12 @@ public class MyCourses extends AppCompatActivity implements MyCoursesAdapter.OnC
 
     @Override
     public void onCourseClick(int position) {
+
         Intent intent = new Intent(this, ViewCourse.class);
         intent.putExtra("selectedCourse", lviewModel.getCursoCard(position));
+        Log.d("CLICK", "Portada: "+ lviewModel.getCursoCard(position).getCourse_porta());
+        intent.putExtra("selectedPortada", lviewModel.getCursoCard(position).getCourse_porta());
         startActivity(intent);
-
     }
 }
 

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -143,6 +144,8 @@ public class RecyclerViewActivity extends AppCompatActivity implements CardCours
     public void onCourseClick(int position) {
         Intent intent = new Intent(this, ViewCourse.class);
         intent.putExtra("selectedCourse", viewModel.getCursoCard(position));
+        Log.d("CLICK", "Portada: "+ viewModel.getCursoCard(position).getCourse_porta());
+        intent.putExtra("selectedPortada", viewModel.getCursoCard(position).getCourse_porta());
         startActivity(intent);
 
     }

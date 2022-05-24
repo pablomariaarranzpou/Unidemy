@@ -25,6 +25,7 @@ public class CursoCard implements Parcelable {
     private final String course_description;
     private final String course_owner;
     private final String course_id;
+    private final String course_porta;
     private ArrayList<String> course_videos;
 
 
@@ -33,7 +34,7 @@ public class CursoCard implements Parcelable {
 
     public CursoCard(String course_title, String course_description,
                      String course_owner, String course_views, String course_rating,
-                     String course_id, ArrayList<String> course_videos) {
+                     String course_id, ArrayList<String> course_videos, String course_porta) {
 
         this.course_title = course_title;
         this.course_views = course_views;
@@ -42,6 +43,8 @@ public class CursoCard implements Parcelable {
         this.course_owner = course_owner;
         this.course_id = course_id;
         this.course_videos = course_videos;
+        this.course_porta = course_porta;
+
     }
 
     protected CursoCard(@NonNull Parcel in) {
@@ -52,6 +55,7 @@ public class CursoCard implements Parcelable {
         course_owner = in.readString();
         course_id = in.readString();
         course_videos = in.createStringArrayList();
+        course_porta = in.readString();
     }
 
     public static final Creator<CursoCard> CREATOR = new Creator<CursoCard>() {
@@ -86,6 +90,8 @@ public class CursoCard implements Parcelable {
 
     public String getCourse_id() {return course_id; }
 
+    public String getCourse_porta() {return course_porta; }
+
     public ArrayList<String> getCourse_videos(){ return course_videos; }
 
 
@@ -96,7 +102,7 @@ public class CursoCard implements Parcelable {
     }
 
     @Override
-    public void writeToParcel(Parcel parcel, int i) {
+    public void writeToParcel(@NonNull Parcel parcel, int i) {
         parcel.writeString(course_title);
         parcel.writeString(course_views);
         parcel.writeString(course_rating);
@@ -104,5 +110,6 @@ public class CursoCard implements Parcelable {
         parcel.writeString(course_owner);
         parcel.writeString(course_id);
         parcel.writeList(course_videos);
+        parcel.writeString(course_porta);
     }
 }
