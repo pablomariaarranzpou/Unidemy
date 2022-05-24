@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -51,7 +53,9 @@ public class MyCourses extends AppCompatActivity implements MyCoursesAdapter.OnC
         firstore = FirebaseFirestore.getInstance();
         mRecyclerView = findViewById(R.id.recyclerview_mycourses);
         mActivity = this;
-
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.drawable.banner_miscursos);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
         mRecyclerView.setLayoutManager(new GridLayoutManager(this, 1));
         BottomNavigationView navView = (BottomNavigationView)findViewById(R.id.bottomNavigationView);
         // Passing each menu ID as a set of Ids because each
@@ -85,6 +89,7 @@ public class MyCourses extends AppCompatActivity implements MyCoursesAdapter.OnC
     }
 
 
+
     public void setLiveDataObservers() {
         //Subscribe the activity to the observable
         lviewModel = new ViewModelProvider(this).get(MyCoursesViewModel.class);
@@ -110,6 +115,23 @@ public class MyCourses extends AppCompatActivity implements MyCoursesAdapter.OnC
         lviewModel.getCursoCards().observe(this, observer);
         lviewModel.getToast().observe(this, observerToast);
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_settings, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.settings) {
+            startActivity(new Intent(MyCourses.this, MenuLateral.class));
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void checkIfEmpty(@NonNull MyCoursesAdapter newAdapter){

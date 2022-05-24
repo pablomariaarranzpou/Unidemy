@@ -257,7 +257,7 @@ public class DatabaseAdapter extends Activity {
                                 Log.d("llega",document.getId()+"  ->  "+ uc);
                                 if(uc.contains(document.getId())){
                                     Log.d(" crv comments", document.getId() + " => " + document.getData());
-                                    retrieved_ac.add(new  ComentCard(document.getString("coment_content"), document.getString("coment_name"), document.getDouble("coment_rating"),
+                                    retrieved_ac.add(new ComentCard(document.getString("coment_content"), document.getString("coment_name"), document.getDouble("coment_rating"),
                                             document.getTimestamp("timestamp"), document.getString("coment_id"), document.getDouble("coment_nota")));
                                 }}
                             listener_4.setComentsOnCourse(retrieved_ac);
