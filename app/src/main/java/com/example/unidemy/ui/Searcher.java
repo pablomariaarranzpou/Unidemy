@@ -3,6 +3,8 @@ package com.example.unidemy.ui;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.SearchView;
 
@@ -40,6 +42,9 @@ public class Searcher extends AppCompatActivity implements SearchView.OnQueryTex
         txtBuscar = findViewById(R.id.txtBuscar);
         navigationView = findViewById(R.id.btm_navigator);
         txtBuscar.setOnQueryTextListener(this);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.drawable.banner_buscador);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
         mRecyclerView = findViewById(R.id.recyclerView_results);
         mRecyclerView.setLayoutManager(new GridLayoutManager(this, 1));
         BottomNavigationView navView = (BottomNavigationView)findViewById(R.id.bottomNavigationView);
@@ -72,6 +77,23 @@ public class Searcher extends AppCompatActivity implements SearchView.OnQueryTex
         txtBuscar.setOnQueryTextListener(this);
         setLiveDataObservers();
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_settings, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.settings) {
+            startActivity(new Intent(Searcher.this, MenuLateral.class));
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public void setLiveDataObservers() {
