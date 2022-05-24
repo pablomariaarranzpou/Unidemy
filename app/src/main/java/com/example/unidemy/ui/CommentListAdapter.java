@@ -17,26 +17,27 @@ import java.util.List;
 
 public class CommentListAdapter extends RecyclerView.Adapter<ComentViewHolder> {
 
-    public CommentListAdapter(List<String> commentList, Context context) {
+    public CommentListAdapter(List<ComentCard> commentList, Context context) {
         this.commentList = commentList;
         this.context = context;
     }
 
 
-    List<String> commentList;
+    List<ComentCard> commentList;
     Context context;
 
     @NonNull
     @Override
     public ComentViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.coment_item,parent,false);
-        ComentViewHolder holder = new ComentViewHolder(view);
-        return holder;
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.coment_item, parent, false);
+
+        return new ComentViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ComentViewHolder holder, int position) {
-        holder.coment_content.setText(commentList.get(position));
+        holder.coment_content.setText(commentList.get(position).getComent_content());
     }
 
     @Override

@@ -78,7 +78,7 @@ public class ViewCourse extends AppCompatActivity implements CardVideoAdapter.On
         ind_course_rating_txt = (TextView) findViewById(R.id.ind_course_rating);
         ind_course_description = (TextView) findViewById(R.id.ind_course_description);
         ind_btn_pagar = (Button) findViewById(R.id.ind_btn_pagar);
-        ind_btn_opinar = (Button) findViewById((R.id.ind_btn_pagar));
+        ind_btn_opinar = (Button) findViewById((R.id.ind_btn_opinar));
         play_button = (ImageView) findViewById(R.id.course_image);
 
 
@@ -129,7 +129,7 @@ public class ViewCourse extends AppCompatActivity implements CardVideoAdapter.On
         play_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(mActivity, ViewVideo.class);
+                Intent intent = new Intent(ViewCourse.this, ViewVideo.class);
                 intent.putExtra("selectedVideo", new VideoCard("TUTORIAL", "50", "https://firebasestorage.googleapis.com/v0/b/unidemy-a5397.appspot.com/o/videos%2FAT-cm_ZJWYEoBtI5KH30lAPvugNQ.mp4?alt=media&token=4f67229d-c2ec-44f2-8a1d-69e5f30b8c00"));
                 startActivity(intent);
             }
@@ -137,7 +137,9 @@ public class ViewCourse extends AppCompatActivity implements CardVideoAdapter.On
         ind_btn_opinar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(ViewCourse.this, RecyclerViewComents.class);
+                intent.putExtra("course_id",id);
+                startActivity(intent);
             }
         });
 

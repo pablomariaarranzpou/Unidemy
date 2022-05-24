@@ -67,6 +67,7 @@
         <activity android:name=".ui.MenuLateral" />
         <activity android:name=".ui.UserInfoActivity" />
         <activity android:name=".ui.Privacity" />
+        <activity android:name=".ui.RecyclerViewComents" />
 
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
 

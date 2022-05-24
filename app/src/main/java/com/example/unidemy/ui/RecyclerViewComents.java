@@ -2,6 +2,7 @@ package com.example.unidemy.ui;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +22,9 @@ public class RecyclerViewComents extends AppCompatActivity {
     private AppCompatActivity mActivity;
     private RecyclerView mRecyclerView;
     private RecyclerView_ViewModel viewModel;
+    private String selected_course_id;
+    private Button btn_add_comment;
+    private RecyclerViewComents_ViewModel viewmodelm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,20 +32,31 @@ public class RecyclerViewComents extends AppCompatActivity {
         setContentView(R.layout.activity_view_comentlist);
         parentContext = this.getBaseContext();
         mActivity = this;
-
+        btn_add_comment = this.findViewById(R.id.btn_addComment);
         // Define RecyclerView elements: 1) Layout Manager and 2) Adapter
         mRecyclerView = findViewById(R.id.commentList);
+
+        if (getIntent().hasExtra("course_id")){
+            this.selected_course_id = getIntent().getExtras().getString("course_id");
+        }
         mRecyclerView.setLayoutManager(new GridLayoutManager(this, 1));
         setLiveDataObservers();
 
     }
-    public void setLiveDataObservers() {
-        viewModel = new ViewModelProvider(this).get(RecyclerView_ViewModel.class);
 
+    public String getCourseId(){
+        return this.selected_course_id;
+    }
+
+    public void setLiveDataObservers() {
+        viewmodelm = new ViewModelProvider(this, new ComentRecyclerViewFactory(this.getApplication(), this.getCourseId())).get(RecyclerViewComents_ViewModel.class);
+        CommentListAdapter newAdapter = new CommentListAdapter(new ArrayList<ComentCard>(), parentContext);
         final Observer<ArrayList<ComentCard>> observer = new Observer<ArrayList<ComentCard>>() {
             @Override
             public void onChanged(ArrayList<ComentCard> ac) {
-
+                CommentListAdapter newAdapter = new CommentListAdapter(ac, parentContext);
+                mRecyclerView.swapAdapter(newAdapter, false);
+                newAdapter.notifyDataSetChanged();
             }
         };
 
@@ -51,7 +66,8 @@ public class RecyclerViewComents extends AppCompatActivity {
                 Toast.makeText(parentContext, t, Toast.LENGTH_SHORT).show();
             }
         };
-
+        viewmodelm.getComentCards().observe(this, observer);
+        viewmodelm.getToast().observe(this, observerToast);
 
     }
 }

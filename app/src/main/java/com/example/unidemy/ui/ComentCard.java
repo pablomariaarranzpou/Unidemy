@@ -18,11 +18,11 @@ public class ComentCard implements Parcelable {
 
 
     public ComentCard(String coment_content, String coment_name,
-                      float coment_rating, Timestamp timestamp, String coment_id, float coment_notafinal) {
+                      double coment_rating, Timestamp timestamp, String coment_id, double coment_notafinal) {
         this.coment_content = coment_content;
         this.coment_name = coment_name;
-        this.coment_notafinal = coment_notafinal;
-        this.coment_rating = coment_rating;
+        this.coment_notafinal = (float)coment_notafinal;
+        this.coment_rating = (float)coment_rating;
         this.timestamp = timestamp;
         this.coment_id = coment_id;
     }
@@ -47,6 +47,8 @@ public class ComentCard implements Parcelable {
             return new ComentCard[size];
         }
     };
+
+
 
     public String getComent_content() {
         return coment_content;

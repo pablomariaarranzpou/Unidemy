@@ -30,6 +30,7 @@ public class DatabaseAdapter extends Activity {
     public static vmInterface listener;
     public static usInterface listener_2;
     public static vrInterface listener_3;
+    public static ccInterface listener_4;
     public static DatabaseAdapter databaseAdapter;
 
     public DatabaseAdapter(vmInterface listener){
@@ -52,6 +53,13 @@ public class DatabaseAdapter extends Activity {
         initFirebase();
     }
 
+    public DatabaseAdapter(ccInterface listener){
+        this.listener_4 = listener;
+        databaseAdapter = this;
+        FirebaseFirestore.setLoggingEnabled(true);
+        initFirebase();
+    }
+
 
     public interface vmInterface{
         void setCollection(ArrayList<CursoCard> ac);
@@ -65,7 +73,10 @@ public class DatabaseAdapter extends Activity {
 
     public interface vrInterface{
         void setVideoonCourse(ArrayList<VideoCard> cc);
+    }
 
+    public interface ccInterface{
+        void setComentsOnCourse(ArrayList<ComentCard> cc);
     }
 
 
@@ -205,6 +216,51 @@ public class DatabaseAdapter extends Activity {
                                     retrieved_ac.add(new CursoCard( document.getString("course_title"), document.getString("course_description"), document.getString("owner"),  document.getString("course_views"), document.getString("course_rating"), document.getString("course_id"), (ArrayList<String>) document.get("course_videos"), document.getString("course_portada")));
                             }}
                             listener_2.setUserCourses(retrieved_ac);
+
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+    }
+
+    void getCourseComents(String CourseID){
+
+        DatabaseAdapter.db.collection("Curso").document(CourseID).get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+
+                        if (task.isSuccessful()) {
+                            DocumentSnapshot document = task.getResult();
+                            if (document.exists()) {
+                                Log.d("Videos del Curso", document.getId() + " => " + document.get("course_coments"));
+                                ArrayList<String> acc = (ArrayList<String>) document.get("course_coments");
+                                getCourseObjectComents(acc);
+                            }
+                        }
+
+                    }
+
+                });
+    }
+
+    void getCourseObjectComents(ArrayList<String> uc){
+        DatabaseAdapter.db.collection("Comment")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            ArrayList<ComentCard> retrieved_ac = new ArrayList<ComentCard>() ;
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d("llega",document.getId()+"  ->  "+ uc);
+                                if(uc.contains(document.getId())){
+                                    Log.d(" crv comments", document.getId() + " => " + document.getData());
+                                    retrieved_ac.add(new  ComentCard(document.getString("coment_content"), document.getString("coment_name"), document.getDouble("coment_rating"),
+                                            document.getTimestamp("timestamp"), document.getString("coment_id"), document.getDouble("coment_nota")));
+                                }}
+                            listener_4.setComentsOnCourse(retrieved_ac);
 
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
