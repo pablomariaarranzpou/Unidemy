@@ -1,7 +1,8 @@
 package com.example.unidemy.ui;
 
 import android.os.Bundle;
-import android.widget.EditText;
+
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,7 +14,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class UserInfoActivity extends AppCompatActivity {
 
-    private EditText user_name, user_email;
+    private TextView  user_email;
     private FirebaseAuth mAuth;
     private TextInputLayout layout_firstname, layout_email;
     private FirebaseFirestore firestore;

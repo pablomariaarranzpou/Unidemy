@@ -10,7 +10,9 @@
         android:label="Unidemy"
         android:roundIcon="@drawable/unidemy_logo_icon_v2"
         android:supportsRtl="true"
+
         android:theme="@style/Theme.Unidemy" >
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="YOUR_API_KEY" />

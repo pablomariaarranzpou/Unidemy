@@ -109,7 +109,6 @@ public class RecyclerViewActivity extends AppCompatActivity implements CardCours
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.settings) {
             startActivity(new Intent(RecyclerViewActivity.this, MenuLateral.class));
-            finish();
             return true;
         }
         return super.onOptionsItemSelected(item);
