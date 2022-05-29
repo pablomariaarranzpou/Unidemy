@@ -59,6 +59,7 @@ public class ViewCourse extends AppCompatActivity implements CardVideoAdapter.On
     private RecyclerView mmRecyclerView;
     private ArrayList<String> videos;
     private String id, portada_txt;
+    private TextView txt_titulodocumentos;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +69,7 @@ public class ViewCourse extends AppCompatActivity implements CardVideoAdapter.On
         parentContext = getBaseContext();
         firestore = FirebaseFirestore.getInstance();
         userId = mAuth.getCurrentUser().getUid();
+
         setContentView(R.layout.activity_view_course);
         mmRecyclerView = (RecyclerView) findViewById(R.id.recyclerview_videos);
         mmRecyclerView.setLayoutManager(new LinearLayoutManager(ViewCourse.this,
@@ -80,6 +82,7 @@ public class ViewCourse extends AppCompatActivity implements CardVideoAdapter.On
         ind_btn_pagar = (Button) findViewById(R.id.ind_btn_pagar);
         ind_btn_opinar = (Button) findViewById((R.id.ind_btn_opinar));
         play_button = (ImageView) findViewById(R.id.course_image);
+        txt_titulodocumentos = findViewById(R.id.textView15);
 
 
 

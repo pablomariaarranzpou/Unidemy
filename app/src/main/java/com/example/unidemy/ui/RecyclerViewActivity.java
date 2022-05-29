@@ -63,12 +63,9 @@ public class RecyclerViewActivity extends AppCompatActivity implements CardCours
         getSupportActionBar().setLogo(R.drawable.banner_final);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
         navigationView = findViewById(R.id.btm_navigator);
-        // Define RecyclerView elements: 1) Layout Manager and 2) Adapter
         mRecyclerView = findViewById(R.id.recyclerview_cursos);
         mRecyclerView.setLayoutManager(new GridLayoutManager(this, 1));
         BottomNavigationView navView = (BottomNavigationView)findViewById(R.id.bottomNavigationView);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
         navView.setSelectedItemId(R.id.navigation_recyclerview);
         navView.setOnItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener(){
 

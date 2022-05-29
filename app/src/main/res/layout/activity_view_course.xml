@@ -18,7 +18,7 @@
 
         <ImageView
             android:id="@+id/course_image"
-            android:layout_width="434dp"
+            android:layout_width="match_parent"
             android:layout_height="195dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -35,13 +35,19 @@
 
         <TextView
             android:id="@+id/ind_course_rating"
-            android:layout_width="27dp"
-            android:layout_height="18dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="8dp"
+            android:layout_width="47dp"
+            android:layout_height="17dp"
+            android:layout_marginTop="27dp"
+            android:layout_marginEnd="45dp"
+            android:layout_marginBottom="10dp"
             android:text="4.7"
-            app:layout_constraintStart_toEndOf="@+id/imageView10"
-            app:layout_constraintTop_toBottomOf="@+id/ind_owner_txt" />
+            app:drawableRightCompat="@drawable/ic_baseline_star_rate_24"
+            app:layout_constraintBottom_toTopOf="@+id/textView2"
+            app:layout_constraintEnd_toStartOf="@+id/ind_btn_pagar"
+            app:layout_constraintHorizontal_bias="0.171"
+            app:layout_constraintStart_toEndOf="@+id/ind_course_views"
+            app:layout_constraintTop_toTopOf="@+id/ind_owner_txt"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/ind_owner_txt"
@@ -54,45 +60,33 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ind_course_title" />
 
-        <ImageView
-            android:id="@+id/imageView7"
-            android:layout_width="60dp"
-            android:layout_height="18dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_weight="1"
-            android:scaleX="1"
-            android:scaleY="1"
-            app:layout_constraintStart_toEndOf="@+id/imageView10"
-            app:layout_constraintTop_toBottomOf="@+id/ind_owner_txt"
-            app:srcCompat="@android:drawable/btn_star_big_on" />
 
         <TextView
             android:id="@+id/ind_course_views"
-            android:layout_width="45dp"
+            android:layout_width="59dp"
             android:layout_height="18dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="6dp"
+            android:layout_marginBottom="10dp"
             android:layout_weight="1"
             android:text="9999"
-            app:layout_constraintEnd_toStartOf="@+id/imageView10"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:drawableRightCompat="@drawable/ic_baseline_remove_red_eye_24"
+            app:layout_constraintBottom_toTopOf="@+id/textView2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView7"
+            app:layout_constraintVertical_bias="0.0"
             tools:ignore="DuplicateIds" />
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="84dp"
             android:layout_height="16dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="136dp"
+            android:layout_marginTop="36dp"
             android:text="Descripción:"
-            app:layout_constraintEnd_toStartOf="@+id/ind_btn_pagar"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.009"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView10" />
+            app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
         <TextView
             android:id="@+id/ind_course_description"
@@ -105,7 +99,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView2"
-            app:layout_constraintVertical_bias="0.8" />
+            app:layout_constraintVertical_bias="0.974" />
 
         <Button
             android:id="@+id/ind_btn_opinar"
@@ -167,15 +161,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ind_course_title" />
 
-        <ImageView
-            android:id="@+id/imageView10"
-            android:layout_width="22dp"
-            android:layout_height="19dp"
-            android:layout_marginStart="34dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ind_owner_txt"
-            app:srcCompat="@drawable/ic_baseline_remove_red_eye_24" />
+
 
         <TextView
             android:id="@+id/textView8"
@@ -189,18 +175,38 @@
             app:layout_constraintHorizontal_bias="0.073"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerview_videos"
-            android:layout_width="match_parent"
-            android:scrollbars="horizontal"
-            android:layout_height="120dp"
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="354dp"
+            android:layout_height="0dp"
             android:layout_marginTop="2dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="Todos los documentos"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView8"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toBottomOf="@+id/recyclerview_videos" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview_videos"
+            android:layout_width="365dp"
+            android:layout_height="96dp"
+            android:scrollbars="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.25"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview_documentos"
+            android:layout_width="372dp"
+            android:layout_height="48dp"
+            android:scrollbars="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"></androidx.recyclerview.widget.RecyclerView>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
