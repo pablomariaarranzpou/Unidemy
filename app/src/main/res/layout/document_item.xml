@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/video_layout"
     android:layout_width="180dp"
-    android:layout_height="100dp"
+    android:layout_height="50dp"
     android:layout_margin="8dp"
     android:gravity="center_vertical"
     android:orientation="horizontal"
@@ -13,7 +13,7 @@
     <ImageButton
         android:id="@+id/play_button_document"
         android:layout_width="wrap_content"
-        android:layout_height="54dp"
+        android:layout_height="48dp"
         android:layout_gravity="center|center_horizontal|left"
         android:layout_marginStart="@dimen/margin_medium"
         android:layout_marginEnd="@dimen/margin_big"
@@ -62,5 +62,5 @@
             app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/ic_baseline_remove_red_eye_24"
             tools:ignore="MissingConstraints" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/video_layout"
     android:layout_width="180dp"
-    android:layout_height="100dp"
+    android:layout_height="50dp"
     android:layout_margin="8dp"
     android:gravity="center_vertical"
     android:orientation="horizontal"
@@ -19,7 +19,8 @@
         android:layout_marginEnd="@dimen/margin_big"
         android:src="@android:drawable/ic_media_play"
         app:tint="#FF9800" />/
-        tools:ignore="SpeakableTextPresentCheck" />
+    tools:ignore="SpeakableTextPresentCheck" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="93dp"
         android:layout_height="wrap_content">
@@ -49,7 +50,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/video_title"
-            app:layout_constraintVertical_bias="0.513"
+            app:layout_constraintVertical_bias="0.0"
             tools:ignore="MissingConstraints" />
 
         <ImageView
@@ -58,10 +59,10 @@
             android:layout_height="18dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.493"
+            app:layout_constraintHorizontal_bias="0.63"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/video_title"
-            app:layout_constraintVertical_bias="1.0"
+            app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/ic_baseline_remove_red_eye_24"
             tools:ignore="MissingConstraints" />
     </androidx.constraintlayout.widget.ConstraintLayout>
