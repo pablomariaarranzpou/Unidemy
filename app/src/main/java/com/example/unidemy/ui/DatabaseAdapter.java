@@ -31,6 +31,7 @@ public class DatabaseAdapter extends Activity {
     public static usInterface listener_2;
     public static vrInterface listener_3;
     public static ccInterface listener_4;
+    public static dcInterface listener_5;
     public static DatabaseAdapter databaseAdapter;
 
     public DatabaseAdapter(vmInterface listener){
@@ -60,6 +61,13 @@ public class DatabaseAdapter extends Activity {
         initFirebase();
     }
 
+    public DatabaseAdapter(dcInterface listener){
+        this.listener_5 = listener;
+        databaseAdapter = this;
+        FirebaseFirestore.setLoggingEnabled(true);
+        initFirebase();
+    }
+
 
     public interface vmInterface{
         void setCollection(ArrayList<CursoCard> ac);
@@ -77,6 +85,10 @@ public class DatabaseAdapter extends Activity {
 
     public interface ccInterface{
         void setComentsOnCourse(ArrayList<ComentCard> cc);
+    }
+
+    public interface dcInterface{
+        void setDocumentsOnCourse(ArrayList<DocumentCard> dc);
     }
 
 
@@ -120,7 +132,7 @@ public class DatabaseAdapter extends Activity {
                             ArrayList<CursoCard> retrieved_ac = new ArrayList<CursoCard>() ;
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Log.d(TAG, document.getId() + " => " + document.getData());
-                                retrieved_ac.add(new CursoCard( document.getString("course_title"), document.getString("course_description"), document.getString("owner"),  document.getString("course_views"), document.getString("course_rating"), document.getId(), (ArrayList<String>) document.get("course_videos"), document.getString("course_portada")));
+                                retrieved_ac.add(new CursoCard( document.getString("course_title"), document.getString("course_description"), document.getString("owner"),  document.getString("course_views"), document.getString("course_rating"), document.getId(), (ArrayList<String>) document.get("course_videos"), (ArrayList<String>) document.get("course_documents"), document.getString("course_portada")));
                             }
                             listener.setCollection(retrieved_ac);
 
@@ -153,6 +165,51 @@ public class DatabaseAdapter extends Activity {
                 });
     }
 
+    void getCourseDocuments(String CourseID){
+
+        DatabaseAdapter.db.collection("Curso").document(CourseID).get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+
+                        if (task.isSuccessful()) {
+                            DocumentSnapshot document = task.getResult();
+                            if (document.exists()) {
+                                Log.d("Docs del curso", document.getId() + " => " + document.get("course_documents"));
+                                ArrayList<String> acc = (ArrayList<String>) document.get("course_documents");
+
+                                if(acc != null){
+                                    getCourseObjectDocuments(acc);
+                                }
+                            }
+                        }
+
+                    }
+
+                });
+    }
+
+    void getCourseObjectDocuments(ArrayList<String> dc){
+        DatabaseAdapter.db.collection("Documento")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            ArrayList<DocumentCard> retrieved_dc = new ArrayList<DocumentCard>();
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d("Documento_Codes", document.getId() + "  ->  " + dc);
+                                if (!dc.isEmpty() && dc.contains(document.getId())) {
+                                    Log.d("RV poner_docs", document.getId() + " => " + document.getData());
+                                    retrieved_dc.add(new DocumentCard(document.getString("document_title"), document.getString("document_views"), document.getString("document_url")));
+                                }
+                            }
+                            listener_5.setDocumentsOnCourse(retrieved_dc);
+                        }
+                        }
+                    });
+    }
+
     void getUserObjectVideos(ArrayList<String> vc){
         DatabaseAdapter.db.collection("Video")
                 .get()
@@ -162,8 +219,6 @@ public class DatabaseAdapter extends Activity {
                         if (task.isSuccessful()) {
                             ArrayList<VideoCard> retrieved_uc = new ArrayList<VideoCard>() ;
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d("VIDEOS_Codes",document.getId()+"  ->  "+ vc);
-                                Log.d("Prueba", "|"+document.getId()+"|  in  " + "|" + vc.get(0) + "|" + " = " + vc.contains(document.getId()));
                                 if(vc.contains(document.getId())){
                                     Log.d("RV VIDEO_DATA", document.getId() + " => " + document.getData());
                                     retrieved_uc.add(new VideoCard(document.getString("video_title"), document.getString("video_views"), document.getString("video_url")));
@@ -189,7 +244,9 @@ public class DatabaseAdapter extends Activity {
                             if (document.exists()) {
                                 Log.d(TAG, document.getId() + " => " + document.get("userCourses"));
                                 ArrayList<String> acc = (ArrayList<String>) document.get("userCourses");
-                                getUserObjectCourses(acc);
+                                if(acc != null) {
+                                    getUserObjectCourses(acc);
+                                }
                             }
                         }
 
@@ -213,7 +270,7 @@ public class DatabaseAdapter extends Activity {
                                 Log.d("llega",document.getId()+"  ->  "+ uc);
                                 if(uc.contains(document.getId())){
                                     Log.d(" c a rv usuario", document.getId() + " => " + document.getData());
-                                    retrieved_ac.add(new CursoCard( document.getString("course_title"), document.getString("course_description"), document.getString("owner"),  document.getString("course_views"), document.getString("course_rating"), document.getString("course_id"), (ArrayList<String>) document.get("course_videos"), document.getString("course_portada")));
+                                    retrieved_ac.add(new CursoCard( document.getString("course_title"), document.getString("course_description"), document.getString("owner"),  document.getString("course_views"), document.getString("course_rating"), document.getString("course_id"), (ArrayList<String>) document.get("course_videos"), (ArrayList<String>) document.get("course_documents"), document.getString("course_portada")));
                             }}
                             listener_2.setUserCourses(retrieved_ac);
 
@@ -268,6 +325,7 @@ public class DatabaseAdapter extends Activity {
                     }
                 });
     }
+
 
 
 

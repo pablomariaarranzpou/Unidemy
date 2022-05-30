@@ -94,27 +94,24 @@
             android:layout_height="58dp"
             android:layout_marginTop="16dp"
             android:text="TEXTO TEXTO TEXTO TEXTO TEXTO TEXTOTEXTO TEXTO TEXTO TEXTO TEXTO TEXTOTEXTO TEXTO TEXTO TEXTO TEXTO TEXTOTEXTO TEXTO TEXTO TEXTO TEXTO TEXTO"
-            app:layout_constraintBottom_toTopOf="@+id/ind_btn_opinar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2"
-            app:layout_constraintVertical_bias="0.974" />
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
         <Button
             android:id="@+id/ind_btn_opinar"
             android:layout_width="144dp"
             android:layout_height="37dp"
-            android:layout_marginBottom="4dp"
             android:layout_weight="1"
+            android:backgroundTint="#FF9800"
             android:text="Opiniones"
             app:iconTint="#FF9800"
-            android:backgroundTint="#FF9800"
-            app:layout_constraintBottom_toTopOf="@+id/textView8"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.011"
             app:layout_constraintStart_toStartOf="parent"
-            app:rippleColor="#FF9800"  />
+            app:layout_constraintTop_toBottomOf="@+id/ind_course_description"
+            app:rippleColor="#FF9800" />
 
 
         <TextView
@@ -162,18 +159,16 @@
             app:layout_constraintTop_toBottomOf="@+id/ind_course_title" />
 
 
-
         <TextView
             android:id="@+id/textView8"
             android:layout_width="354dp"
             android:layout_height="0dp"
-            android:layout_marginBottom="172dp"
             android:text="Todos Los Videos"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.073"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ind_btn_opinar" />
 
 
         <TextView
@@ -190,8 +185,8 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview_videos"
-            android:layout_width="365dp"
-            android:layout_height="96dp"
+            android:layout_width="375dp"
+            android:layout_height="90dp"
             android:scrollbars="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.25"
@@ -200,13 +195,15 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview_documentos"
-            android:layout_width="372dp"
-            android:layout_height="48dp"
+            android:layout_width="376dp"
+            android:layout_height="67dp"
+            android:layout_marginBottom="4dp"
             android:scrollbars="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"></androidx.recyclerview.widget.RecyclerView>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView15"></androidx.recyclerview.widget.RecyclerView>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

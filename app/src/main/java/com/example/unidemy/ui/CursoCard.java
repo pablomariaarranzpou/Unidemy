@@ -27,6 +27,7 @@ public class CursoCard implements Parcelable {
     private final String course_id;
     private final String course_porta;
     private ArrayList<String> course_videos;
+    private ArrayList<String> course_documents;
 
 
     //private final AppDatabase db;
@@ -34,11 +35,12 @@ public class CursoCard implements Parcelable {
 
     public CursoCard(String course_title, String course_description,
                      String course_owner, String course_views, String course_rating,
-                     String course_id, ArrayList<String> course_videos, String course_porta) {
+                     String course_id, ArrayList<String> course_videos, ArrayList<String> course_documents,  String course_porta) {
 
         this.course_title = course_title;
         this.course_views = course_views;
         this.course_rating = course_rating;
+        this.course_documents = course_documents;
         this.course_description = course_description;
         this.course_owner = course_owner;
         this.course_id = course_id;
@@ -55,6 +57,7 @@ public class CursoCard implements Parcelable {
         course_owner = in.readString();
         course_id = in.readString();
         course_videos = in.createStringArrayList();
+        course_documents = in.createStringArrayList();
         course_porta = in.readString();
     }
 
@@ -94,6 +97,8 @@ public class CursoCard implements Parcelable {
 
     public ArrayList<String> getCourse_videos(){ return course_videos; }
 
+    public ArrayList<String> getCourse_documents(){return course_documents;}
+
 
 
     @Override
@@ -110,6 +115,7 @@ public class CursoCard implements Parcelable {
         parcel.writeString(course_owner);
         parcel.writeString(course_id);
         parcel.writeList(course_videos);
+        parcel.writeList(course_documents);
         parcel.writeString(course_porta);
     }
 }

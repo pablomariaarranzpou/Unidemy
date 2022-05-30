@@ -25,7 +25,7 @@ public class VideoRecyclerView_ViewModel extends AndroidViewModel implements Dat
         }
 
         //public getter. Not mutable , read-only
-        public LiveData<ArrayList<VideoCard>> getCursoCards(){
+        public LiveData<ArrayList<VideoCard>> getVideoCards(){
             return mVideoCards;
         }
 

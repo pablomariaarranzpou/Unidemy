@@ -70,6 +70,7 @@
         <activity android:name=".ui.UserInfoActivity" />
         <activity android:name=".ui.Privacity" />
         <activity android:name=".ui.RecyclerViewComents" />
+        <activity android:name=".ui.ViewDocument" />
 
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
 

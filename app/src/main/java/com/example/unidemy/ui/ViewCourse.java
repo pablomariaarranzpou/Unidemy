@@ -43,7 +43,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class ViewCourse extends AppCompatActivity implements CardVideoAdapter.OnVideoListener {
+public class ViewCourse extends AppCompatActivity implements CardVideoAdapter.OnVideoListener, DocumentCardAdapter.OnDocumentListener {
 
 
     private TextView ind_course_views_txt, ind_course_title_txt, ind_owner_txt, ind_course_rating_txt, ind_course_description;
@@ -56,8 +56,10 @@ public class ViewCourse extends AppCompatActivity implements CardVideoAdapter.On
     private String userId;
     private FirebaseFirestore firestore;
     private VideoRecyclerView_ViewModel viewmodelm;
+    private DocumentRecyclerView_ViewModel cviewmodelm;
     private RecyclerView mmRecyclerView;
-    private ArrayList<String> videos;
+    private RecyclerView dcRecyclerView;
+    private ArrayList<String> videos, documents;
     private String id, portada_txt;
     private TextView txt_titulodocumentos;
 
@@ -74,6 +76,11 @@ public class ViewCourse extends AppCompatActivity implements CardVideoAdapter.On
         mmRecyclerView = (RecyclerView) findViewById(R.id.recyclerview_videos);
         mmRecyclerView.setLayoutManager(new LinearLayoutManager(ViewCourse.this,
                 LinearLayoutManager.HORIZONTAL, false));
+
+        dcRecyclerView = (RecyclerView) findViewById(R.id.recyclerview_documentos);
+        mmRecyclerView.setLayoutManager(new LinearLayoutManager(ViewCourse.this,
+                LinearLayoutManager.HORIZONTAL, false));
+
         ind_course_views_txt = (TextView) findViewById(R.id.ind_course_views);
         ind_course_title_txt = (TextView) findViewById(R.id.ind_course_title);
         ind_owner_txt = (TextView) findViewById(R.id.ind_owner_txt);
@@ -90,7 +97,6 @@ public class ViewCourse extends AppCompatActivity implements CardVideoAdapter.On
 
 
             cc = (CursoCard) getIntent().getParcelableExtra("selectedCourse");
-            Log.d("HAY LINK?", cc.getCourse_porta()+"?");
             ind_course_views_txt.setText(cc.getCourse_views());
             ind_course_title_txt.setText(cc.getCourse_title());
             ind_owner_txt.setText(cc.getOwner());
@@ -114,6 +120,7 @@ public class ViewCourse extends AppCompatActivity implements CardVideoAdapter.On
             ind_course_rating_txt.setText(cc.getCourse_rating());
             ind_course_description.setText(cc.getCourse_description());
             videos = cc.getCourse_videos();
+            documents = cc.getCourse_documents();
             id = cc.getCourse_id();
             if(cc.getCourse_porta() != null){
                 Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/unidemy-a5397.appspot.com/o/images%2Fportada_curso_1.jpg?alt=media&token=2e0feea9-26c2-4dc5-a7ac-0990a3d5068e").into(play_button);
@@ -186,14 +193,26 @@ public class ViewCourse extends AppCompatActivity implements CardVideoAdapter.On
                 }
             };
 
+        cviewmodelm = new ViewModelProvider(this, new DocumentRecyclerView_ViewModelFactory(this.getApplication(), this.getCourseId())).get(DocumentRecyclerView_ViewModel.class);
+        DocumentCardAdapter dcnewAdapter = new DocumentCardAdapter(new ArrayList<DocumentCard>(), parentContext, (DocumentCardAdapter.OnDocumentListener) mActivity);
+        final Observer<ArrayList<DocumentCard>> observer_two = new Observer<ArrayList<DocumentCard>>() {
+            @Override
+            public void onChanged(ArrayList<DocumentCard> dc) {
+                DocumentCardAdapter dcnewAdapter = new DocumentCardAdapter( dc, parentContext, (DocumentCardAdapter.OnDocumentListener) mActivity);
+                dcRecyclerView.swapAdapter(dcnewAdapter, false);
+                dcnewAdapter.notifyDataSetChanged();
+            }
+        };
+
             final Observer<String> observerToast = new Observer<String>() {
                 @Override
                 public void onChanged(String t) {
                     //Toast.makeText(parentContext, t, Toast.LENGTH_SHORT).show();
                 }
             };
-
-            viewmodelm.getCursoCards().observe(this, observer);
+            ;
+            viewmodelm.getVideoCards().observe(this, observer);
+            cviewmodelm.getDocumentCards().observe(this, observer_two);
             viewmodelm.getToast().observe(this, observerToast);
 
         }
@@ -211,8 +230,14 @@ public class ViewCourse extends AppCompatActivity implements CardVideoAdapter.On
     }
 
 
+    @Override
+    public void onDocumentClick(int position) {
 
+        Intent intent = new Intent(this, ViewDocument.class);
+        intent.putExtra("selectedDocument", cviewmodelm.getDocumentCard(position));
+        startActivity(intent);
 
+    }
 }
 
 
