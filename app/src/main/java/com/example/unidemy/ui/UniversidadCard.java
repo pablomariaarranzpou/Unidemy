@@ -4,14 +4,19 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class UniversidadCard implements Parcelable {
-    private String nombre;
 
-    public UniversidadCard(String nombre) {
+    private String nombre, uniID;
+
+
+    public UniversidadCard(String nombre, String uniID) {
         this.nombre = nombre;
+        this.uniID = uniID;
     }
 
     protected UniversidadCard(Parcel in) {
+
         nombre = in.readString();
+        uniID = in.readString();
     }
 
     public static final Creator<UniversidadCard> CREATOR = new Creator<UniversidadCard>() {
@@ -27,7 +32,12 @@ public class UniversidadCard implements Parcelable {
     };
 
     public String getNombre() {
+
         return nombre;
+    }
+
+    public String getUniID(){
+        return this.uniID;
     }
 
     @Override
@@ -37,6 +47,8 @@ public class UniversidadCard implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
+
         parcel.writeString(nombre);
+        parcel.writeString(uniID);
     }
 }

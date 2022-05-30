@@ -74,6 +74,7 @@
         <activity android:name=".ui.ActivityAddComent" />
         <activity android:name=".ui.ActivityHelp" />
         <activity android:name=".ui.StartTestUniversidad" />
+        <activity android:name=".ui.StartTestFacultad" />
 
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
 

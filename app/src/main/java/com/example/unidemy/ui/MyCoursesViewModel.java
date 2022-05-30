@@ -30,7 +30,6 @@ public class MyCoursesViewModel extends AndroidViewModel implements DatabaseAdap
         mToast = new MutableLiveData<>();
         mauth = FirebaseAuth.getInstance();
         DatabaseAdapter da = new DatabaseAdapter(this);
-
         da.getUserCourses(mauth.getCurrentUser().getUid());
 
 

@@ -10,6 +10,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -33,6 +34,7 @@ public class DatabaseAdapter extends Activity {
     public static ccInterface listener_4;
     public static dcInterface listener_5;
     public static uniInterface listener_6;
+    public static facInterface listener_7;
     public static DatabaseAdapter databaseAdapter;
 
     public DatabaseAdapter(vmInterface listener){
@@ -75,6 +77,13 @@ public class DatabaseAdapter extends Activity {
         initFirebase();
     }
 
+    public DatabaseAdapter(facInterface listener){
+        this.listener_7 = listener;
+        databaseAdapter = this;
+        FirebaseFirestore.setLoggingEnabled(true);
+        initFirebase();
+    }
+
 
 
     public interface vmInterface{
@@ -101,6 +110,10 @@ public class DatabaseAdapter extends Activity {
 
     public interface dcInterface{
         void setDocumentsOnCourse(ArrayList<DocumentCard> dc);
+    }
+
+    public interface facInterface{
+        void setFacultades(ArrayList<FacultadCard> fc);
     }
 
 
@@ -165,7 +178,7 @@ public class DatabaseAdapter extends Activity {
                             ArrayList<UniversidadCard> retrieved_ac = new ArrayList<UniversidadCard>() ;
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Log.d(TAG, document.getId() + " => " + document.getData());
-                                retrieved_ac.add(new UniversidadCard( document.getString("uni_name")));
+                                retrieved_ac.add(new UniversidadCard( document.getString("uni_name"), document.getId()));
                             }
                             listener_6.setUniversidades(retrieved_ac);
 
@@ -287,6 +300,53 @@ public class DatabaseAdapter extends Activity {
 
                 });
 
+
+    }
+
+    void getUserFaculty(){
+
+        DatabaseAdapter.db.collection("Users").document(mAuth.getCurrentUser().getUid()).get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.isSuccessful()) {
+                            DocumentSnapshot document = task.getResult();
+                            if (document.exists()) {
+                                Log.d(TAG, document.getId() + " => " + document.get("user_university"));
+                                String acc = (String) document.get("user_university");
+                                if(acc != null) {
+                                    getUniversityFaculties(acc);
+                                }
+                            }
+                        }
+
+                    }
+
+                });
+
+
+    }
+
+
+    public void getUniversityFaculties(String uniID){
+        DatabaseAdapter.db.collection("Universidades").document(uniID).collection("Facultades")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            ArrayList<FacultadCard> retrieved_ac = new ArrayList<FacultadCard>() ;
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d(TAG, document.getId() + " => " + document.getData());
+                                retrieved_ac.add(new FacultadCard( document.getString("facu_name"), document.getId()));
+                            }
+                            listener_7.setFacultades(retrieved_ac);
+
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
 
     }
 
