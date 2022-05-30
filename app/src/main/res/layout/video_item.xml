@@ -18,8 +18,8 @@
         android:layout_marginStart="@dimen/margin_medium"
         android:layout_marginEnd="@dimen/margin_big"
         android:src="@android:drawable/ic_media_play"
+        app:tint="#FF9800" />/
         tools:ignore="SpeakableTextPresentCheck" />
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="93dp"
         android:layout_height="wrap_content">

@@ -78,7 +78,7 @@ public class ViewCourse extends AppCompatActivity implements CardVideoAdapter.On
                 LinearLayoutManager.HORIZONTAL, false));
 
         dcRecyclerView = (RecyclerView) findViewById(R.id.recyclerview_documentos);
-        mmRecyclerView.setLayoutManager(new LinearLayoutManager(ViewCourse.this,
+        dcRecyclerView.setLayoutManager(new LinearLayoutManager(ViewCourse.this,
                 LinearLayoutManager.HORIZONTAL, false));
 
         ind_course_views_txt = (TextView) findViewById(R.id.ind_course_views);
@@ -139,8 +139,8 @@ public class ViewCourse extends AppCompatActivity implements CardVideoAdapter.On
         play_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ViewCourse.this, ViewVideo.class);
-                intent.putExtra("selectedVideo", new VideoCard("TUTORIAL", "50", "https://firebasestorage.googleapis.com/v0/b/unidemy-a5397.appspot.com/o/videos%2FAT-cm_ZJWYEoBtI5KH30lAPvugNQ.mp4?alt=media&token=4f67229d-c2ec-44f2-8a1d-69e5f30b8c00"));
+                Intent intent = new Intent(ViewCourse.this, ViewDocument.class);
+                intent.putExtra("selectedDocument", new DocumentCard("TUTORIAL", "50", "https://www.matematicasonline.es/pdf/ejercicios/3_ESO/Ejercicios%20de%20Estadistica.pdf"));
                 startActivity(intent);
             }
         });
@@ -148,7 +148,7 @@ public class ViewCourse extends AppCompatActivity implements CardVideoAdapter.On
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ViewCourse.this, RecyclerViewComents.class);
-                intent.putExtra("course_id",id);
+                intent.putExtra("course_id", id);
                 startActivity(intent);
             }
         });

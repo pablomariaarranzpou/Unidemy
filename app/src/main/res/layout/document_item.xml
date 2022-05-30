@@ -12,8 +12,8 @@
 
     <ImageButton
         android:id="@+id/play_button_document"
-        android:layout_width="59dp"
-        android:layout_height="77dp"
+        android:layout_width="wrap_content"
+        android:layout_height="54dp"
         android:layout_gravity="center|center_horizontal|left"
         android:layout_marginStart="@dimen/margin_medium"
         android:layout_marginEnd="@dimen/margin_big"
@@ -27,10 +27,8 @@
 
         <TextView
             android:id="@+id/document_title"
-            android:layout_width="79dp"
+            android:layout_width="match_parent"
             android:layout_height="28dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="4dp"
             android:gravity="center_vertical"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             app:layout_constraintEnd_toEndOf="parent"

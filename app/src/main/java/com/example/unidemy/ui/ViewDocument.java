@@ -19,11 +19,12 @@ public class ViewDocument extends AppCompatActivity {
 
         webView = (WebView) findViewById(R.id.web_view);
         webView.getSettings().setJavaScriptEnabled(true);
+        webView.getSettings().setUseWideViewPort(true);
         String pdf = "http://www.adobe.com/devnet/acrobat/pdfs/pdf_open_parameters.pdf";
         webView.loadUrl("https://drive.google.com/viewerng/viewer?embedded=true&url=" + pdf);
 
         if (getIntent().hasExtra("selectedDocument")) {
-            dc = (DocumentCard) getIntent().getParcelableExtra("selectedVideo");
+            dc = (DocumentCard) getIntent().getParcelableExtra("selectedDocument");
             pdf = dc.getDocument_url();
             webView.loadUrl("https://drive.google.com/viewerng/viewer?embedded=true&url=" + pdf);
         }else{
