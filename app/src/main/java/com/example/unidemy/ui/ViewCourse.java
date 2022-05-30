@@ -238,6 +238,13 @@ public class ViewCourse extends AppCompatActivity implements CardVideoAdapter.On
         startActivity(intent);
 
     }
+
+    @Override
+    public void onBackPressed() {
+        Log.d("CDA", "onBackPressed Called");
+        finish();
+    }
+
 }
 
 
