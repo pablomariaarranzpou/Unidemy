@@ -22,7 +22,7 @@ public class FirstLogin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_firstlogin);
         btn_startTest = findViewById(R.id.btn_startTest);
-        btn_startTest.setOnClickListener(v -> startActivity(new Intent(FirstLogin.this, RecyclerViewActivity.class )));
+        btn_startTest.setOnClickListener(v -> startActivity(new Intent(FirstLogin.this, StartTestUniversidad.class )));
     }
 
 }

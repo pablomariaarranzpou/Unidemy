@@ -32,6 +32,7 @@ public class DatabaseAdapter extends Activity {
     public static vrInterface listener_3;
     public static ccInterface listener_4;
     public static dcInterface listener_5;
+    public static uniInterface listener_6;
     public static DatabaseAdapter databaseAdapter;
 
     public DatabaseAdapter(vmInterface listener){
@@ -67,11 +68,22 @@ public class DatabaseAdapter extends Activity {
         FirebaseFirestore.setLoggingEnabled(true);
         initFirebase();
     }
+    public DatabaseAdapter(uniInterface listener){
+        this.listener_6 = listener;
+        databaseAdapter = this;
+        FirebaseFirestore.setLoggingEnabled(true);
+        initFirebase();
+    }
+
 
 
     public interface vmInterface{
         void setCollection(ArrayList<CursoCard> ac);
         void setToast(String s);
+    }
+
+    public interface uniInterface{
+        void setUniversidades(ArrayList<UniversidadCard> ac);
     }
 
     public interface usInterface{
@@ -135,6 +147,27 @@ public class DatabaseAdapter extends Activity {
                                 retrieved_ac.add(new CursoCard( document.getString("course_title"), document.getString("course_description"), document.getString("owner"),  document.getString("course_views"), document.getString("course_rating"), document.getId(), (ArrayList<String>) document.get("course_videos"), (ArrayList<String>) document.get("course_documents"), document.getString("course_portada")));
                             }
                             listener.setCollection(retrieved_ac);
+
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+    }
+    public void getCollectionUniversidades(){
+        Log.d(TAG,"Ver Universidades");
+        DatabaseAdapter.db.collection("Universidades")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            ArrayList<UniversidadCard> retrieved_ac = new ArrayList<UniversidadCard>() ;
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d(TAG, document.getId() + " => " + document.getData());
+                                retrieved_ac.add(new UniversidadCard( document.getString("uni_name")));
+                            }
+                            listener_6.setUniversidades(retrieved_ac);
 
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());

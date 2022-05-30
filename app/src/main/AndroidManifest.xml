@@ -73,6 +73,7 @@
         <activity android:name=".ui.ViewDocument" />
         <activity android:name=".ui.ActivityAddComent" />
         <activity android:name=".ui.ActivityHelp" />
+        <activity android:name=".ui.StartTestUniversidad" />
 
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
 
