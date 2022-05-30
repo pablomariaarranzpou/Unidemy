@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="64dp"
-        android:text="Button"
+        android:text="AÑADIR"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -19,26 +19,26 @@
         android:id="@+id/editTextTextMultiLine"
         android:layout_width="241dp"
         android:layout_height="117dp"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="36dp"
+        android:layout_marginBottom="50dp"
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
         android:text="Escriba aquí su experiencia con el curso"
         android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@+id/editTextNumberDecimal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ratingBar_curso"
-        app:layout_constraintVertical_bias="0.046" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <RatingBar
-        android:id="@+id/ratingBar_curso"
+        android:id="@+id/ratingbar_curso"
         android:layout_width="241dp"
         android:layout_height="53dp"
-        android:layout_marginTop="124dp"
         android:layout_marginEnd="36dp"
+        android:layout_marginBottom="50dp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextTextMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/textView10" />
 
     <EditText
         android:id="@+id/editTextNumberDecimal"
@@ -87,7 +87,10 @@
         android:id="@+id/textView13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="155dp"
-        tools:layout_editor_absoluteY="52dp" />
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="32dp"
+        android:text="Añadir opinion del curso"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

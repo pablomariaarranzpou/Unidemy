@@ -1,7 +1,9 @@
 package com.example.unidemy.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -40,6 +42,14 @@ public class RecyclerViewComents extends AppCompatActivity {
             this.selected_course_id = getIntent().getExtras().getString("course_id");
         }
         mRecyclerView.setLayoutManager(new GridLayoutManager(this, 1));
+        btn_add_comment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(RecyclerViewComents.this, ActivityAddComent.class);
+                intent.putExtra("course", selected_course_id);
+                startActivity(intent);
+            }
+        });
         setLiveDataObservers();
 
     }

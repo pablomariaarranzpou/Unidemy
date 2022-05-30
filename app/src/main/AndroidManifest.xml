@@ -71,6 +71,7 @@
         <activity android:name=".ui.Privacity" />
         <activity android:name=".ui.RecyclerViewComents" />
         <activity android:name=".ui.ViewDocument" />
+        <activity android:name=".ui.ActivityAddComent" />
 
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
 
