@@ -7,7 +7,6 @@
     android:layout_height="match_parent"
     android:layout_margin="8dp"
     tools:context=".ui.ViewCourse"
-    android:gravity="center_vertical"
     android:orientation="horizontal">
 
 
@@ -116,21 +115,18 @@
 
         <TextView
             android:id="@+id/textView9"
-            android:layout_width="146dp"
-            android:layout_height="21dp"
-            android:layout_marginBottom="342dp"
+            android:layout_width="143dp"
+            android:layout_height="19dp"
             android:text="Curso Pagado"
             android:textAlignment="center"
             android:textColor="#4CAF50"
             android:textStyle="bold"
             app:drawableLeftCompat="@drawable/ic_baseline_check_circle_24"
             app:drawableTint="#4CAF50"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.923"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.787" />
+            app:layout_constraintBottom_toBottomOf="@+id/ind_btn_pagar"
+            app:layout_constraintEnd_toEndOf="@+id/ind_btn_pagar"
+            app:layout_constraintStart_toStartOf="@+id/ind_btn_pagar"
+            app:layout_constraintTop_toTopOf="@+id/ind_btn_pagar" />
 
         <Button
             android:id="@+id/ind_btn_pagar"
