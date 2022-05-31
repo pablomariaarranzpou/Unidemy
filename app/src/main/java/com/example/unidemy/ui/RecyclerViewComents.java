@@ -48,6 +48,7 @@ public class RecyclerViewComents extends AppCompatActivity {
                 Intent intent = new Intent(RecyclerViewComents.this, ActivityAddComent.class);
                 intent.putExtra("course", selected_course_id);
                 startActivity(intent);
+                finish();
             }
         });
         setLiveDataObservers();

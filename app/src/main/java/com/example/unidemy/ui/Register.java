@@ -21,6 +21,8 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -89,7 +91,6 @@ public class Register extends AppCompatActivity {
                             mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener( tarea ->{
                                 if(tarea.isSuccessful())
                                 {
-
                                     SaveSharedPreference.setUserName(Register.this, email);
                                     userID = mAuth.getCurrentUser().getUid();
                                     DocumentReference documentReference = firstore.collection("Users").document(userID);
@@ -100,6 +101,17 @@ public class Register extends AppCompatActivity {
                                             >() {
                                                 @Override
                                                 public void onSuccess(Void unused) {
+                                                    UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                                            .setDisplayName(name.getText().toString().trim())
+                                                            .build();
+                                                    FirebaseUser user = mAuth.getInstance().getCurrentUser();
+                                                    user.updateProfile(profileUpdates)
+                                                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                                @Override
+                                                                public void onComplete(@NonNull Task<Void> task) {
+                                                                 //
+                                                                }
+                                                            });
                                                     startActivity(new Intent(Register.this, FirstLogin.class));
                                                 }
                                             });
