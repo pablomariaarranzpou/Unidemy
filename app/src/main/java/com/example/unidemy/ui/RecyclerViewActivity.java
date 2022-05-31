@@ -76,10 +76,12 @@ public class RecyclerViewActivity extends AppCompatActivity implements CardCours
                     case R.id.navigation_searcher:
                         startActivity(new Intent(getApplicationContext(), Searcher.class));
                         overridePendingTransition(0,0);
+                        finish();
                         return true;
                     case R.id.navigation_mycourses:
                         startActivity(new Intent(getApplicationContext(), MyCourses.class));
                         overridePendingTransition(0,0);
+                        finish();
                         return true;
                     case R.id.navigation_recyclerview:
                         return true;

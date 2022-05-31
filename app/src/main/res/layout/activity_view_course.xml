@@ -15,6 +15,18 @@
         android:layout_height="match_parent">
 
 
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="354dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:text="Todos los documentos"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recyclerview_documentos" />
+
         <ImageView
             android:id="@+id/course_image"
             android:layout_width="match_parent"
@@ -30,7 +42,7 @@
             android:text="¡Aquí aparece el título del curso!"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             app:layout_constraintTop_toBottomOf="@+id/course_image"
-            tools:layout_editor_absoluteX="3dp" />
+            tools:layout_editor_absoluteX="2dp" />
 
         <TextView
             android:id="@+id/ind_course_rating"

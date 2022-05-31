@@ -98,9 +98,6 @@ public class CardCourseAdapter extends RecyclerView.Adapter<CardCourseHolder> {
         viewHolder.getCourse_views().setText(
                 localDataSet.get(position).getCourse_views());
 
-
-
-
     }
 
 
