@@ -11,7 +11,6 @@ import androidx.lifecycle.AndroidViewModel;
         import androidx.lifecycle.MutableLiveData;
 
         import com.google.firebase.auth.FirebaseAuth;
-        import com.google.firebase.firestore.DocumentReference;
         import com.google.firebase.firestore.FirebaseFirestore;
 
 
@@ -32,7 +31,7 @@ public class RecyclerView_ViewModel extends AndroidViewModel implements Database
         mAuth = FirebaseAuth.getInstance();
         DatabaseAdapter da = new DatabaseAdapter(this);
 
-        da.getUserGrades();
+        da.getUserGrade(mAuth.getCurrentUser().getUid());
     }
 
     //public getter. Not mutable , read-only

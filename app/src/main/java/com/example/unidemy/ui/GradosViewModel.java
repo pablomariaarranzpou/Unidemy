@@ -26,7 +26,7 @@ public class GradosViewModel extends AndroidViewModel implements DatabaseAdapter
         mAuth = FirebaseAuth.getInstance();
         DatabaseAdapter da = new DatabaseAdapter(this);
 
-        da.getUserGrades();
+        da.getUserGrades_Test();
     }
 
     public LiveData<ArrayList<GradoCard>> getGradoCards(){

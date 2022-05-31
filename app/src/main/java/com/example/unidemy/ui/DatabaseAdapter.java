@@ -360,7 +360,7 @@ public class DatabaseAdapter extends Activity {
 
     }
 
-    public void getUserGrades(){
+    public void getUserGrades_Test(){
 
         DatabaseAdapter.db.collection("Users").document(mAuth.getCurrentUser().getUid()).get()
                 .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
