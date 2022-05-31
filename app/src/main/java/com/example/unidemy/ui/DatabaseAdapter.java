@@ -165,8 +165,9 @@ public class DatabaseAdapter extends Activity {
                         if (task.isSuccessful()) {
                             DocumentSnapshot document = task.getResult();
                             if (document.exists()) {
-                                String acc = (String) document.getString("user_university");
+                                String acc = (String) document.getString("user_grade");
                                 if(acc != null) {
+                                    Log.d("USER UNI", acc);
                                     getCoursesUniversity(acc);
                                 }
                             }
@@ -177,7 +178,7 @@ public class DatabaseAdapter extends Activity {
                 });
     }
 
-    public void getCoursesUniversity(String uniID){
+    public void getCoursesUniversity(String gradeID){
         DatabaseAdapter.db.collection("Curso")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -186,9 +187,11 @@ public class DatabaseAdapter extends Activity {
                         if (task.isSuccessful()) {
                             ArrayList<CursoCard> retrieved_ac = new ArrayList<CursoCard>() ;
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                if(document.getString("course_grade") == uniID){
-                                    retrieved_ac.add(new CursoCard( document.getString("course_title"), document.getString("course_description"), document.getString("owner"),  document.getString("course_views"), document.getString("course_rating"), document.getString("course_id"), (ArrayList<String>) document.get("course_videos"), (ArrayList<String>) document.get("course_documents"), document.getString("course_portada")));
-                                }}
+                                Log.d("DOCU", document.getString("course_grade")+ " == "+ gradeID);
+                                if(document.getString("course_grade").equals(gradeID)) {
+                                    retrieved_ac.add(new CursoCard(document.getString("course_title"), document.getString("course_description"), document.getString("owner"), document.getString("course_views"), document.getString("course_rating"), document.getString("course_id"), (ArrayList<String>) document.get("course_videos"), (ArrayList<String>) document.get("course_documents"), document.getString("course_portada")));
+                                }
+                            }
                             listener.setCollection(retrieved_ac);
 
                         } else {
