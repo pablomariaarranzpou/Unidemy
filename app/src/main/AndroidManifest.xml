@@ -75,6 +75,7 @@
         <activity android:name=".ui.ActivityHelp" />
         <activity android:name=".ui.StartTestUniversidad" />
         <activity android:name=".ui.StartTestFacultad" />
+        <activity android:name=".ui.StartTestGrado" />
 
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
 

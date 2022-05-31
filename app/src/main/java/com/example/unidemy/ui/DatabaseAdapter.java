@@ -35,6 +35,7 @@ public class DatabaseAdapter extends Activity {
     public static dcInterface listener_5;
     public static uniInterface listener_6;
     public static facInterface listener_7;
+    public static ugInterface listener_8;
     public static DatabaseAdapter databaseAdapter;
 
     public DatabaseAdapter(vmInterface listener){
@@ -84,8 +85,17 @@ public class DatabaseAdapter extends Activity {
         initFirebase();
     }
 
+    public DatabaseAdapter(ugInterface listener){
+        this.listener_8 = listener;
+        databaseAdapter = this;
+        FirebaseFirestore.setLoggingEnabled(true);
+        initFirebase();
+    }
 
 
+    public interface ugInterface{
+        void setGradoCards(ArrayList<GradoCard> gc);
+    }
     public interface vmInterface{
         void setCollection(ArrayList<CursoCard> ac);
         void setToast(String s);
@@ -146,8 +156,28 @@ public class DatabaseAdapter extends Activity {
     }
 
 
-    public void getCollectionCursos(){
-        Log.d(TAG,"Ver cursos");
+    public void getUserGrade(String userID){
+
+        DatabaseAdapter.db.collection("Users").document(userID).get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.isSuccessful()) {
+                            DocumentSnapshot document = task.getResult();
+                            if (document.exists()) {
+                                String acc = (String) document.getString("user_university");
+                                if(acc != null) {
+                                    getCoursesUniversity(acc);
+                                }
+                            }
+                        }
+
+                    }
+
+                });
+    }
+
+    public void getCoursesUniversity(String uniID){
         DatabaseAdapter.db.collection("Curso")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -156,9 +186,9 @@ public class DatabaseAdapter extends Activity {
                         if (task.isSuccessful()) {
                             ArrayList<CursoCard> retrieved_ac = new ArrayList<CursoCard>() ;
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d(TAG, document.getId() + " => " + document.getData());
-                                retrieved_ac.add(new CursoCard( document.getString("course_title"), document.getString("course_description"), document.getString("owner"),  document.getString("course_views"), document.getString("course_rating"), document.getId(), (ArrayList<String>) document.get("course_videos"), (ArrayList<String>) document.get("course_documents"), document.getString("course_portada")));
-                            }
+                                if(document.getString("course_grade") == uniID){
+                                    retrieved_ac.add(new CursoCard( document.getString("course_title"), document.getString("course_description"), document.getString("owner"),  document.getString("course_views"), document.getString("course_rating"), document.getString("course_id"), (ArrayList<String>) document.get("course_videos"), (ArrayList<String>) document.get("course_documents"), document.getString("course_portada")));
+                                }}
                             listener.setCollection(retrieved_ac);
 
                         } else {
@@ -167,6 +197,9 @@ public class DatabaseAdapter extends Activity {
                     }
                 });
     }
+
+
+
     public void getCollectionUniversidades(){
         Log.d(TAG,"Ver Universidades");
         DatabaseAdapter.db.collection("Universidades")
@@ -322,6 +355,54 @@ public class DatabaseAdapter extends Activity {
 
                     }
 
+                });
+
+
+    }
+
+    public void getUserGrades(){
+
+        DatabaseAdapter.db.collection("Users").document(mAuth.getCurrentUser().getUid()).get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.isSuccessful()) {
+                            DocumentSnapshot document = task.getResult();
+                            if (document.exists()) {
+                                Log.d(TAG, document.getId() + " => " + document.get("user_university"));
+                                String acc = (String) document.get("user_university");
+                                String acc_f = (String) document.get("user_faculty");
+                                if(acc != null) {
+                                    getUserGradesFaculty(acc, acc_f);
+                                }
+                            }
+                        }
+
+                    }
+
+                });
+
+    }
+
+    public void getUserGradesFaculty(String uniId, String facultyID){
+        DatabaseAdapter.db.collection("Universidades").document(uniId).collection("Facultades")
+                .document(facultyID).collection("Grado")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            ArrayList<GradoCard> retrieved_ac = new ArrayList<GradoCard>() ;
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d(TAG, document.getId() + " => " + document.getData());
+                                retrieved_ac.add(new GradoCard( document.getString("grado_name"), document.getId()));
+                            }
+                            listener_8.setGradoCards(retrieved_ac);
+
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
                 });
 
 

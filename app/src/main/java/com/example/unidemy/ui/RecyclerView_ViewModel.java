@@ -10,12 +10,17 @@ import androidx.lifecycle.AndroidViewModel;
         import androidx.lifecycle.LiveData;
         import androidx.lifecycle.MutableLiveData;
 
+        import com.google.firebase.auth.FirebaseAuth;
+        import com.google.firebase.firestore.DocumentReference;
+        import com.google.firebase.firestore.FirebaseFirestore;
 
 
 public class RecyclerView_ViewModel extends AndroidViewModel implements DatabaseAdapter.vmInterface{
 
     private final MutableLiveData<ArrayList<CursoCard>> mCursoCards;
     private final MutableLiveData<String> mToast;
+    private FirebaseAuth mAuth;
+    FirebaseFirestore firstore;
 
 
     //Constructor
@@ -24,8 +29,10 @@ public class RecyclerView_ViewModel extends AndroidViewModel implements Database
 
         mCursoCards = new MutableLiveData<>();
         mToast = new MutableLiveData<>();
+        mAuth = FirebaseAuth.getInstance();
         DatabaseAdapter da = new DatabaseAdapter(this);
-        da.getCollectionCursos();
+
+        da.getUserGrades();
     }
 
     //public getter. Not mutable , read-only

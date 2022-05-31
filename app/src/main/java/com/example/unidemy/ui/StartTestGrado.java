@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -22,13 +21,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class StartTestFacultad extends AppCompatActivity implements FacultadesAdapter.OnFacultadListener{
-
+public class StartTestGrado extends AppCompatActivity implements GradosAdapter.OnGradoListener {
 
     FirebaseAuth mAuth;
     RecyclerView mRecyclerView;
     private AppCompatActivity mActivity;
-    private FacultadesViewModel viewmodelm;
+    private GradosViewModel viewmodelm;
     private Context parentContext;
     FirebaseFirestore firstore;
     String userID;
@@ -36,11 +34,11 @@ public class StartTestFacultad extends AppCompatActivity implements FacultadesAd
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_testuniversidad2);
-        mRecyclerView = findViewById(R.id.recyclerview_facultades);
+        setContentView(R.layout.activity_testuniversidad3);
+        mActivity = this;
+        mRecyclerView = findViewById(R.id.recyclerview_grados);
         mRecyclerView.setLayoutManager(new GridLayoutManager(this, 1));
         parentContext = this.getBaseContext();
-        mActivity = this;
         mAuth = FirebaseAuth.getInstance();
         firstore = FirebaseFirestore.getInstance();
         setLiveDataObservers();
@@ -48,12 +46,12 @@ public class StartTestFacultad extends AppCompatActivity implements FacultadesAd
     }
     public void setLiveDataObservers() {
         //Subscribe the activity to the observable
-        viewmodelm = new ViewModelProvider(this).get(FacultadesViewModel.class);
-        FacultadesAdapter newAdapter = new FacultadesAdapter(new ArrayList<FacultadCard>(), parentContext, (FacultadesAdapter.OnFacultadListener) mActivity);
-        final Observer<ArrayList<FacultadCard>> observer = new Observer<ArrayList<FacultadCard>>() {
+        viewmodelm = new ViewModelProvider(this).get(GradosViewModel.class);
+        GradosAdapter newAdapter = new GradosAdapter(new ArrayList<GradoCard>(), parentContext, (GradosAdapter.OnGradoListener) mActivity);
+        final Observer<ArrayList<GradoCard>> observer = new Observer<ArrayList<GradoCard>>() {
             @Override
-            public void onChanged(ArrayList<FacultadCard> ac) {
-                FacultadesAdapter newAdapter = new FacultadesAdapter(ac, parentContext, (FacultadesAdapter.OnFacultadListener) mActivity);
+            public void onChanged(ArrayList<GradoCard> ac) {
+                GradosAdapter newAdapter = new GradosAdapter(ac, parentContext, (GradosAdapter.OnGradoListener) mActivity);
                 mRecyclerView.swapAdapter(newAdapter, false);
                 newAdapter.notifyDataSetChanged();
             }
@@ -67,7 +65,7 @@ public class StartTestFacultad extends AppCompatActivity implements FacultadesAd
         };
 
 
-        viewmodelm.getFacultadCards().observe(this, observer);
+        viewmodelm.getGradoCards().observe(this, observer);
         viewmodelm.getToast().observe(this, observerToast);
 
     }
@@ -75,22 +73,20 @@ public class StartTestFacultad extends AppCompatActivity implements FacultadesAd
 
 
     @Override
-    public void onFacultadClick(int position) {
-        String id = viewmodelm.getFacultadCards().getValue().get(position).getFacultadID();
+    public void OnGradoClick(int position) {
+        String id = viewmodelm.getGradoCards().getValue().get(position).getGradoID();
         userID = mAuth.getCurrentUser().getUid();
         DocumentReference documentReference = firstore.collection("Users").document(userID);
         Map<String, Object> user = new HashMap<>();
-        user.put("user_faculty", id);
+        user.put("user_grade", id);
         firstore.collection("Users").document(userID)
                 .set(user, SetOptions.merge()).addOnSuccessListener(new OnSuccessListener<Void
                 >() {
             @Override
             public void onSuccess(Void unused) {
-                startActivity(new Intent(StartTestFacultad.this, StartTestGrado.class));
+                startActivity(new Intent(StartTestGrado.this, RecyclerViewActivity.class));
                 finish();
             }
         });
     }
 }
-
-

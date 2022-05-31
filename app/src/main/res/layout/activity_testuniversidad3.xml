@@ -24,10 +24,6 @@
         android:textAlignment="center"
         android:textSize="16sp" />
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="198dp"
-        android:baselineAligned="false">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -35,24 +31,13 @@
             android:orientation="vertical">
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview_grados"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <RadioGroup
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </androidx.recyclerview.widget.RecyclerView>
+                android:layout_height="match_parent"/>
         </LinearLayout>
-    </ScrollView>
 
-    <Button
-        android:id="@+id/btn_next"
-        android:layout_width="match_parent"
-        android:layout_height="67dp"
-        android:backgroundTint="#FFC107"
-        android:foregroundTint="#FFC107"
-        android:text="Siguiente"
-        app:iconTint="#FFC107" />
+
+
 
     <Space
         android:layout_width="match_parent"
