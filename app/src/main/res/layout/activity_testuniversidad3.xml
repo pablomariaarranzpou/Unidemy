@@ -14,7 +14,7 @@
         android:id="@+id/imageView4"
         android:layout_width="match_parent"
         android:layout_height="154dp"
-        app:srcCompat="@drawable/fc1363a1d3ef494a96cc920db03d2a38__1_" />
+        app:srcCompat="@drawable/logo_unidemy_v3" />
 
     <TextView
         android:id="@+id/texto_test1"
