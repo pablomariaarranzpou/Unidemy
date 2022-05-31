@@ -96,6 +96,9 @@ public class ActivityAddComent extends AppCompatActivity {
                                     documentReference2.update("course_coments", FieldValue.arrayUnion(documentReference.getId())).addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void aVoid) {
+                                            Intent intent = new Intent(ActivityAddComent.this, RecyclerViewComents.class);
+                                            intent.putExtra("course_id", course_id);
+                                            startActivity(intent);
                                             finish();
                                         }
                                     });
