@@ -61,7 +61,7 @@ public class Login extends AppCompatActivity {
                 if(task.isSuccessful())
                 {
                     SaveSharedPreference.setUserName(Login.this, email);
-                    startActivity(new Intent(Login.this, Home.class));
+                    startActivity(new Intent(Login.this, RecyclerViewActivity.class));
 
                 }
                 else

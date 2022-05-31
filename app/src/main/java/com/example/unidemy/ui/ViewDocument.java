@@ -20,6 +20,7 @@ public class ViewDocument extends AppCompatActivity {
         webView = (WebView) findViewById(R.id.web_view);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setUseWideViewPort(true);
+        webView.getSettings().setBuiltInZoomControls(true);
         String pdf = "http://www.adobe.com/devnet/acrobat/pdfs/pdf_open_parameters.pdf";
         webView.loadUrl("https://drive.google.com/viewerng/viewer?embedded=true&url=" + pdf);
 

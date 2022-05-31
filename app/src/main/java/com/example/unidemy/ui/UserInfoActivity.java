@@ -1,8 +1,11 @@
 package com.example.unidemy.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -23,7 +26,7 @@ public class UserInfoActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseFirestore firestore;
     private String TAG = "USERINFO", university_code, faculty_code, grade_code;
-
+    private Button btn_test;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +40,7 @@ public class UserInfoActivity extends AppCompatActivity {
         user_info_faculty = findViewById(R.id.user_info_faculty);
         user_info_grade = findViewById(R.id.user_info_grade);
         mAuth = FirebaseAuth.getInstance();
+        btn_test = findViewById(R.id.button_reset_test);
         user_email.setText(mAuth.getCurrentUser().getEmail());
         DocumentReference documentReference = firestore.collection("Users").document(mAuth.getCurrentUser().getUid());
         documentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -97,6 +101,16 @@ public class UserInfoActivity extends AppCompatActivity {
         });
 
 
+
+        btn_test.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(UserInfoActivity.this, StartTestUniversidad.class);
+                startActivity(intent);
+                finish();
+            }
+
+        });
 
 
 

@@ -18,7 +18,7 @@ public class RecyclerView_ViewModel extends AndroidViewModel implements Database
 
     private final MutableLiveData<ArrayList<CursoCard>> mCursoCards;
     private final MutableLiveData<String> mToast;
-    private FirebaseAuth mAuth;
+    private final FirebaseAuth mAuth;
     FirebaseFirestore firstore;
 
 

@@ -95,7 +95,26 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintWidth_percent="0.7"></com.google.android.material.textview.MaterialTextView>
 
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="17dp"
+            android:text="¿Tu centro de estudios no es correcto?"
+            app:layout_constraintBottom_toTopOf="@+id/button_reset_test"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
+        <Button
+            android:id="@+id/button_reset_test"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="36dp"
+            android:text="Volver a Realizar Test"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

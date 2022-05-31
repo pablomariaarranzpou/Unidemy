@@ -10,6 +10,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.unidemy.R;
@@ -52,11 +53,12 @@ public class CardCourseAdapter extends RecyclerView.Adapter<CardCourseHolder> {
 
 
 
-    public void filtrado(final String txtBuscar) {
+    public void filtrado(@NonNull final String txtBuscar) {
+
         int longitud = txtBuscar.length();
         if (longitud == 0) {
             filtrado.clear();
-            filtrado = localDataSet;
+            filtrado.addAll(localDataSet);
         } else {
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
                 List<CursoCard> collecion = filtrado.stream()

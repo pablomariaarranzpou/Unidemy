@@ -62,6 +62,7 @@ public class ViewCourse extends AppCompatActivity implements CardVideoAdapter.On
     private ArrayList<String> videos, documents;
     private String id, portada_txt;
     private TextView txt_titulodocumentos;
+    private boolean pagado;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -154,8 +155,10 @@ public class ViewCourse extends AppCompatActivity implements CardVideoAdapter.On
         });
 
         ind_btn_pagar.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
+                pagado = true;
                 DocumentReference documentReference = firestore.collection("Users").document(userId);
                 documentReference.update("userCourses", FieldValue.arrayUnion(cc.getCourse_id())).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
@@ -166,6 +169,7 @@ public class ViewCourse extends AppCompatActivity implements CardVideoAdapter.On
                                 Toast.LENGTH_SHORT).show();
                         ind_btn_pagar.setVisibility(View.GONE);
                     }
+
                 });
             }
         });
@@ -176,6 +180,9 @@ public class ViewCourse extends AppCompatActivity implements CardVideoAdapter.On
 
         if(acc.contains(this.id)){
             ind_btn_pagar.setVisibility(View.GONE);
+            pagado = true;
+        }else{
+            pagado = false;
         }
 
     }
@@ -224,18 +231,29 @@ public class ViewCourse extends AppCompatActivity implements CardVideoAdapter.On
 
     @Override
     public void onVideoClick (int position) {
-        Intent intent = new Intent(this, ViewVideo.class);
-        intent.putExtra("selectedVideo", viewmodelm.getVideoCard(position));
-        startActivity(intent);
+        if(pagado) {
+            Intent intent = new Intent(this, ViewVideo.class);
+            intent.putExtra("selectedVideo", viewmodelm.getVideoCard(position));
+            startActivity(intent);
+        }else{
+            Toast.makeText(ViewCourse.this,
+                    "Debes pagar el curso '" + cc.getCourse_title() + "' para ver el contenido",
+                    Toast.LENGTH_SHORT).show();
+        }
     }
 
 
     @Override
     public void onDocumentClick(int position) {
-
-        Intent intent = new Intent(this, ViewDocument.class);
-        intent.putExtra("selectedDocument", cviewmodelm.getDocumentCard(position));
-        startActivity(intent);
+        if(pagado){
+            Intent intent = new Intent(this, ViewDocument.class);
+            intent.putExtra("selectedDocument", cviewmodelm.getDocumentCard(position));
+            startActivity(intent);
+        }else{
+            Toast.makeText(ViewCourse.this,
+                    "Debes pagar el curso '" + cc.getCourse_title() + "' para ver el contenido",
+                    Toast.LENGTH_SHORT).show();
+        }
 
     }
 
