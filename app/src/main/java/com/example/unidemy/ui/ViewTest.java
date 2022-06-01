@@ -2,7 +2,6 @@ package com.example.unidemy.ui;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -12,21 +11,16 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
-import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
 import com.example.unidemy.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.firestore.model.Document;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +33,7 @@ public class ViewTest extends AppCompatActivity {
     FirebaseFirestore firestore;
     private String courseID;
     private CardTest ct;
-    int iqa = 0;
+    int iqa = 0, correct = 0, incorrect = 0;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -97,24 +91,22 @@ public class ViewTest extends AppCompatActivity {
     }
 
     public void buttonA(View view) {
-        //compare the option with the ans if yes then make button color green
+
         if (currentQuestion.getOptA().equals(currentQuestion.getAnswer())) {
             buttonA.setBackgroundColor(Color.GREEN);
-            //Check if user has not exceeds the que limit
+            correct++;
             if (iqa < list.size() - 1) {
-
-
                 disableButton();
                 correctDialog();
             }
             else {
-                finish();
+                testResumeDialog();
             }
         }
-
         else {
-
-            finish();
+            buttonA.setBackgroundColor(Color.RED);
+            incorrectDialog();
+            incorrect++;
 
         }
     }
@@ -124,47 +116,55 @@ public class ViewTest extends AppCompatActivity {
     public void buttonB(View view) {
         if (currentQuestion.getOptB().equals(currentQuestion.getAnswer())) {
             buttonB.setBackgroundColor(Color.GREEN);
+            correct++;
             if (iqa < list.size() - 1) {
                 disableButton();
                 correctDialog();
             } else {
-                finish();
+                testResumeDialog();
             }
         } else {
-            finish();
+            buttonB.setBackgroundColor(Color.RED);
+            incorrect++;
+            incorrectDialog();
         }
     }
 
-    //Onclick listener for third button
-    @SuppressLint("ResourceType")
+
     public void buttonC(View view) {
         if (currentQuestion.getOptC().equals(currentQuestion.getAnswer())) {
             buttonC.setBackgroundColor(Color.GREEN);
+            correct++;
             if (iqa < list.size() - 1) {
                 disableButton();
                 correctDialog();
             } else {
-                finish();
+                testResumeDialog();
             }
         } else {
+            buttonC.setBackgroundColor(Color.RED);
+            incorrect++;
+            incorrectDialog();
 
-            finish();
+
         }
     }
 
-    //Onclick listener for fourth button
-    @SuppressLint("ResourceType")
     public void buttonD(View view) {
         if (currentQuestion.getOptD().equals(currentQuestion.getAnswer())) {
             buttonD.setBackgroundColor(Color.GREEN);
+            correct++;
             if (iqa < list.size() - 1) {
                 disableButton();
                 correctDialog();
             } else {
-                finish();
+                testResumeDialog();
             }
         } else {
-            finish();
+            buttonD.setBackgroundColor(Color.RED);
+            incorrectDialog();
+            incorrect++;
+
         }
     }
 
@@ -194,6 +194,63 @@ public class ViewTest extends AppCompatActivity {
         finish();
     }
 
+    public void incorrectDialog() {
+        final Dialog dialogInCorrect = new Dialog(ViewTest.this);
+        dialogInCorrect.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        if (dialogInCorrect.getWindow() != null) {
+            ColorDrawable colorDrawable = new ColorDrawable(Color.TRANSPARENT);
+            dialogInCorrect.getWindow().setBackgroundDrawable(colorDrawable);
+        }
+        dialogInCorrect.setContentView(R.layout.dialog_incorrect);
+        dialogInCorrect.setCancelable(false);
+        dialogInCorrect.show();
+
+        TextView incorrectNext = (TextView) dialogInCorrect.findViewById(R.id.resumeText);
+        Button incorrectBtnNext = (Button) dialogInCorrect.findViewById(R.id.dialogNext);
+
+
+        incorrectBtnNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialogInCorrect.dismiss();
+                iqa++;
+                if(iqa == list.size()){
+                    testResumeDialog();
+
+                }else {
+                    currentQuestion = list.get(iqa);
+                    updateQuestion();
+                    resetColor();
+                    enableButton();
+                }
+            }
+        });
+    }
+
+    public void testResumeDialog() {
+        final Dialog dialogInCorrect = new Dialog(ViewTest.this);
+        dialogInCorrect.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        if (dialogInCorrect.getWindow() != null) {
+            ColorDrawable colorDrawable = new ColorDrawable(Color.TRANSPARENT);
+            dialogInCorrect.getWindow().setBackgroundDrawable(colorDrawable);
+        }
+        dialogInCorrect.setContentView(R.layout.dialog_resume_test);
+        dialogInCorrect.setCancelable(false);
+        dialogInCorrect.show();
+
+        TextView resumeText = (TextView) dialogInCorrect.findViewById(R.id.resumeText);
+        resumeText.setText("NOTA QUESTIONARIO:" + (correct / list.size()));
+        Button nextResume = (Button) dialogInCorrect.findViewById(R.id.dialogNext);
+
+
+        nextResume.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialogInCorrect.dismiss();
+                finish();
+            }
+        });
+    }
 
     public void correctDialog() {
         final Dialog dialogCorrect = new Dialog(ViewTest.this);
@@ -206,7 +263,7 @@ public class ViewTest extends AppCompatActivity {
         dialogCorrect.setCancelable(false);
         dialogCorrect.show();
 
-        TextView correctText = (TextView) dialogCorrect.findViewById(R.id.correctText);
+        TextView correctText = (TextView) dialogCorrect.findViewById(R.id.resumeText);
         Button buttonNext = (Button) dialogCorrect.findViewById(R.id.dialogNext);
 
 
@@ -216,11 +273,15 @@ public class ViewTest extends AppCompatActivity {
             public void onClick(View view) {
                 dialogCorrect.dismiss();
                 iqa++;
+                if(iqa == list.size()){
+                    testResumeDialog();
+                }else{
+                    currentQuestion = list.get(iqa);
+                    updateQuestion();
+                    resetColor();
+                    enableButton();
+                }
 
-                currentQuestion = list.get(iqa);
-                updateQuestion();
-                resetColor();
-                enableButton();
             }
         });
     }

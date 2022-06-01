@@ -20,8 +20,8 @@
             android:id="@+id/resumeText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Tú respuesta es CORECTA!"
-            android:textColor="#4CAF50"
+            android:text="Tú respuesta es INCORRECTA!"
+            android:textColor="#FF0000"
             android:gravity="center"
             android:textSize="30sp"/>
     </LinearLayout>

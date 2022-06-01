@@ -20,10 +20,11 @@
             android:id="@+id/resumeText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Tú respuesta es CORECTA!"
+            android:text="TEST FINALIZADO"
             android:textColor="#4CAF50"
             android:gravity="center"
             android:textSize="30sp"/>
+
     </LinearLayout>
     <View
 
@@ -33,7 +34,7 @@
         android:id="@+id/dialogNext"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="Siguiente pregunta"
+        android:text="VOLVER AL CURSO"
         android:textColor="@color/white"/>
     <View
         android:layout_width="match_parent"
