@@ -22,14 +22,14 @@
     tools:ignore="SpeakableTextPresentCheck" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="93dp"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
 
         <TextView
             android:id="@+id/test_title"
-            android:layout_width="79dp"
-            android:layout_height="28dp"
+            android:layout_width="71dp"
+            android:layout_height="15dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
             android:gravity="center_vertical"
