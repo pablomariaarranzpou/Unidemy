@@ -43,7 +43,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class ViewCourse extends AppCompatActivity implements CardVideoAdapter.OnVideoListener, DocumentCardAdapter.OnDocumentListener {
+public class ViewCourse extends AppCompatActivity implements CardTestAdapter.OnTestListener, CardVideoAdapter.OnVideoListener, DocumentCardAdapter.OnDocumentListener {
 
 
     private TextView ind_course_views_txt, ind_course_title_txt, ind_owner_txt, ind_course_rating_txt, ind_course_description;
@@ -57,8 +57,10 @@ public class ViewCourse extends AppCompatActivity implements CardVideoAdapter.On
     private FirebaseFirestore firestore;
     private VideoRecyclerView_ViewModel viewmodelm;
     private DocumentRecyclerView_ViewModel cviewmodelm;
+    private CardTestViewModel tsviewmodel;
     private RecyclerView mmRecyclerView;
     private RecyclerView dcRecyclerView;
+    private RecyclerView tsRecyclerView;
     private ArrayList<String> videos, documents;
     private String id, portada_txt;
     private TextView txt_titulodocumentos;
@@ -82,6 +84,9 @@ public class ViewCourse extends AppCompatActivity implements CardVideoAdapter.On
         dcRecyclerView.setLayoutManager(new LinearLayoutManager(ViewCourse.this,
                 LinearLayoutManager.HORIZONTAL, false));
 
+        tsRecyclerView = (RecyclerView) findViewById(R.id.recycler_view_tests);
+        tsRecyclerView.setLayoutManager(new LinearLayoutManager(ViewCourse.this,
+                LinearLayoutManager.HORIZONTAL, false));
         ind_course_views_txt = (TextView) findViewById(R.id.ind_course_views);
         ind_course_title_txt = (TextView) findViewById(R.id.ind_course_title);
         ind_owner_txt = (TextView) findViewById(R.id.ind_owner_txt);
@@ -189,16 +194,27 @@ public class ViewCourse extends AppCompatActivity implements CardVideoAdapter.On
 
     public void setLiveDataObservers() {
             //Subscribe the activity to the observable
-            viewmodelm = new ViewModelProvider(this, new VideoRecyclerView_ViewModelFactory(this.getApplication(), this.getCourseId())).get(VideoRecyclerView_ViewModel.class);
-            CardVideoAdapter newAdapter = new CardVideoAdapter(parentContext, new ArrayList<VideoCard>(), (CardVideoAdapter.OnVideoListener) mActivity);
-            final Observer<ArrayList<VideoCard>> observer = new Observer<ArrayList<VideoCard>>() {
-                @Override
-                public void onChanged(ArrayList<VideoCard> ac) {
-                    CardVideoAdapter newAdapter = new CardVideoAdapter(parentContext, ac, (CardVideoAdapter.OnVideoListener) mActivity);
-                    mmRecyclerView.swapAdapter(newAdapter, false);
-                    newAdapter.notifyDataSetChanged();
-                }
+    tsviewmodel = new ViewModelProvider(this, new CardTestViewModelFactory(this.getApplication(), this.getCourseId())).get(CardTestViewModel.class);
+    CardTestAdapter newAdaptertest = new CardTestAdapter(new ArrayList<CardTest>(), parentContext, (CardTestAdapter.OnTestListener) mActivity);
+    final Observer<ArrayList<CardTest>> observertest = new Observer<ArrayList<CardTest>>() {
+        @Override
+        public void onChanged(ArrayList<CardTest> ac) {
+            CardTestAdapter newAdaptertest = new CardTestAdapter(ac, parentContext, (CardTestAdapter.OnTestListener) mActivity);
+            tsRecyclerView.swapAdapter(newAdaptertest, false);
+            newAdaptertest.notifyDataSetChanged();
+        }
             };
+
+        viewmodelm = new ViewModelProvider(this, new VideoRecyclerView_ViewModelFactory(this.getApplication(), this.getCourseId())).get(VideoRecyclerView_ViewModel.class);
+        CardVideoAdapter newAdapter = new CardVideoAdapter(parentContext, new ArrayList<VideoCard>(), (CardVideoAdapter.OnVideoListener) mActivity);
+        final Observer<ArrayList<VideoCard>> observer = new Observer<ArrayList<VideoCard>>() {
+            @Override
+            public void onChanged(ArrayList<VideoCard> ac) {
+                CardVideoAdapter newAdapter = new CardVideoAdapter(parentContext, ac, (CardVideoAdapter.OnVideoListener) mActivity);
+                mmRecyclerView.swapAdapter(newAdapter, false);
+                newAdapter.notifyDataSetChanged();
+            }
+        };
 
         cviewmodelm = new ViewModelProvider(this, new DocumentRecyclerView_ViewModelFactory(this.getApplication(), this.getCourseId())).get(DocumentRecyclerView_ViewModel.class);
         DocumentCardAdapter dcnewAdapter = new DocumentCardAdapter(new ArrayList<DocumentCard>(), parentContext, (DocumentCardAdapter.OnDocumentListener) mActivity);
@@ -221,6 +237,7 @@ public class ViewCourse extends AppCompatActivity implements CardVideoAdapter.On
             viewmodelm.getVideoCards().observe(this, observer);
             cviewmodelm.getDocumentCards().observe(this, observer_two);
             viewmodelm.getToast().observe(this, observerToast);
+            tsviewmodel.getTestCards().observe(this, observertest);
 
         }
 
@@ -263,6 +280,10 @@ public class ViewCourse extends AppCompatActivity implements CardVideoAdapter.On
         finish();
     }
 
+    @Override
+    public void onTestClickClick(int position) {
+
+    }
 }
 
 

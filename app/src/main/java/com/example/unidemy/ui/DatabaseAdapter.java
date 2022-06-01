@@ -36,6 +36,7 @@ public class DatabaseAdapter extends Activity {
     public static uniInterface listener_6;
     public static facInterface listener_7;
     public static ugInterface listener_8;
+    public static tsInterface listener_9;
     public static DatabaseAdapter databaseAdapter;
 
     public DatabaseAdapter(vmInterface listener){
@@ -92,7 +93,16 @@ public class DatabaseAdapter extends Activity {
         initFirebase();
     }
 
+    public DatabaseAdapter(tsInterface listener){
+        this.listener_9 = listener;
+        databaseAdapter = this;
+        FirebaseFirestore.setLoggingEnabled(true);
+        initFirebase();
+    }
 
+    public interface  tsInterface{
+        void setTests(ArrayList<CardTest> tc);
+    }
     public interface ugInterface{
         void setGradoCards(ArrayList<GradoCard> gc);
     }
@@ -244,6 +254,50 @@ public class DatabaseAdapter extends Activity {
 
                     }
 
+                });
+    }
+
+    void getCourseTests(String CourseID){
+
+        DatabaseAdapter.db.collection("Curso").document(CourseID).get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+
+                        if (task.isSuccessful()) {
+                            DocumentSnapshot document = task.getResult();
+                            if (document.exists()) {
+                                Log.d("Videos del Curso", document.getId() + " => " + document.get("course_videos"));
+                                ArrayList<String> acc = (ArrayList<String>) document.get("course_tests");
+                                if(acc != null) {
+                                    getCourseObjectTests(acc);
+                                }
+                            }
+                        }
+
+                    }
+
+                });
+    }
+
+    void getCourseObjectTests(ArrayList<String> dc){
+        DatabaseAdapter.db.collection("Test")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            ArrayList<CardTest> retrieved_dc = new ArrayList<CardTest>();
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d("tESTS CODES", document.getId() + "  ->  " + dc);
+                                if (!dc.isEmpty() && dc.contains(document.getId())) {
+                                    Log.d("RV poner_test", document.getId() + " => " + document.getData());
+                                    retrieved_dc.add(new CardTest(document.getString("test_title"), document.getString("test_views")));
+                                }
+                            }
+                            listener_9.setTests(retrieved_dc);
+                        }
+                    }
                 });
     }
 
