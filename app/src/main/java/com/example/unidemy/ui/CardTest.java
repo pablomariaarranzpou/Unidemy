@@ -3,35 +3,37 @@ package com.example.unidemy.ui;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.util.ArrayList;
-
-public class CardTest implements Parcelable{
+public class CardTest implements Parcelable {
 
 
     private final String test_title;
     private final String test_views;
+    private final String testID;
 
 
-    public CardTest(String test_title, String test_views) {
+    public CardTest(String test_title, String test_views, String testID) {
         this.test_title = test_title;
         this.test_views = test_views;
+        this.testID = testID;
+
     }
 
     protected CardTest(Parcel in) {
         test_title = in.readString();
         test_views = in.readString();
-
+        testID = in.readString();
     }
 
-    public static final Parcelable.Creator<VideoCard> CREATOR = new Parcelable.Creator<VideoCard>() {
+
+    public static final Creator<CardTest> CREATOR = new Creator<CardTest>() {
         @Override
-        public VideoCard createFromParcel(Parcel in) {
-            return new VideoCard(in);
+        public CardTest createFromParcel(Parcel in) {
+            return new CardTest(in);
         }
 
         @Override
-        public VideoCard[] newArray(int size) {
-            return new VideoCard[size];
+        public CardTest[] newArray(int size) {
+            return new CardTest[size];
         }
     };
 
@@ -43,7 +45,9 @@ public class CardTest implements Parcelable{
         return test_views;
     }
 
-
+    public String getTestID() {
+        return testID;
+    }
 
     @Override
     public int describeContents() {
@@ -51,9 +55,9 @@ public class CardTest implements Parcelable{
     }
 
     @Override
-    public void writeToParcel(Parcel parcel, int i) {
-
-        parcel.writeString(test_title);
-        parcel.writeString(test_views);
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(test_title);
+        dest.writeString(test_views);
+        dest.writeString(testID);
     }
 }

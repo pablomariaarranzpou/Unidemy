@@ -292,7 +292,7 @@ public class DatabaseAdapter extends Activity {
                                 Log.d("tESTS CODES", document.getId() + "  ->  " + dc);
                                 if (!dc.isEmpty() && dc.contains(document.getId())) {
                                     Log.d("RV poner_test", document.getId() + " => " + document.getData());
-                                    retrieved_dc.add(new CardTest(document.getString("test_title"), document.getString("test_views")));
+                                    retrieved_dc.add(new CardTest(document.getString("test_title"), document.getString("test_views"), document.getId()));
                                 }
                             }
                             listener_9.setTests(retrieved_dc);

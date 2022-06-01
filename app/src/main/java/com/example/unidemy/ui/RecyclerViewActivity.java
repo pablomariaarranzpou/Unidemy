@@ -23,8 +23,13 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.unidemy.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 
@@ -40,20 +45,38 @@ public class RecyclerViewActivity extends AppCompatActivity implements CardCours
     private BottomNavigationView navigationView;
     private NavController navController;
     private FirebaseAuth mAuth;
-
+    private FirebaseFirestore firestore;
 
     private Toolbar toolbar;
+    private String grade;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mAuth = FirebaseAuth.getInstance();
+        firestore = FirebaseFirestore.getInstance();
+        DocumentReference documentReference2 = firestore.collection("Users").document(mAuth.getCurrentUser().getUid());
+        documentReference2.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
 
-        if(SaveSharedPreference.getUserName(RecyclerViewActivity.this).length() == 0 || this.mAuth.getCurrentUser().getUid().length() == 0)
-        {
-            startActivity(new Intent(RecyclerViewActivity.this, Login.class));
-            finish();
-        }
+                DocumentSnapshot doc = task.getResult();
+
+                if(doc.exists()){
+                    grade = doc.getString("user_grade");
+                }
+                if(grade == null || grade.length() == 0 ){
+                    startActivity(new Intent(RecyclerViewActivity.this, FirstLogin.class));
+                    finish();
+                }
+                if( SaveSharedPreference.getUserName(RecyclerViewActivity.this).length() == 0 || mAuth.getCurrentUser().getUid().length() == 0)
+                {
+                    startActivity(new Intent(RecyclerViewActivity.this, Login.class));
+                    finish();
+                }
+            }
+        });
+
 
         mActivity = this;
         setContentView(R.layout.activity_view_courses_list);

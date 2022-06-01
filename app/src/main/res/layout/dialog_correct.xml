@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:gravity="center">
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="50dp"></View>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+
+        <TextView
+            android:id="@+id/correctText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tú respuesta es CORECTA!"
+            android:textColor="#4CAF50"
+            android:gravity="center"
+            android:textSize="30sp"/>
+    </LinearLayout>
+    <View
+
+        android:layout_width="match_parent"
+        android:layout_height="50dp"></View>
+    <Button
+        android:id="@+id/dialogNext"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Siguiente pregunta"
+        android:textColor="@color/white"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="50dp"></View>
+</LinearLayout>

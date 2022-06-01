@@ -87,6 +87,7 @@ public class ViewCourse extends AppCompatActivity implements CardTestAdapter.OnT
         tsRecyclerView = (RecyclerView) findViewById(R.id.recycler_view_tests);
         tsRecyclerView.setLayoutManager(new LinearLayoutManager(ViewCourse.this,
                 LinearLayoutManager.HORIZONTAL, false));
+
         ind_course_views_txt = (TextView) findViewById(R.id.ind_course_views);
         ind_course_title_txt = (TextView) findViewById(R.id.ind_course_title);
         ind_owner_txt = (TextView) findViewById(R.id.ind_owner_txt);
@@ -282,7 +283,15 @@ public class ViewCourse extends AppCompatActivity implements CardTestAdapter.OnT
 
     @Override
     public void onTestClickClick(int position) {
-
+        if(pagado){
+            Intent intent = new Intent(this, ViewTest.class);
+            intent.putExtra("selectedTest", tsviewmodel.getTestCard(position));
+            startActivity(intent);
+        }else{
+            Toast.makeText(ViewCourse.this,
+                    "Debes pagar el curso '" + cc.getCourse_title() + "' para ver el contenido",
+                    Toast.LENGTH_SHORT).show();
+        }
     }
 }
 
