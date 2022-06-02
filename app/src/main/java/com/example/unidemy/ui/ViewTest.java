@@ -1,5 +1,7 @@
 package com.example.unidemy.ui;
 
+import static java.lang.Math.round;
+
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.graphics.Color;
@@ -237,9 +239,10 @@ public class ViewTest extends AppCompatActivity {
         dialogInCorrect.setContentView(R.layout.dialog_resume_test);
         dialogInCorrect.setCancelable(false);
         dialogInCorrect.show();
-
+        float nota = (float)correct / list.size() *10.0f;
+        double roundOff = Math.round(nota * 100.0) / 100.0;
         TextView resumeText = (TextView) dialogInCorrect.findViewById(R.id.resumeText);
-        resumeText.setText("NOTA QUESTIONARIO:" + (correct / list.size()));
+        resumeText.setText("NOTA QUESTIONARIO:" + roundOff);
         Button nextResume = (Button) dialogInCorrect.findViewById(R.id.dialogNext);
 
 
