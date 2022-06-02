@@ -11,7 +11,6 @@
         android:label="Unidemy"
         android:roundIcon="@drawable/unidemy_logo_icon_v2"
         android:supportsRtl="true"
-
         android:theme="@style/Theme.Unidemy" >
 
         <meta-data
