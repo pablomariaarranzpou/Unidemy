@@ -58,69 +58,73 @@ public class RecyclerViewActivity extends AppCompatActivity implements CardCours
         super.onCreate(savedInstanceState);
         mAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
-        DocumentReference documentReference2 = firestore.collection("Users").document(mAuth.getCurrentUser().getUid());
-        documentReference2.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
 
-                DocumentSnapshot doc = task.getResult();
+        if(mAuth.getCurrentUser() == null){
+            startActivity(new Intent(RecyclerViewActivity.this, Login.class));
+            finish();
+        }else {
+            DocumentReference documentReference2 = firestore.collection("Users").document(mAuth.getCurrentUser().getUid());
+            documentReference2.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
 
-                if(doc.exists()){
-                    grade = doc.getString("user_grade");
-                }
-                if(grade == null || grade.length() == 0 ){
-                    startActivity(new Intent(RecyclerViewActivity.this, FirstLogin.class));
-                    finish();
-                }
-                if( SaveSharedPreference.getUserName(RecyclerViewActivity.this).length() == 0 || mAuth.getCurrentUser().getUid().length() == 0)
-                {
-                    startActivity(new Intent(RecyclerViewActivity.this, Login.class));
-                    finish();
-                }
-            }
-        });
+                    DocumentSnapshot doc = task.getResult();
 
-
-        mActivity = this;
-        setContentView(R.layout.activity_view_courses_list);
-        parentContext = this.getBaseContext();
-        mActivity = this;
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setLogo(R.drawable.banner_final);
-        getSupportActionBar().setDisplayUseLogoEnabled(true);
-        navigationView = findViewById(R.id.btm_navigator);
-        mRecyclerView = findViewById(R.id.recyclerview_cursos);
-        mRecyclerView.setLayoutManager(new GridLayoutManager(this, 1));
-        BottomNavigationView navView = (BottomNavigationView)findViewById(R.id.bottomNavigationView);
-        navView.setSelectedItemId(R.id.navigation_recyclerview);
-        navView.setOnItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener(){
-
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-                switch (item.getItemId()) {
-                    case R.id.navigation_searcher:
-                        startActivity(new Intent(getApplicationContext(), Searcher.class));
-                        overridePendingTransition(0,0);
+                    if (doc.exists()) {
+                        grade = doc.getString("user_grade");
+                    }
+                    if (grade == null || grade.length() == 0) {
+                        startActivity(new Intent(RecyclerViewActivity.this, FirstLogin.class));
                         finish();
-                        return true;
-                    case R.id.navigation_mycourses:
-                        startActivity(new Intent(getApplicationContext(), MyCourses.class));
-                        overridePendingTransition(0,0);
+                    }
+                    if (SaveSharedPreference.getUserName(RecyclerViewActivity.this).length() == 0 || mAuth.getCurrentUser().getUid().length() == 0) {
+                        startActivity(new Intent(RecyclerViewActivity.this, Login.class));
                         finish();
-                        return true;
-                    case R.id.navigation_recyclerview:
-                        return true;
-
+                    }
                 }
+            });
 
 
-                return false;
-            }
-        });
+            mActivity = this;
+            setContentView(R.layout.activity_view_courses_list);
+            parentContext = this.getBaseContext();
+            mActivity = this;
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+            getSupportActionBar().setLogo(R.drawable.banner_final);
+            getSupportActionBar().setDisplayUseLogoEnabled(true);
+            navigationView = findViewById(R.id.btm_navigator);
+            mRecyclerView = findViewById(R.id.recyclerview_cursos);
+            mRecyclerView.setLayoutManager(new GridLayoutManager(this, 1));
+            BottomNavigationView navView = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
+            navView.setSelectedItemId(R.id.navigation_recyclerview);
+            navView.setOnItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
 
-        setLiveDataObservers();
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
+                    switch (item.getItemId()) {
+                        case R.id.navigation_searcher:
+                            startActivity(new Intent(getApplicationContext(), Searcher.class));
+                            overridePendingTransition(0, 0);
+                            finish();
+                            return true;
+                        case R.id.navigation_mycourses:
+                            startActivity(new Intent(getApplicationContext(), MyCourses.class));
+                            overridePendingTransition(0, 0);
+                            finish();
+                            return true;
+                        case R.id.navigation_recyclerview:
+                            return true;
+
+                    }
+
+
+                    return false;
+                }
+            });
+
+            setLiveDataObservers();
+        }
 
     }
     @Override
