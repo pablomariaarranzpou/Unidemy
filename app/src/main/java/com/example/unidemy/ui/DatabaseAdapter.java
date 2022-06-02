@@ -160,7 +160,7 @@ public class DatabaseAdapter extends Activity {
                     });
         }
         else{
-            listener.setToast("Authentication with current user.");
+
 
         }
     }
@@ -197,9 +197,11 @@ public class DatabaseAdapter extends Activity {
                         if (task.isSuccessful()) {
                             ArrayList<CursoCard> retrieved_ac = new ArrayList<CursoCard>() ;
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d("DOCU", document.getString("course_grade")+ " == "+ gradeID);
-                                if(document.getString("course_grade").equals(gradeID)) {
-                                    retrieved_ac.add(new CursoCard(document.getString("course_title"), document.getString("course_description"), document.getString("owner"), document.getString("course_views"), document.getString("course_rating"), document.getString("course_id"), (ArrayList<String>) document.get("course_videos"), (ArrayList<String>) document.get("course_documents"), document.getString("course_portada")));
+                                Log.d("DOCU", document.getString("course_grade") + " == " + gradeID);
+                                if (document.exists() && document != null) {
+                                    if (document.getString("course_grade").equals(gradeID)) {
+                                        retrieved_ac.add(new CursoCard(document.getString("course_title"), document.getString("course_description"), document.getString("owner"), document.getString("course_views"), document.getString("course_rating"), document.getString("course_id"), (ArrayList<String>) document.get("course_videos"), (ArrayList<String>) document.get("course_documents"), document.getString("course_portada")));
+                                    }
                                 }
                             }
                             listener.setCollection(retrieved_ac);

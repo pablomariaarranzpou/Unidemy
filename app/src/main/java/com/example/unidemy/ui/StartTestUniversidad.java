@@ -25,6 +25,7 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.SetOptions;
+import com.example.unidemy.ui.Universidades_ViewModel;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -54,9 +55,10 @@ public class StartTestUniversidad extends AppCompatActivity implements Universid
         setLiveDataObservers();
 
     }
+
     public void setLiveDataObservers() {
         //Subscribe the activity to the observable
-        viewmodelm = new ViewModelProvider(this).get(Universidades_ViewModel.class);
+        this.viewmodelm = new ViewModelProvider(this).get(Universidades_ViewModel.class);
         UniversidadCardAdapter newAdapter = new UniversidadCardAdapter(new ArrayList<UniversidadCard>(), parentContext, (UniversidadCardAdapter.OnUniversidadListener) mActivity);
         final Observer<ArrayList<UniversidadCard>> observer = new Observer<ArrayList<UniversidadCard>>() {
             @Override

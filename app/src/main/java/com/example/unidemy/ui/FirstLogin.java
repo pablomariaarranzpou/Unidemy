@@ -2,6 +2,7 @@ package com.example.unidemy.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 
 
@@ -22,7 +23,15 @@ public class FirstLogin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_firstlogin);
         btn_startTest = findViewById(R.id.btn_startTest);
-        btn_startTest.setOnClickListener(v -> startActivity(new Intent(FirstLogin.this, StartTestUniversidad.class )));
+        btn_startTest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                startActivity(new Intent(FirstLogin.this, StartTestUniversidad.class ));
+                finish();
+            }
+        });
+
     }
 
 }

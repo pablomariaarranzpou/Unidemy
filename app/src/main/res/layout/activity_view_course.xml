@@ -15,18 +15,6 @@
         android:layout_height="match_parent">
 
 
-        <TextView
-            android:id="@+id/textView17"
-            android:layout_width="354dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="8dp"
-            android:text="Todos los documentos"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recyclerview_documentos" />
-
         <ImageView
             android:id="@+id/course_image"
             android:layout_width="match_parent"
@@ -114,10 +102,13 @@
             android:id="@+id/ind_btn_opinar"
             android:layout_width="144dp"
             android:layout_height="37dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
             android:layout_weight="1"
             android:backgroundTint="#FF9800"
             android:text="Opiniones"
             app:iconTint="#FF9800"
+            app:layout_constraintBottom_toTopOf="@+id/scrollView2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.011"
             app:layout_constraintStart_toStartOf="parent"
@@ -172,59 +163,66 @@
             app:layout_constraintTop_toBottomOf="@+id/ind_course_title" />
 
 
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="354dp"
-            android:layout_height="0dp"
-            android:text="Todos Los Videos"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        <ScrollView
+            android:id="@+id/scrollView2"
+            android:layout_width="382dp"
+            android:layout_height="182dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.073"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ind_btn_opinar" />
+            app:layout_constraintStart_toStartOf="parent">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textView15"
-            android:layout_width="354dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="2dp"
-            android:text="Todos los documentos"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recyclerview_videos" />
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Todos Los Videos"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerview_videos"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:scrollbars="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.25"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView8" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerview_videos"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:scrollbars="horizontal">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerview_documentos"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:scrollbars="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView15"></androidx.recyclerview.widget.RecyclerView>
+                </androidx.recyclerview.widget.RecyclerView>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view_tests"
-            android:layout_width="match_parent"
-            android:layout_height="81dp"
-            android:scrollbars="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.428"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView17" />
+                <TextView
+                    android:id="@+id/textView17"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Todos los documentos"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerview_documentos"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:scrollbars="horizontal">
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+                <TextView
+                    android:id="@+id/textView15"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="Todos los documentos"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view_tests"
+                    android:layout_width="match_parent"
+                    android:layout_height="81dp"
+                    android:scrollbars="horizontal" />
+
+            </LinearLayout>
+        </ScrollView>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

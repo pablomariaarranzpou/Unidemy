@@ -110,10 +110,10 @@ public class Register extends AppCompatActivity {
                                                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                                                 @Override
                                                                 public void onComplete(@NonNull Task<Void> task) {
-                                                                 //
+                                                                    startActivity(new Intent(Register.this, FirstLogin.class));
                                                                 }
                                                             });
-                                                    startActivity(new Intent(Register.this, FirstLogin.class));
+
                                                 }
                                             });
 
