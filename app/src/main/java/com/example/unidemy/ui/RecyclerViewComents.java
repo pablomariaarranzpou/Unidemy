@@ -3,6 +3,7 @@ package com.example.unidemy.ui;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -20,6 +21,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,6 +70,43 @@ public class RecyclerViewComents extends AppCompatActivity {
 
                     }
 
+                });
+
+        Task<DocumentSnapshot> documentReferenceRating = firestore.collection("Curso").document(selected_course_id).get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        DocumentSnapshot doc = task.getResult();
+                        ArrayList<String> arr = (ArrayList<String>) doc.get("course_coments");
+                        Task<QuerySnapshot> documentReferenceRating = firestore.collection("Coment").get()
+                                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+
+                                        if (task.isSuccessful()) {
+                                            Double media = 0.0;
+                                            Float mediaf;
+                                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                                if(document.exists()) {
+                                                    media += document.getDouble("coment_rating");
+                                                }
+                                            }
+                                            media = media / arr.size();
+                                            media = Math.round(media * 10.0) / 10.0;
+                                            mediaf = media.floatValue();
+                                            Task<Void> documentReferenceRating = firestore.collection("Curso").document(selected_course_id)
+                                                    .update("course_rating", mediaf.toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                        @Override
+                                                        public void onComplete(@NonNull Task<Void> task) {
+                                                            //
+                                                        }
+                                                    });
+                                        }
+
+                                    }
+                                });
+
+                    }
                 });
 
 

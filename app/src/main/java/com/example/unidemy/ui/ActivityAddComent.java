@@ -67,16 +67,19 @@ public class ActivityAddComent extends AppCompatActivity {
                     edit_content.setError("Escribe algo en experiencia!");
                     edit_content.requestFocus();
 
+                }else if(Float.valueOf(nota) < 0 || Float.valueOf(nota) > 10){
+                    edit_nota.setError("Las notas van del 0 al 10");
+                    edit_nota.requestFocus();
                 }
-                if (nota.length() == 0 || !isNumeric(nota)) {
+                else if (nota.length() == 0 || !isNumeric(nota)) {
                     edit_nota.setError("El formato de la nota es incorrecto");
                     edit_nota.requestFocus();
-
                 }
-                if (String.valueOf(ratingBar_curso.getRating()).length() == 0) {
-
+                else if (String.valueOf(ratingBar_curso.getRating()).length() == 0) {
+                    edit_nota.setError("Has de puntuar de 0.5 para arriba");
+                    edit_nota.requestFocus();
                 } else {
-                    String comentID;
+
                     Float notaf = Float.parseFloat(nota);
                     Timestamp time = Timestamp.now();
                     Map<String, Object> data = new HashMap<>();

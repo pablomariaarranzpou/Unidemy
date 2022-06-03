@@ -178,10 +178,7 @@ public class RecyclerViewActivity extends AppCompatActivity implements CardCours
         finish();
 
     }
-    @Override
-    public void onResume(){
-        super.onResume();
-    }
+
 
 
 }
