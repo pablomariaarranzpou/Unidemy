@@ -70,6 +70,8 @@ public class RecyclerViewComents extends AppCompatActivity {
                 });
 
 
+
+
         mRecyclerView.setLayoutManager(new GridLayoutManager(this, 1));
         btn_add_comment.setOnClickListener(new View.OnClickListener() {
             @Override

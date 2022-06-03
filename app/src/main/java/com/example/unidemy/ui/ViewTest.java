@@ -246,7 +246,7 @@ public class ViewTest extends AppCompatActivity {
         double roundOff = Math.round(nota * 100.0) / 100.0;
         TextView resumeText = (TextView) dialogInCorrect.findViewById(R.id.resumeText);
         if(roundOff < 5) {
-            resumeText.setBackgroundColor(Color.RED);
+            resumeText.setTextColor(Color.RED);
         }
         resumeText.setText("NOTA QUESTIONARIO:" + roundOff);
 

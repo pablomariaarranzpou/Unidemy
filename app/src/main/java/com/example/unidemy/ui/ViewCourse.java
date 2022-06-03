@@ -2,14 +2,10 @@ package com.example.unidemy.ui;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,13 +15,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.unidemy.R;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -33,14 +27,9 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
+import com.google.firebase.firestore.model.Document;
 import com.squareup.picasso.Picasso;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
 
 public class ViewCourse extends AppCompatActivity implements CardTestAdapter.OnTestListener, CardVideoAdapter.OnVideoListener, DocumentCardAdapter.OnDocumentListener {
@@ -104,7 +93,6 @@ public class ViewCourse extends AppCompatActivity implements CardTestAdapter.OnT
 
 
             cc = (CursoCard) getIntent().getParcelableExtra("selectedCourse");
-            ind_course_views_txt.setText(cc.getCourse_views());
             ind_course_title_txt.setText(cc.getCourse_title());
             ind_owner_txt.setText(cc.getOwner());
 
@@ -124,11 +112,32 @@ public class ViewCourse extends AppCompatActivity implements CardTestAdapter.OnT
                         }
 
                     });
+
+
             ind_course_rating_txt.setText(cc.getCourse_rating());
             ind_course_description.setText(cc.getCourse_description());
             videos = cc.getCourse_videos();
             documents = cc.getCourse_documents();
             id = cc.getCourse_id();
+
+            Task<DocumentSnapshot> documentReferenceCourse = firestore.collection("Curso").document(id).get()
+                    .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                            DocumentSnapshot doc = task.getResult();
+                            int views = Integer.parseInt(doc.getString("course_views"));
+                            views++;
+                            Task<Void> documentReferenceCourse2 = firestore.collection("Curso").document(id).update("course_views", String.valueOf(views))
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                }
+                            });
+
+                            ind_course_views_txt.setText(String.valueOf(views));
+                        }
+                    });
+
             if(cc.getCourse_porta() != null){
                 Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/unidemy-a5397.appspot.com/o/images%2Fportada_curso_1.jpg?alt=media&token=2e0feea9-26c2-4dc5-a7ac-0990a3d5068e").into(play_button);
             }
@@ -278,6 +287,8 @@ public class ViewCourse extends AppCompatActivity implements CardTestAdapter.OnT
     @Override
     public void onBackPressed() {
         Log.d("CDA", "onBackPressed Called");
+        Intent inten = new Intent(ViewCourse.this, RecyclerViewActivity.class);
+        startActivity(inten);
         finish();
     }
 

@@ -175,6 +175,13 @@ public class RecyclerViewActivity extends AppCompatActivity implements CardCours
         Log.d("CLICK", "Portada: "+ viewModel.getCursoCard(position).getCourse_porta());
         intent.putExtra("selectedPortada", viewModel.getCursoCard(position).getCourse_porta());
         startActivity(intent);
+        finish();
 
     }
+    @Override
+    public void onResume(){
+        super.onResume();
+    }
+
+
 }
