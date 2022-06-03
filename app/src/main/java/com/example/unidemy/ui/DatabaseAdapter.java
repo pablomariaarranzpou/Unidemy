@@ -356,11 +356,12 @@ public class DatabaseAdapter extends Activity {
                         if (task.isSuccessful()) {
                             ArrayList<VideoCard> retrieved_uc = new ArrayList<VideoCard>() ;
                             for (QueryDocumentSnapshot document : task.getResult()) {
+                                if(vc != null){
                                 if(vc.contains(document.getId())){
                                     Log.d("RV VIDEO_DATA", document.getId() + " => " + document.getData());
                                     retrieved_uc.add(new VideoCard(document.getString("video_title"), document.getString("video_views"), document.getString("video_url")));
 
-                                }}
+                                }}}
                             listener_3.setVideoonCourse(retrieved_uc);
 
 

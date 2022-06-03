@@ -12,8 +12,8 @@
 
     <ImageView
         android:id="@+id/play_button"
-        android:layout_width="150dp"
-        android:layout_height="81dp"
+        android:layout_width="173dp"
+        android:layout_height="match_parent"
         android:layout_gravity="center|center_horizontal|left"
         android:layout_marginStart="@dimen/margin_medium"
         android:layout_marginEnd="@dimen/margin_big"

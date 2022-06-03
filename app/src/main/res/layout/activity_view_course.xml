@@ -211,7 +211,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
-                    android:text="Todos los documentos"
+                    android:text="Todos los tests"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
                 <androidx.recyclerview.widget.RecyclerView
