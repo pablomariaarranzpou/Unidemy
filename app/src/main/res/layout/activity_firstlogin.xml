@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
     android:paddingTop="?attr/actionBarSize">
@@ -24,11 +24,12 @@
         android:id="@+id/textoBienvenida"
         android:layout_width="438dp"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-condensed"
+        android:fontFamily="sans-serif-condensed-light"
         android:text="¡Bienvenido a Unidemy!"
         android:textAlignment="center"
         android:textColor="#000000"
-        android:textSize="24sp"
+        android:textSize="34sp"
+        android:textStyle="bold"
         tools:layout_editor_absoluteX="-14dp"
         tools:layout_editor_absoluteY="308dp" />
 
@@ -42,6 +43,7 @@
         android:layout_height="wrap_content"
         android:text="Vemos que es la primera vez que nos visitas..."
         android:textAlignment="center"
+        android:textSize="16sp"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="427dp" />
 
@@ -51,10 +53,11 @@
 
     <TextView
         android:id="@+id/textView5"
-        android:layout_width="match_parent"
+        android:layout_width="360dp"
         android:layout_height="wrap_content"
         android:text="¡Ahora realizaremos un test para encontrar los mejores cursos que se adapten a tus necesidades!!"
         android:textAlignment="center"
+        android:textSize="16sp"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="427dp" />
 
@@ -64,12 +67,13 @@
 
     <Button
         android:id="@+id/btn_startTest"
+        style="@style/Widget.MaterialComponents.Button.Icon"
         android:layout_width="254dp"
         android:layout_height="70dp"
         android:backgroundTint="#FF9800"
         android:text="Realizar Test"
-        style="@style/Widget.MaterialComponents.Button.Icon"
         android:textColor="@color/black"
+        app:iconTint="#FFFFFF"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="109dp"
         tools:layout_editor_absoluteY="522dp" />
