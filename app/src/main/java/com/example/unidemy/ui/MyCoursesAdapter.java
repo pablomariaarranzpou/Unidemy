@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.unidemy.R;
 import com.google.firebase.auth.FirebaseAuth;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -65,7 +66,7 @@ public class MyCoursesAdapter extends RecyclerView.Adapter<CardCourseHolder>{
                     localDataSet.get(position).getCourse_views());
 
 
-            ImageView playButton = viewHolder.getPlayButton();
+        Picasso.get().load(localDataSet.get(position).getCourse_porta()).into(viewHolder.getPlayButton());
 
         }
 
