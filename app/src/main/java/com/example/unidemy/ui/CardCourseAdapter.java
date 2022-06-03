@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.unidemy.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -93,6 +94,8 @@ public class CardCourseAdapter extends RecyclerView.Adapter<CardCourseHolder> {
 
         viewHolder.getCourse_views().setText(
                 localDataSet.get(position).getCourse_views());
+
+        Picasso.get().load(localDataSet.get(position).getCourse_porta()).into(viewHolder.getPlayButton());
 
     }
 
