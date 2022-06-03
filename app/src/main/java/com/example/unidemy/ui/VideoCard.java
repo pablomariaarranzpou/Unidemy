@@ -2,7 +2,6 @@ package com.example.unidemy.ui;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.widget.ImageButton;
 
 public class VideoCard implements Parcelable {
     private final String video_title;

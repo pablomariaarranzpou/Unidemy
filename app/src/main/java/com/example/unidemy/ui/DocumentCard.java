@@ -3,8 +3,6 @@ package com.example.unidemy.ui;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 public class DocumentCard implements Parcelable {
 
     private final String document_title;

@@ -1,18 +1,12 @@
 package com.example.unidemy.ui;
 
 
-
-
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.UUID;
 
 // From https://developer.android.com/training/data-storage/room/
 

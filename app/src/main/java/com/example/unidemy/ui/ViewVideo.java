@@ -1,9 +1,7 @@
 package com.example.unidemy.ui;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Bundle;
 import android.widget.MediaController;
 import android.widget.VideoView;
@@ -12,8 +10,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.unidemy.R;
-
-import java.util.ArrayList;
 
 public class ViewVideo extends AppCompatActivity implements MediaPlayer.OnCompletionListener{
 

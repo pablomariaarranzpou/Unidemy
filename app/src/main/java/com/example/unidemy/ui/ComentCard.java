@@ -4,11 +4,7 @@ package com.example.unidemy.ui;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.google.firebase.*;
-import com.google.firestore.v1.DocumentTransform;
-
-import java.time.Instant;
-import java.util.Date;
+import com.google.firebase.Timestamp;
 
 public class ComentCard implements Parcelable {
 
