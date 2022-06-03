@@ -17,16 +17,25 @@
 
 
         <TextView
-            android:id="@+id/resumeText"
+            android:id="@+id/correct_answer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Tú respuesta es INCORRECTA!"
             android:textColor="#FF0000"
             android:gravity="center"
             android:textSize="30sp"/>
-    </LinearLayout>
-    <View
 
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/correct_answer_correction"
+        android:layout_width="match_parent"
+        android:layout_height="85dp"
+        android:gravity="center"
+        android:text="esta mal bro"
+        android:textColor="#000000"
+        android:textSize="20sp" />
+    <View
         android:layout_width="match_parent"
         android:layout_height="50dp"></View>
     <Button

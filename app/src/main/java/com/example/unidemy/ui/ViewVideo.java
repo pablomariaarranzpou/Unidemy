@@ -5,10 +5,8 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.widget.MediaController;
 import android.widget.VideoView;
-
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.unidemy.R;
 
 public class ViewVideo extends AppCompatActivity implements MediaPlayer.OnCompletionListener{
@@ -19,8 +17,6 @@ public class ViewVideo extends AppCompatActivity implements MediaPlayer.OnComple
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
         setContentView(R.layout.activity_videoview);
         vw = (VideoView) findViewById(R.id.videoView);
         vw.setMediaController(new MediaController(this));

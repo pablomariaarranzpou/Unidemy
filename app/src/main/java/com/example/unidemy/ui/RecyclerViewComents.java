@@ -85,7 +85,7 @@ public class RecyclerViewComents extends AppCompatActivity {
                                             Double media = 0.0;
                                             Float mediaf;
                                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                                if(document.exists()) {
+                                                if(document.exists() && arr.contains(document.getId())) {
                                                     media += document.getDouble("coment_rating");
                                                 }
                                             }

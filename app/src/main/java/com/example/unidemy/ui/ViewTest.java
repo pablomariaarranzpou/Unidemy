@@ -105,7 +105,7 @@ public class ViewTest extends AppCompatActivity {
         }
         else {
             buttonA.setBackgroundColor(Color.RED);
-            incorrectDialog();
+            incorrectDialog(currentQuestion.getAnswer());
             incorrect++;
 
         }
@@ -126,7 +126,7 @@ public class ViewTest extends AppCompatActivity {
         } else {
             buttonB.setBackgroundColor(Color.RED);
             incorrect++;
-            incorrectDialog();
+            incorrectDialog(currentQuestion.getAnswer());
         }
     }
 
@@ -144,7 +144,7 @@ public class ViewTest extends AppCompatActivity {
         } else {
             buttonC.setBackgroundColor(Color.RED);
             incorrect++;
-            incorrectDialog();
+            incorrectDialog(currentQuestion.getAnswer());
 
 
         }
@@ -162,7 +162,7 @@ public class ViewTest extends AppCompatActivity {
             }
         } else {
             buttonD.setBackgroundColor(Color.RED);
-            incorrectDialog();
+            incorrectDialog(currentQuestion.getAnswer());
             incorrect++;
 
         }
@@ -194,7 +194,7 @@ public class ViewTest extends AppCompatActivity {
         finish();
     }
 
-    public void incorrectDialog() {
+    public void incorrectDialog(String correct) {
         final Dialog dialogInCorrect = new Dialog(ViewTest.this);
         dialogInCorrect.requestWindowFeature(Window.FEATURE_NO_TITLE);
         if (dialogInCorrect.getWindow() != null) {
@@ -204,8 +204,9 @@ public class ViewTest extends AppCompatActivity {
         dialogInCorrect.setContentView(R.layout.dialog_incorrect);
         dialogInCorrect.setCancelable(false);
         dialogInCorrect.show();
-
-        TextView incorrectNext = (TextView) dialogInCorrect.findViewById(R.id.resumeText);
+        TextView correction = (TextView)  dialogInCorrect.findViewById(R.id.correct_answer_correction);
+        correction.setText("Correcta: " + correct);
+        TextView incorrectNext = (TextView) dialogInCorrect.findViewById(R.id.correct_answer);
         Button incorrectBtnNext = (Button) dialogInCorrect.findViewById(R.id.dialogNext);
 
 
@@ -239,7 +240,7 @@ public class ViewTest extends AppCompatActivity {
         dialogInCorrect.show();
         float nota = (float)correct / list.size() *10.0f;
         double roundOff = Math.round(nota * 100.0) / 100.0;
-        TextView resumeText = (TextView) dialogInCorrect.findViewById(R.id.resumeText);
+        TextView resumeText = (TextView) dialogInCorrect.findViewById(R.id.correct_answer);
         if(roundOff < 5) {
             resumeText.setTextColor(Color.RED);
         }
@@ -268,7 +269,7 @@ public class ViewTest extends AppCompatActivity {
         dialogCorrect.setCancelable(false);
         dialogCorrect.show();
 
-        TextView correctText = (TextView) dialogCorrect.findViewById(R.id.resumeText);
+        TextView correctText = (TextView) dialogCorrect.findViewById(R.id.correct_answer);
         Button buttonNext = (Button) dialogCorrect.findViewById(R.id.dialogNext);
 
 

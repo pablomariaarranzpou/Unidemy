@@ -125,13 +125,16 @@ public class ViewCourse extends AppCompatActivity implements CardTestAdapter.OnT
                             DocumentSnapshot doc = task.getResult();
                             int views = Integer.parseInt(doc.getString("course_views"));
                             views++;
+                            Log.d("Update V", String.valueOf(views));
                             Task<Void> documentReferenceCourse2 = firestore.collection("Curso").document(id).update("course_views", String.valueOf(views))
                                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
+                                    Log.d("UPDATE V", task.toString());
                                 }
-                            });
 
+                            });
+                            Log.d("Update V", String.valueOf(views));
                             ind_course_views_txt.setText(String.valueOf(views));
                         }
                     });
@@ -306,22 +309,6 @@ public class ViewCourse extends AppCompatActivity implements CardTestAdapter.OnT
     @Override
     public void onResume() {
         super.onResume();
-        Task<DocumentSnapshot> documentReferenceCourse = firestore.collection("Curso").document(id).get()
-                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        DocumentSnapshot doc = task.getResult();
-                        int views = Integer.parseInt(doc.getString("course_views"));
-                        Task<Void> documentReferenceCourse2 = firestore.collection("Curso").document(id).update("course_views", String.valueOf(views))
-                                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
-                                    }
-                                });
-
-                        ind_course_views_txt.setText(String.valueOf(views));
-                    }
-                });
 
         Task<DocumentSnapshot> documentReferenceCourse2 = firestore.collection("Curso").document(id).get()
                 .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {

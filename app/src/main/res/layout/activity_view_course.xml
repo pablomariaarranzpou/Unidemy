@@ -90,7 +90,7 @@
         <TextView
             android:id="@+id/ind_course_description"
             android:layout_width="380dp"
-            android:layout_height="58dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="TEXTO TEXTO TEXTO TEXTO TEXTO TEXTOTEXTO TEXTO TEXTO TEXTO TEXTO TEXTOTEXTO TEXTO TEXTO TEXTO TEXTO TEXTOTEXTO TEXTO TEXTO TEXTO TEXTO TEXTO"
             app:layout_constraintEnd_toEndOf="parent"
@@ -100,15 +100,13 @@
 
         <Button
             android:id="@+id/ind_btn_opinar"
-            android:layout_width="144dp"
-            android:layout_height="37dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="16dp"
+            android:layout_width="145dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="4dp"
             android:layout_weight="1"
             android:backgroundTint="#FF9800"
             android:text="Opiniones"
             app:iconTint="#FF9800"
-            app:layout_constraintBottom_toTopOf="@+id/scrollView2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.011"
             app:layout_constraintStart_toStartOf="parent"
