@@ -2,6 +2,7 @@ package com.example.unidemy.ui;
 
 import android.os.Bundle;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,8 +22,9 @@ public class ViewDocument extends AppCompatActivity {
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setUseWideViewPort(true);
         webView.getSettings().setBuiltInZoomControls(true);
-        String pdf = "http://www.adobe.com/devnet/acrobat/pdfs/pdf_open_parameters.pdf";
-        webView.loadUrl("https://drive.google.com/viewerng/viewer?embedded=true&url=" + pdf);
+        webView.setWebViewClient(new WebViewClient());
+        String pdf;
+
 
         if (getIntent().hasExtra("selectedDocument")) {
             dc = (DocumentCard) getIntent().getParcelableExtra("selectedDocument");
