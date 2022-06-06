@@ -52,6 +52,12 @@ public class Register extends AppCompatActivity {
             public void onClick(View v) {
                 String email = user_name.getText().toString().trim();
                 String password= pass_word.getText().toString().trim();
+                String name_s = name.getText().toString();
+                if(name_s.isEmpty()){
+                    name.setError("Escriba un nombre");
+                    name.requestFocus();
+                    return;
+                }
                 if(email.isEmpty())
                 {
                     user_name.setError("Escriba una dirección de correo");

@@ -53,15 +53,16 @@
 
         <TextView
             android:id="@+id/course_rating"
-            android:layout_width="30dp"
-            android:layout_height="17dp"
+            android:layout_width="48dp"
+            android:layout_height="16dp"
             android:layout_marginStart="24dp"
             android:layout_marginTop="85dp"
             android:layout_marginBottom="2dp"
+            app:drawableRightCompat="@drawable/ic_baseline_star_rate_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView9"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.368"
+            app:layout_constraintVertical_bias="0.312"
             tools:ignore="MissingConstraints" />
 
         <TextView
@@ -78,25 +79,11 @@
             app:layout_constraintVertical_bias="0.333"
             tools:ignore="MissingConstraints" />
 
-        <ImageView
-            android:id="@+id/imageView8"
-            android:layout_width="19dp"
-            android:layout_height="18dp"
-            android:layout_marginTop="85dp"
-            android:layout_marginEnd="68dp"
-            android:layout_marginBottom="4dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/course_rating"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.333"
-            app:srcCompat="@android:drawable/btn_star_big_on"
-            tools:ignore="MissingConstraints" />
+
 
         <ImageView
             android:id="@+id/imageView9"
-            android:layout_width="20dp"
+            android:layout_width="wrap_content"
             android:layout_height="18dp"
             android:layout_marginStart="44dp"
             android:layout_marginTop="85dp"

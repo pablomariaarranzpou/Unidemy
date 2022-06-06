@@ -87,6 +87,7 @@ public class ViewCourse extends AppCompatActivity implements CardTestAdapter.OnT
 
 
 
+
         if (getIntent().hasExtra("selectedCourse")) {
 
 

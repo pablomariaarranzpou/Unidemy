@@ -6,10 +6,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toolbar;
+
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.car.ui.toolbar.MenuItem;
 import com.example.unidemy.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -18,6 +22,8 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.Objects;
+
 public class UserInfoActivity extends AppCompatActivity {
 
     private TextView user_email, user_info_university, user_info_faculty, user_info_grade;
@@ -25,6 +31,7 @@ public class UserInfoActivity extends AppCompatActivity {
     private FirebaseFirestore firestore;
     private String TAG = "USERINFO", university_code, faculty_code, grade_code;
     private Button btn_test;
+    private Toolbar actionBar;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +40,8 @@ public class UserInfoActivity extends AppCompatActivity {
         firestore = FirebaseFirestore.getInstance();
 
         user_email = findViewById(R.id.user_reset_email);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
         user_info_university = findViewById(R.id.user_info_university);
         user_info_faculty = findViewById(R.id.user_info_faculty);
         user_info_grade = findViewById(R.id.user_info_grade);
@@ -80,16 +88,27 @@ public class UserInfoActivity extends AppCompatActivity {
                                                                                                         if (task4.isSuccessful()) {
                                                                                                             if (document4.exists()) {
                                                                                                                 user_info_grade.setText(document4.getString("grado_name"));
+                                                                                                            }else{
+                                                                                                                Intent intent = new Intent(UserInfoActivity.this, StartTestUniversidad.class);
+                                                                                                                startActivity(intent);
+                                                                                                                finish();
                                                                                                             }
                                                                                                         }
                                                                                                     }
                                                                                                 });
+                                                                                    }else{
+                                                                                            Intent intent = new Intent(UserInfoActivity.this, StartTestUniversidad.class);
+                                                                                            startActivity(intent);
+                                                                                            finish();
                                                                                     }
                                                                                 }
                                                                             }
                                                                         });
-                                                    }
-                                                }
+                                                    }else{
+                                                    Intent intent = new Intent(UserInfoActivity.this, StartTestUniversidad.class);
+                                                    startActivity(intent);
+                                                    finish();
+                                                }   }
                                             }
 
                                         });
@@ -109,6 +128,10 @@ public class UserInfoActivity extends AppCompatActivity {
             }
 
         });
+
+
+
+
 
 
 

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.unidemy" >
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -11,7 +12,8 @@
         android:label="Unidemy"
         android:roundIcon="@drawable/unidemy_logo_icon_final"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Unidemy" >
+        android:theme="@style/Theme.Unidemy"
+        tools:ignore="ExtraText">
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -45,6 +47,7 @@
             android:name=".ui.ViewCourse"
             android:exported="false"
             android:label="Curso" />
+
 
         <activity
             android:theme="@style/Theme.AppCompat.NoActionBar"
