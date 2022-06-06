@@ -31,18 +31,20 @@
 
         android:layout_width="match_parent"
         android:layout_height="50dp"></View>
+
     <Button
         android:id="@+id/dialogEnLinea"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="Ver en Línea"
-        android:textColor="@color/white"/>
+        android:textColor="@color/white" />
+
     <Button
         android:id="@+id/dialogDescargar"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="Descargar"
-        android:textColor="@color/white"/>
+        android:textColor="@color/white" />
     <View
         android:layout_width="match_parent"
         android:layout_height="50dp"></View>

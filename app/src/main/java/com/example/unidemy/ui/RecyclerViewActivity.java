@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -39,6 +41,7 @@ public class RecyclerViewActivity extends AppCompatActivity implements CardCours
     private RecyclerView_ViewModel viewModel;
     private BottomNavigationView navigationView;
     private NavController navController;
+    private TextView texto_no_courses;
     private FirebaseAuth mAuth;
     private FirebaseFirestore firestore;
 
@@ -50,7 +53,6 @@ public class RecyclerViewActivity extends AppCompatActivity implements CardCours
         super.onCreate(savedInstanceState);
         mAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
-
         if(mAuth.getCurrentUser() == null){
             startActivity(new Intent(RecyclerViewActivity.this, Login.class));
             finish();
@@ -81,6 +83,8 @@ public class RecyclerViewActivity extends AppCompatActivity implements CardCours
             setContentView(R.layout.activity_view_courses_list);
             parentContext = this.getBaseContext();
             mActivity = this;
+            texto_no_courses = findViewById(R.id.texto_no_courses);
+            texto_no_courses.setVisibility(View.GONE);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
             getSupportActionBar().setLogo(R.drawable.banner_final);
             getSupportActionBar().setDisplayUseLogoEnabled(true);
@@ -145,6 +149,7 @@ public class RecyclerViewActivity extends AppCompatActivity implements CardCours
                 CardCourseAdapter newAdapter = new CardCourseAdapter(parentContext, ac, (CardCourseAdapter.OnCourseListener) mActivity);
                 mRecyclerView.swapAdapter(newAdapter, false);
                 newAdapter.notifyDataSetChanged();
+                checkIfEmpty(newAdapter);
             }
         };
 
@@ -169,6 +174,11 @@ public class RecyclerViewActivity extends AppCompatActivity implements CardCours
         startActivity(intent);
         finish();
 
+    }
+
+    void checkIfEmpty(CardCourseAdapter newAdapter){
+        if(newAdapter.getItemCount() != 0) texto_no_courses.setVisibility(View.GONE);
+        else texto_no_courses.setVisibility(View.VISIBLE);
     }
 
 
