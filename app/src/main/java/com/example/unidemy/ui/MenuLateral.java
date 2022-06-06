@@ -60,5 +60,11 @@ public class MenuLateral extends AppCompatActivity {
             finish();
     }
 
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent inen = new Intent(MenuLateral.this,RecyclerViewActivity.class);
+        startActivity(inen);
+        finish();
+    }
 }

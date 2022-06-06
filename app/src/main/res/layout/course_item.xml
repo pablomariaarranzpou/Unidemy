@@ -40,11 +40,11 @@
 
         <TextView
             android:id="@+id/course_description"
-            android:layout_width="169dp"
-            android:layout_height="38dp"
+            android:layout_width="171dp"
+            android:layout_height="52dp"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="20dp"
-            android:layout_marginBottom="40dp"
+            android:layout_marginBottom="36dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -53,47 +53,34 @@
 
         <TextView
             android:id="@+id/course_rating"
-            android:layout_width="48dp"
-            android:layout_height="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="17dp"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="85dp"
+            android:drawablePadding="5dp"
+            android:layout_marginTop="84dp"
             android:layout_marginBottom="2dp"
             app:drawableRightCompat="@drawable/ic_baseline_star_rate_24"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView9"
+            app:layout_constraintStart_toEndOf="@+id/course_views"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.312"
             tools:ignore="MissingConstraints" />
 
         <TextView
             android:id="@+id/course_views"
-            android:layout_width="38dp"
+            android:layout_width="wrap_content"
             android:layout_height="17dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="85dp"
             android:layout_marginBottom="2dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/imageView9"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.333"
-            tools:ignore="MissingConstraints" />
-
-
-
-        <ImageView
-            android:id="@+id/imageView9"
-            android:layout_width="wrap_content"
-            android:layout_height="18dp"
-            android:layout_marginStart="44dp"
-            android:layout_marginTop="85dp"
-            android:layout_marginBottom="4dp"
+            android:drawablePadding="5dp"
+            app:drawableRightCompat="@drawable/ic_baseline_remove_red_eye_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.388"
-            app:srcCompat="@drawable/ic_baseline_remove_red_eye_24"
+            app:layout_constraintVertical_bias="0.437"
             tools:ignore="MissingConstraints" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

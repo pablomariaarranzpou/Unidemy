@@ -56,9 +56,9 @@ public class UserInfoActivity extends AppCompatActivity {
                     DocumentSnapshot document = task.getResult();
                     if (document.exists()) {
                         Log.d(TAG, "DocumentSnapshot data: " + document.getData());
-                        university_code = document.getString("user_university");
                         faculty_code = document.getString("user_faculty");
                         grade_code = document.getString("user_grade");
+                        university_code = document.getString("user_university");
                         Log.d("HOLA", " uni " + university_code + " fac " + faculty_code + " grade " + grade_code);
                         Task<DocumentSnapshot> documentReferenceuni = firestore.collection("Universidades")
                                 .document(university_code).get().
@@ -69,7 +69,6 @@ public class UserInfoActivity extends AppCompatActivity {
                                                 if (task2.isSuccessful()) {
                                                     if (document2.exists()) {
                                                         Log.d("uni?", "222 " + document2.getData());
-                                                        user_info_university.setText(document2.getString("uni_name"));
                                                         Task<DocumentSnapshot> documentReferenceuni = firestore.collection("Universidades")
                                                                 .document(document2.getId()).collection("Facultades").document(faculty_code).get().
                                                                         addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -78,7 +77,6 @@ public class UserInfoActivity extends AppCompatActivity {
                                                                                 DocumentSnapshot document3 = task3.getResult();
                                                                                 if (task3.isSuccessful()) {
                                                                                     if (document3.exists()) {
-                                                                                        user_info_faculty.setText(document3.getString("facu_name"));
                                                                                         Task<DocumentSnapshot> documentReferenceuni = firestore.collection("Universidades")
                                                                                                 .document(university_code).collection("Facultades").document(faculty_code).collection("Grado").document(grade_code).
                                                                                                         get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -87,31 +85,21 @@ public class UserInfoActivity extends AppCompatActivity {
                                                                                                         DocumentSnapshot document4 = task4.getResult();
                                                                                                         if (task4.isSuccessful()) {
                                                                                                             if (document4.exists()) {
+                                                                                                                user_info_university.setText(document2.getString("uni_name"));
+                                                                                                                user_info_faculty.setText(document3.getString("facu_name"));
                                                                                                                 user_info_grade.setText(document4.getString("grado_name"));
-                                                                                                            }else{
-                                                                                                                Intent intent = new Intent(UserInfoActivity.this, StartTestUniversidad.class);
-                                                                                                                startActivity(intent);
-                                                                                                                finish();
                                                                                                             }
                                                                                                         }
                                                                                                     }
                                                                                                 });
-                                                                                    }else{
-                                                                                            Intent intent = new Intent(UserInfoActivity.this, StartTestUniversidad.class);
-                                                                                            startActivity(intent);
-                                                                                            finish();
                                                                                     }
                                                                                 }
                                                                             }
                                                                         });
-                                                    }else{
-                                                    Intent intent = new Intent(UserInfoActivity.this, StartTestUniversidad.class);
-                                                    startActivity(intent);
-                                                    finish();
-                                                }   }
-                                            }
+                                                    }
+                                                }
 
-                                        });
+                                            } });
                     }
                 }
             }

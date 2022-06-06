@@ -68,7 +68,7 @@ public class RecyclerViewActivity extends AppCompatActivity implements CardCours
                         grade = doc.getString("user_grade");
                     }
                     if (grade == null || grade.length() == 0) {
-                        startActivity(new Intent(RecyclerViewActivity.this, FirstLogin.class));
+                        startActivity(new Intent(RecyclerViewActivity.this, StartTestUniversidad.class));
                         finish();
                     }
                     if (SaveSharedPreference.getUserName(RecyclerViewActivity.this).length() == 0 || mAuth.getCurrentUser().getUid().length() == 0) {
@@ -134,6 +134,7 @@ public class RecyclerViewActivity extends AppCompatActivity implements CardCours
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.settings) {
             startActivity(new Intent(RecyclerViewActivity.this, MenuLateral.class));
+            finish();
             return true;
         }
         return super.onOptionsItemSelected(item);
