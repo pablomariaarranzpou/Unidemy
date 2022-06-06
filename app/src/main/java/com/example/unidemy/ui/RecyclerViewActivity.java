@@ -46,7 +46,7 @@ public class RecyclerViewActivity extends AppCompatActivity implements CardCours
     private FirebaseFirestore firestore;
 
     private Toolbar toolbar;
-    private String grade;
+    private String grade, university, faculty;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,8 +66,10 @@ public class RecyclerViewActivity extends AppCompatActivity implements CardCours
 
                     if (doc.exists()) {
                         grade = doc.getString("user_grade");
+                        university = doc.getString("user_unviersity");
+                        faculty = doc.getString("user_faculty");
                     }
-                    if (grade == null || grade.length() == 0) {
+                    if (grade == null ) {
                         startActivity(new Intent(RecyclerViewActivity.this, StartTestUniversidad.class));
                         finish();
                     }
