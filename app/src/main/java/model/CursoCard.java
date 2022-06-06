@@ -1,4 +1,4 @@
-package com.example.unidemy.ui;
+package model;
 
 
 import android.os.Parcel;

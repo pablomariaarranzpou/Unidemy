@@ -12,6 +12,8 @@ import com.example.unidemy.R;
 
 import java.util.ArrayList;
 
+import model.FacultadCard;
+
 public class FacultadesAdapter extends RecyclerView.Adapter<FacultadesViewHolder>{
 
 

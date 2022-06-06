@@ -9,6 +9,8 @@ import androidx.lifecycle.MutableLiveData;
 
 import java.util.ArrayList;
 
+import model.ComentCard;
+
 public class RecyclerViewComents_ViewModel extends AndroidViewModel implements DatabaseAdapter.ccInterface{
 
     private final MutableLiveData<ArrayList<ComentCard>> mComentCards;

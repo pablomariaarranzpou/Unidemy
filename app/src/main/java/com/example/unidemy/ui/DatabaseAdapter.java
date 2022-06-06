@@ -18,6 +18,15 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import model.CardTest;
+import model.ComentCard;
+import model.CursoCard;
+import model.DocumentCard;
+import model.FacultadCard;
+import model.GradoCard;
+import model.UniversidadCard;
+import model.VideoCard;
+
 public class DatabaseAdapter extends Activity {
 
     public static final String TAG = "DatabaseAdapter";

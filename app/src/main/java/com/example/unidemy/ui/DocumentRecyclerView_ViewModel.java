@@ -9,6 +9,8 @@ import androidx.lifecycle.MutableLiveData;
 
 import java.util.ArrayList;
 
+import model.DocumentCard;
+
 public class DocumentRecyclerView_ViewModel extends AndroidViewModel implements DatabaseAdapter.dcInterface {
 
     private final MutableLiveData<ArrayList<DocumentCard>> mDocumentCards;

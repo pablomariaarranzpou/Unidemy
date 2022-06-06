@@ -7,6 +7,8 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import java.util.ArrayList;
 
+import model.VideoCard;
+
 public class VideoRecyclerView_ViewModel extends AndroidViewModel implements DatabaseAdapter.vrInterface{
 
         private final MutableLiveData<ArrayList<VideoCard>> mVideoCards;

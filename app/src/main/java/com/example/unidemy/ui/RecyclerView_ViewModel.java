@@ -13,6 +13,8 @@ import androidx.lifecycle.AndroidViewModel;
         import com.google.firebase.auth.FirebaseAuth;
         import com.google.firebase.firestore.FirebaseFirestore;
 
+        import model.CursoCard;
+
 
 public class RecyclerView_ViewModel extends AndroidViewModel implements DatabaseAdapter.vmInterface{
 

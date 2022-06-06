@@ -9,6 +9,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.unidemy.R;
 
+import model.VideoCard;
+
 public class ViewVideo extends AppCompatActivity implements MediaPlayer.OnCompletionListener{
 
 

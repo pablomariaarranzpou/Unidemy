@@ -12,6 +12,8 @@ import com.example.unidemy.R;
 
 import java.util.ArrayList;
 
+import model.ComentCard;
+
 
 public class CommentListAdapter extends RecyclerView.Adapter<ComentViewHolder> {
 

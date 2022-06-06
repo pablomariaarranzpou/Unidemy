@@ -1,4 +1,4 @@
-package com.example.unidemy.ui;
+package model;
 
 public class TestQuestion {
     private int id;

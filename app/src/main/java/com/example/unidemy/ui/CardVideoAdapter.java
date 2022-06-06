@@ -13,6 +13,8 @@ import com.example.unidemy.R;
 
 import java.util.ArrayList;
 
+import model.VideoCard;
+
 public class CardVideoAdapter extends RecyclerView.Adapter<CardVideoHolder>{
 
     private final ArrayList<VideoCard> localDataSet;

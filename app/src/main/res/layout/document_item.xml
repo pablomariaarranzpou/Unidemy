@@ -8,7 +8,7 @@
     android:layout_margin="8dp"
     android:gravity="center_vertical"
     android:orientation="horizontal"
-    tools:context=".ui.DocumentCard">
+    tools:context="model.DocumentCard">
 
     <ImageButton
         android:id="@+id/play_button_document"

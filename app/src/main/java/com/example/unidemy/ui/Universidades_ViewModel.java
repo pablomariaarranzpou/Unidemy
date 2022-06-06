@@ -8,6 +8,8 @@ import androidx.lifecycle.MutableLiveData;
 
 import java.util.ArrayList;
 
+import model.UniversidadCard;
+
 public class Universidades_ViewModel extends AndroidViewModel implements DatabaseAdapter.uniInterface{
 
     private final MutableLiveData<ArrayList<UniversidadCard>> mUniversidadCards;

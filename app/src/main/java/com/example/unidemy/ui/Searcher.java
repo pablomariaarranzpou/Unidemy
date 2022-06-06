@@ -22,6 +22,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 
+import model.CursoCard;
+
 public class Searcher extends AppCompatActivity implements SearchView.OnQueryTextListener, CardCourseAdapter.OnCourseListener{
 
     private Context parentContext;

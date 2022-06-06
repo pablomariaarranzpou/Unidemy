@@ -30,9 +30,11 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 
+import model.CursoCard;
+
 public class RecyclerViewActivity extends AppCompatActivity implements CardCourseAdapter.OnCourseListener{
 
-    private final String TAG = "MainActivity";
+
 
 
     private Context parentContext;

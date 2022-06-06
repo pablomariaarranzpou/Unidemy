@@ -25,6 +25,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 
+import model.CursoCard;
+
 public class MyCourses extends AppCompatActivity implements MyCoursesAdapter.OnCourseListener{
     private Context parentContext;
     private AppCompatActivity mActivity;

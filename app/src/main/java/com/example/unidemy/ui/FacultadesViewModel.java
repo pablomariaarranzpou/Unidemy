@@ -9,6 +9,8 @@ import androidx.lifecycle.MutableLiveData;
 
 import java.util.ArrayList;
 
+import model.FacultadCard;
+
 public class FacultadesViewModel extends AndroidViewModel implements DatabaseAdapter.facInterface{
 
 

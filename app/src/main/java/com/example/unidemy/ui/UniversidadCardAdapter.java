@@ -12,6 +12,8 @@ import com.example.unidemy.R;
 
 import java.util.ArrayList;
 
+import model.UniversidadCard;
+
 public class UniversidadCardAdapter extends RecyclerView.Adapter<UniversidadCardHolder> {
     private final ArrayList<UniversidadCard> localDataSet;
     private final Context parentContext;

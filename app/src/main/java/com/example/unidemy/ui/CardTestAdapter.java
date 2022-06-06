@@ -13,6 +13,8 @@ import com.example.unidemy.R;
 
 import java.util.ArrayList;
 
+import model.CardTest;
+
 public class CardTestAdapter extends RecyclerView.Adapter<CardTestHolder>{
 
 

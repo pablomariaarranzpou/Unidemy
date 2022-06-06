@@ -25,6 +25,8 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
+import model.ComentCard;
+
 public class RecyclerViewComents extends AppCompatActivity {
 
     private Context parentContext;

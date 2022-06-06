@@ -9,6 +9,8 @@ import androidx.lifecycle.MutableLiveData;
 
 import java.util.ArrayList;
 
+import model.CardTest;
+
 public class CardTestViewModel extends AndroidViewModel implements DatabaseAdapter.tsInterface {
 
     private final MutableLiveData<ArrayList<CardTest>> mCardTests;

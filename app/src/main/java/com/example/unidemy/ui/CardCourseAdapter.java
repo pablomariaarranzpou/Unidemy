@@ -16,6 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import model.CursoCard;
+
 public class CardCourseAdapter extends RecyclerView.Adapter<CardCourseHolder> {
 
     private final ArrayList<CursoCard> localDataSet;

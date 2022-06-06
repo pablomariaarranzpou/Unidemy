@@ -10,6 +10,8 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 
+import model.CursoCard;
+
 public class MyCoursesViewModel extends AndroidViewModel implements DatabaseAdapter.usInterface {
 
     private final MutableLiveData<ArrayList<CursoCard>> mCursoCards;

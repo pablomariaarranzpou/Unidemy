@@ -8,7 +8,7 @@
     android:layout_margin="8dp"
     android:gravity="center_vertical"
     android:orientation="horizontal"
-    tools:context=".ui.CardTest">
+    tools:context="model.CardTest">
 
     <ImageButton
         android:id="@+id/test_start_btn"

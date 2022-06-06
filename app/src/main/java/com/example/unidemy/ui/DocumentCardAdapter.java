@@ -13,6 +13,8 @@ import com.example.unidemy.R;
 
 import java.util.ArrayList;
 
+import model.DocumentCard;
+
 public class DocumentCardAdapter extends RecyclerView.Adapter<CardDocumentHolder>{
 
 

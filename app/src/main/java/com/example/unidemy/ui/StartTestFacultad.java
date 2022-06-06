@@ -21,6 +21,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import model.FacultadCard;
+
 public class StartTestFacultad extends AppCompatActivity implements FacultadesAdapter.OnFacultadListener{
 
 

@@ -21,6 +21,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import model.GradoCard;
+
 public class StartTestGrado extends AppCompatActivity implements GradosAdapter.OnGradoListener {
 
     FirebaseAuth mAuth;

@@ -8,7 +8,7 @@
     android:layout_margin="8dp"
     android:gravity="center_vertical"
     android:orientation="horizontal"
-    tools:context=".ui.VideoCard">
+    tools:context="model.VideoCard">
 
     <ImageButton
         android:id="@+id/play_button_video"

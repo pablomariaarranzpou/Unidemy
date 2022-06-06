@@ -11,6 +11,8 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 
+import model.GradoCard;
+
 public class GradosViewModel extends AndroidViewModel implements DatabaseAdapter.ugInterface{
 
 

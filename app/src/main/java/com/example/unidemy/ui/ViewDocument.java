@@ -18,8 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.unidemy.R;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
+import model.DocumentCard;
 
 public class ViewDocument extends AppCompatActivity {
 

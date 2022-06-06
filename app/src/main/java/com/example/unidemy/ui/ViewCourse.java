@@ -30,6 +30,11 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+import model.CardTest;
+import model.CursoCard;
+import model.DocumentCard;
+import model.VideoCard;
+
 public class ViewCourse extends AppCompatActivity implements CardTestAdapter.OnTestListener, CardVideoAdapter.OnVideoListener, DocumentCardAdapter.OnDocumentListener {
 
 
