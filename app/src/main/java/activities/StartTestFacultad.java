@@ -75,7 +75,12 @@ public class StartTestFacultad extends AppCompatActivity implements FacultadesAd
 
     }
 
-
+    public void onBackPressed(){
+        super.onBackPressed();
+        Intent intent = new Intent(StartTestFacultad.this, StartTestUniversidad.class);
+        startActivity(intent);
+        finish();
+    }
 
     @Override
     public void onFacultadClick(int position) {

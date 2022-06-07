@@ -20,7 +20,6 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 
 import model.CardTest;
-import model.TestQuestion;
 
 public class CardTestAdapter extends RecyclerView.Adapter<CardTestHolder>{
 

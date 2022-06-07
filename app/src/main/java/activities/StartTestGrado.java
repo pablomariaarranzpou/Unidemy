@@ -74,7 +74,13 @@ public class StartTestGrado extends AppCompatActivity implements GradosAdapter.O
 
     }
 
-
+    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+        Intent intent = new Intent(StartTestGrado.this, StartTestFacultad.class);
+        startActivity(intent);
+        finish();
+    }
 
     @Override
     public void OnGradoClick(int position) {
