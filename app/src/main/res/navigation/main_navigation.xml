@@ -7,17 +7,17 @@
 
     <activity
         android:id="@+id/navigation_recyclerview"
-        android:name="com.example.unidemy.ui.RecyclerViewActivity"
+        android:name="activities.RecyclerViewActivity"
         android:label="navigation_recyclerview"
         tools:layout="@layout/activity_view_courses_list" />
     <activity
         android:id="@+id/navigation_mycourses"
-        android:name="com.example.unidemy.ui.MyCourses"
+        android:name="activities.MyCourses"
         android:label="activity_mycourses"
         tools:layout="@layout/fragment_mycourses"/>
     <activity
         android:id="@+id/navigation_searcher"
-        android:name="com.example.unidemy.ui.Searcher"
+        android:name="activities.Searcher"
         android:label="navigation_searcher"
         tools:layout="@layout/activity_searcher"/>
 </navigation>

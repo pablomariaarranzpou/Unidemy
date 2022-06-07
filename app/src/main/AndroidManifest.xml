@@ -19,20 +19,20 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="YOUR_API_KEY" />
         <activity
-            android:name=".ui.ForgotPassword"
+            android:name="activities.ForgotPassword"
             android:exported="false"
             android:label="Recuperar Contraseña"/>
 
         <activity
-            android:name=".ui.Register"
+            android:name="activities.Register"
             android:exported="false"
             android:label="Registro" />
         <activity
-            android:name=".ui.FirstLogin"
+            android:name="activities.FirstLogin"
             android:exported="false"
             android:label="¡Bienvenid@!" />
         <activity
-            android:name=".ui.RecyclerViewActivity"
+            android:name="activities.RecyclerViewActivity"
             android:exported="true"
             >
             <intent-filter>
@@ -44,42 +44,42 @@
 
 
         <activity
-            android:name=".ui.ViewCourse"
+            android:name="activities.ViewCourse"
             android:exported="false"
             android:label="Curso" />
 
 
         <activity
             android:theme="@style/Theme.AppCompat.NoActionBar"
-            android:name=".ui.ViewVideo"
+            android:name="activities.ViewVideo"
             android:exported="false"
             android:label=""
             android:screenOrientation="landscape"/>
 
         <activity
-            android:name=".ui.Login"
+            android:name="activities.Login"
             android:exported="true"
             android:label="Unidemy" />
 
-        <activity android:name=".ui.Searcher"
+        <activity android:name="activities.Searcher"
             android:label="Buscador"
             android:exported="false"/>
-        <activity android:name=".ui.MyCourses"
+        <activity android:name="activities.MyCourses"
             android:label="Mis Cursos"
             android:exported="false"/>
-        <activity android:name=".ui.MainActivity"
+        <activity android:name=".adapters.MainActivity"
             android:exported="false"/>
-        <activity android:name=".ui.MenuLateral" />
-        <activity android:name=".ui.UserInfoActivity" />
-        <activity android:name=".ui.Privacity" />
-        <activity android:name=".ui.RecyclerViewComents" />
-        <activity android:name=".ui.ViewDocument" />
-        <activity android:name=".ui.ActivityAddComent" />
-        <activity android:name=".ui.ActivityHelp" />
-        <activity android:name=".ui.StartTestUniversidad" />
-        <activity android:name=".ui.StartTestFacultad" />
-        <activity android:name=".ui.StartTestGrado" />
-        <activity android:name=".ui.ViewTest" />
+        <activity android:name="activities.MenuLateral" />
+        <activity android:name="activities.UserInfoActivity" />
+        <activity android:name="activities.Privacity" />
+        <activity android:name="activities.RecyclerViewComents" />
+        <activity android:name="activities.ViewDocument" />
+        <activity android:name="activities.ActivityAddComent" />
+        <activity android:name="activities.ActivityHelp" />
+        <activity android:name="activities.StartTestUniversidad" />
+        <activity android:name="activities.StartTestFacultad" />
+        <activity android:name="activities.StartTestGrado" />
+        <activity android:name="activities.ViewTest" />
 
 
 

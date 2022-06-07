@@ -38,29 +38,14 @@
 
         <TextView
             android:id="@+id/document_views"
-            android:layout_width="38dp"
+            android:layout_width="wrap_content"
             android:layout_height="17dp"
-            android:layout_marginStart="8dp"
             android:layout_marginBottom="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/imageView9"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/document_title"
-            app:layout_constraintVertical_bias="0.513"
-            tools:ignore="MissingConstraints" />
-
-        <ImageView
-            android:id="@+id/imageView9"
-            android:layout_width="20dp"
-            android:layout_height="18dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.63"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/document_title"
             app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/ic_baseline_remove_red_eye_24"
             tools:ignore="MissingConstraints" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

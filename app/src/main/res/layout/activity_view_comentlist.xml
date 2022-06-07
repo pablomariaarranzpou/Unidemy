@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:theme = "@style/Theme.AppCompat.Light.Dialog"
-    tools:context=".ui.RecyclerViewComents"
+    tools:context="activities.RecyclerViewComents"
     >
 
     <Button
