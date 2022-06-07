@@ -59,6 +59,7 @@ public class CardCourseAdapter extends RecyclerView.Adapter<CardCourseHolder> {
 
         Log.d("BUSCA", txtBuscar + "| esta vacio?"+ txtBuscar.isEmpty());
         Log.d("Filtr", filtrado.toString());
+
         if (txtBuscar.isEmpty()) {
             localDataSet.clear();
             localDataSet.addAll(filtrado);
@@ -99,8 +100,10 @@ public class CardCourseAdapter extends RecyclerView.Adapter<CardCourseHolder> {
         viewHolder.getCourse_title().setText(
                 localDataSet.get(position).getCourse_title());
 
-        viewHolder.getCourse_views().setText(
-                localDataSet.get(position).getCourse_views());
+
+        viewHolder.getCourse_views().
+                setText(NumberFormater.prettyCount(Integer.valueOf(localDataSet.get(position).getCourse_views())));
+
 
         Picasso.get().load(localDataSet.get(position).getCourse_porta()).into(viewHolder.getPlayButton());
 

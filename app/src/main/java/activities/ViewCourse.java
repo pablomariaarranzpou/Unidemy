@@ -25,6 +25,7 @@ import com.example.unidemy.adapters.CardVideoAdapter;
 import com.example.unidemy.adapters.DocumentCardAdapter;
 import com.example.unidemy.adapters.DocumentRecyclerView_ViewModel;
 import com.example.unidemy.adapters.DocumentRecyclerView_ViewModelFactory;
+import com.example.unidemy.adapters.NumberFormater;
 import com.example.unidemy.adapters.VideoRecyclerView_ViewModel;
 import com.example.unidemy.adapters.VideoRecyclerView_ViewModelFactory;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -150,7 +151,7 @@ public class ViewCourse extends AppCompatActivity implements CardTestAdapter.OnT
 
                             });
                             Log.d("Update V", String.valueOf(views));
-                            ind_course_views_txt.setText(String.valueOf(views));
+                            ind_course_views_txt.setText(String.valueOf(NumberFormater.prettyCount(views)));
                         }
                     });
 
