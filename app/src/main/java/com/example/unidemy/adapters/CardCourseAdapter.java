@@ -2,6 +2,7 @@ package com.example.unidemy.adapters;
 
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,7 +36,8 @@ public class CardCourseAdapter extends RecyclerView.Adapter<CardCourseHolder> {
     public CardCourseAdapter(Context current, ArrayList<CursoCard> dataSet, OnCourseListener onCourseListener ) {
         parentContext = current;
         localDataSet = dataSet;
-        filtrado = dataSet;
+        filtrado = new ArrayList<CursoCard>();
+        filtrado.addAll(dataSet);
         this.onCourseListener = onCourseListener;
     }
 
@@ -54,21 +56,24 @@ public class CardCourseAdapter extends RecyclerView.Adapter<CardCourseHolder> {
 
     public void filtrado(@NonNull final String txtBuscar) {
 
-        int longitud = txtBuscar.length();
-        if (longitud == 0) {
-            filtrado.clear();
-            filtrado.addAll(localDataSet);
+
+        Log.d("BUSCA", txtBuscar + "| esta vacio?"+ txtBuscar.isEmpty());
+        Log.d("Filtr", filtrado.toString());
+        if (txtBuscar.isEmpty()) {
+            localDataSet.clear();
+            localDataSet.addAll(filtrado);
+            notifyDataSetChanged();
         } else {
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-                List<CursoCard> collecion = filtrado.stream()
+                List<CursoCard> collecion = localDataSet.stream()
                         .filter(i -> i.getCourse_title().toLowerCase().contains(txtBuscar.toLowerCase()))
                         .collect(Collectors.toList());
-                filtrado.clear();
-                filtrado.addAll(collecion);
+                localDataSet.clear();
+                localDataSet.addAll(collecion);
             } else {
-                for (CursoCard c : localDataSet) {
+                for (CursoCard c : filtrado) {
                     if (c.getCourse_title().toLowerCase().contains(txtBuscar.toLowerCase())) {
-                        filtrado.add(c);
+                        localDataSet.add(c);
                     }
                 }
             }
