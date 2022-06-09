@@ -30,7 +30,7 @@
     <TextView
         android:id="@+id/correct_answer_correction"
         android:layout_width="match_parent"
-        android:layout_height="85dp"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:text="esta mal bro"
         android:textColor="#000000"

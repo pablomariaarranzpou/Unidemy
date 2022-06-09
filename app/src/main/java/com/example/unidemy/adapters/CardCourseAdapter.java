@@ -77,6 +77,8 @@ public class CardCourseAdapter extends RecyclerView.Adapter<CardCourseHolder> {
                         localDataSet.add(c);
                     }
                 }
+
+
             }
         }
         notifyDataSetChanged();
