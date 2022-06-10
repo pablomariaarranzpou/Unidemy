@@ -64,7 +64,7 @@ public class MyCoursesAdapter extends RecyclerView.Adapter<CardCourseHolder>{
                     localDataSet.get(position).getCourse_title());
 
             viewHolder.getCourse_views().setText(
-                    localDataSet.get(position).getCourse_views());
+                    NumberFormater.prettyCount(Integer.valueOf(localDataSet.get(position).getCourse_views())));
 
 
         Picasso.get().load(localDataSet.get(position).getCourse_porta()).into(viewHolder.getPlayButton());

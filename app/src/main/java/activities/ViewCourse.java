@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.unidemy.R;
-import com.example.unidemy.adapters.CardTestAdapter;
+import com.example.unidemy.adapters.CardTestHolder;
 import com.example.unidemy.adapters.CardTestViewModel;
 import com.example.unidemy.adapters.CardTestViewModelFactory;
 import com.example.unidemy.adapters.CardVideoAdapter;
@@ -45,7 +45,7 @@ import model.CursoCard;
 import model.DocumentCard;
 import model.VideoCard;
 
-public class ViewCourse extends AppCompatActivity implements CardTestAdapter.OnTestListener, CardVideoAdapter.OnVideoListener, DocumentCardAdapter.OnDocumentListener {
+public class ViewCourse extends AppCompatActivity implements CardTestHolder.CardTestAdapter.OnTestListener, CardVideoAdapter.OnVideoListener, DocumentCardAdapter.OnDocumentListener {
 
 
     private TextView ind_course_views_txt, ind_course_title_txt, ind_owner_txt, ind_course_rating_txt, ind_course_description;
@@ -222,11 +222,11 @@ public class ViewCourse extends AppCompatActivity implements CardTestAdapter.OnT
     public void setLiveDataObservers() {
             //Subscribe the activity to the observable
     tsviewmodel = new ViewModelProvider(this, new CardTestViewModelFactory(this.getApplication(), this.getCourseId())).get(CardTestViewModel.class);
-    CardTestAdapter newAdaptertest = new CardTestAdapter(new ArrayList<CardTest>(), parentContext, (CardTestAdapter.OnTestListener) mActivity);
+    CardTestHolder.CardTestAdapter newAdaptertest = new CardTestHolder.CardTestAdapter(new ArrayList<CardTest>(), parentContext, (CardTestHolder.CardTestAdapter.OnTestListener) mActivity);
     final Observer<ArrayList<CardTest>> observertest = new Observer<ArrayList<CardTest>>() {
         @Override
         public void onChanged(ArrayList<CardTest> ac) {
-            CardTestAdapter newAdaptertest = new CardTestAdapter(ac, parentContext, (CardTestAdapter.OnTestListener) mActivity);
+            CardTestHolder.CardTestAdapter newAdaptertest = new CardTestHolder.CardTestAdapter(ac, parentContext, (CardTestHolder.CardTestAdapter.OnTestListener) mActivity);
             tsRecyclerView.swapAdapter(newAdaptertest, false);
             newAdaptertest.notifyDataSetChanged();
         }

@@ -5,8 +5,10 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.widget.MediaController;
 import android.widget.VideoView;
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.unidemy.R;
 
 import model.VideoCard;
