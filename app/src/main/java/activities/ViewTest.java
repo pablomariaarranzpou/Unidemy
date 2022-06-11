@@ -17,12 +17,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.unidemy.R;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 import model.CardTest;
@@ -51,10 +55,11 @@ public class ViewTest extends AppCompatActivity {
         resultText = (TextView) findViewById(R.id.resultText);
 
 
-
         if (getIntent().hasExtra("selectedTest")) {
             ct = (CardTest) getIntent().getParcelableExtra("selectedTest");
         }
+
+
 
 
 
@@ -71,6 +76,8 @@ public class ViewTest extends AppCompatActivity {
                             }
 
                             list.addAll(retrieved_ac);
+                            // Desordenamos las preguntas para no aprenderlas de memoria
+                            Collections.shuffle(list);
                             currentQuestion = list.get(iqa);
                             updateQuestion();
 
