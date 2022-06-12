@@ -12,8 +12,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.unidemy.R;
 import com.example.unidemy.adapters.SaveSharedPreference;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.Objects;
 
 public class Login extends AppCompatActivity {
     private TextInputEditText user_name, pass_word;
@@ -34,8 +35,8 @@ public class Login extends AppCompatActivity {
         Button btn_resetpassw = findViewById(R.id.btn_resetpassw);
         mAuth=FirebaseAuth.getInstance();
         btn_login.setOnClickListener(v -> {
-            String email_txt= user_name.getText().toString().trim();
-            String password_txt=pass_word.getText().toString().trim();
+            String email_txt= Objects.requireNonNull(user_name.getText()).toString().trim();
+            String password_txt= Objects.requireNonNull(pass_word.getText()).toString().trim();
             Log.d("CORREO", email_txt);
             if(email_txt.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(email_txt).matches())
             {
