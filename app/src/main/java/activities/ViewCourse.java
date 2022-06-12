@@ -169,14 +169,7 @@ public class ViewCourse extends AppCompatActivity implements CardTestHolder.Card
 
         }
 
-        play_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ViewCourse.this, ViewDocument.class);
-                intent.putExtra("selectedDocument", new DocumentCard("TUTORIAL", "50", "https://www.matematicasonline.es/pdf/ejercicios/3_ESO/Ejercicios%20de%20Estadistica.pdf"));
-                startActivity(intent);
-            }
-        });
+
         ind_btn_opinar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
