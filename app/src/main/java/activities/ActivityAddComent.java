@@ -60,21 +60,30 @@ public class ActivityAddComent extends AppCompatActivity {
                 String nota = edit_nota.getText().toString().trim();
                 Float qual = ratingBar_curso.getRating();
 
+                if(nota.isEmpty() || nota.toString().length() == 0){
+                    edit_nota.setError("Escriba su nota si no tiene escriba la esperada");
+                    edit_nota.requestFocus();
+                    return;
+                }
                 if (qual.toString().length() == 0) {
                     edit_content.setError("Escribe algo en experiencia!");
                     edit_content.requestFocus();
 
+
                 }else if(Float.valueOf(nota) < 0 || Float.valueOf(nota) > 10){
                     edit_nota.setError("Las notas van del 0 al 10");
                     edit_nota.requestFocus();
+                    return;
                 }
                 else if (nota.length() == 0 || !isNumeric(nota)) {
                     edit_nota.setError("El formato de la nota es incorrecto");
                     edit_nota.requestFocus();
+                    return;
                 }
                 else if (String.valueOf(ratingBar_curso.getRating()).length() == 0) {
                     edit_nota.setError("Has de puntuar de 0.5 para arriba");
                     edit_nota.requestFocus();
+                    return;
                 } else {
 
                     Float notaf = Float.parseFloat(nota);

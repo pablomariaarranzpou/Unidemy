@@ -20,28 +20,25 @@
         android:layout_width="241dp"
         android:layout_height="117dp"
         android:layout_marginEnd="36dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="40dp"
         android:ems="10"
         android:gravity="start|top"
+        android:hint="Escriba aquí su experiencia con el curso"
         android:inputType="textMultiLine"
-        android:text="Escriba aquí su experiencia con el curso"
         android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@+id/editTextNumberDecimal"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <RatingBar
         android:id="@+id/ratingbar_curso"
-        android:layout_width="241dp"
+        android:layout_width="wrap_content"
         android:layout_height="53dp"
-        android:layout_marginTop="32dp"
         android:layout_marginEnd="36dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="40dp"
         app:layout_constraintBottom_toTopOf="@+id/editTextTextMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/textView10"
-        app:layout_constraintTop_toBottomOf="@+id/textView13"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintHorizontal_bias="0.965"
+        app:layout_constraintStart_toEndOf="@+id/textView10" />
 
     <EditText
         android:id="@+id/editTextNumberDecimal"
@@ -92,8 +89,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="84dp"
         android:layout_marginTop="32dp"
+        android:layout_marginBottom="16dp"
         android:text="Añadir opinion del curso"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintBottom_toTopOf="@+id/ratingbar_curso"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
