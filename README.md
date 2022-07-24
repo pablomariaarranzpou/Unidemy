@@ -15,6 +15,10 @@ Soon Aviable to Download directly for Google Play.
         src="https://raw.githubusercontent.com/Thukor/MazeSolver/master/resources/download.png" />
 </a>  
         </p>
+        
+        
+        
+### ONLY SOME UNIVERSITIES ARE AVIABLE IN THIS RECENT VERSION!!!!!  
 
 ## About
 
