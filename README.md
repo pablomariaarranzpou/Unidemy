@@ -9,7 +9,7 @@ Unidemy is now Open-Source.
 Soon Aviable to Download directly for Google Play. 
 
 <p align="left">
-<a href = "https://github.com/pablomariaarranzpou/Unidemy/blob/master/unidemy.apk">
+<a href = "https://github.com/pablomariaarranzpou/Unidemy/raw/master/unidemy.apk">
     <img alt="Get it!"
         height="80"
         src="https://raw.githubusercontent.com/Thukor/MazeSolver/master/resources/download.png" />
